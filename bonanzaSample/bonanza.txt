@@ -1,0 +1,1657 @@
+    1 	main: int (), <main.c 8>
+    2 		strcmp: <>
+    3 		ini: int (), <ini.c 36>
+    4 			load_fv: int CONV (), <ini.c 12>
+    5 				file_open: FILE * (), <io.c 108>
+    6 					fopen: <>
+    7 					snprintf: <>
+    8 				fread: <>
+    9 				file_close: int (), <io.c 122>
+   10 					ferror: <>
+   11 					fclose: <>
+   12 			lock_init: int CONV (), <thread.c 8>
+   13 			ini_rand: void (), <rand.c 7>
+   14 			ini_is_same: void (), <ini.c 235>
+   15 			ini_tables: void (), <ini.c 262>
+   16 				bb_set_mask: bitboard_t (), <ini.c 643>
+   17 					BBIni: <>
+   18 				BBIni: <>
+   19 				set_attacks: void (), <ini.c 635>
+   20 					Xor: <>
+   21 				BBOr: <>
+   22 				BBTest: <>
+   23 				FirstOne: <>
+   24 				Xor: <>
+   25 				BBXor: <>
+   26 			ini_attack_tables: void (), <ini.c 490>
+   27 				BBIni: <>
+   28 				set_attacks: 19
+   29 			ini_random_table: void (), <ini.c 431>
+   30 				rand64: uint64_t (), <rand.c 63>
+   31 					rand32: unsigned int (), <rand.c 23>
+   32 			ini_check_table: void (), <ini.c 653>
+   33 				BBIni: <>
+   34 				BBTest: <>
+   35 				LastOne: <>
+   36 				BBOr: <>
+   37 				Xor: <>
+   38 				BBNotAnd: <>
+   39 				last_one0: int CONV (), <bitop.c 136>
+   40 				last_one1: int CONV (), <bitop.c 137>
+   41 				BBAnd: <>
+   42 				first_one2: int CONV (), <bitop.c 135>
+   43 				first_one1: int CONV (), <bitop.c 134>
+   44 			set_derivative_param: void (), <ini.c 177>
+   45 			ini_game: int CONV (), <utility.c 9>
+   46 				ehash_clear: void CONV (), <evaluate.c 149>
+   47 					memset: <>
+   48 				ini_trans_table: int CONV (), <hash.c 11>
+   49 					memory_alloc: void *CONV (), <utility.c 527>
+   50 						VirtualAlloc: <>
+   51 					Out: <>
+   52 					clear_trans_table: int CONV (), <hash.c 534>
+   53 						get_elapsed: int CONV (), <time.c 170>
+   54 							GetSystemTimeAsFileTime: <>
+   55 						Out: <>
+   56 						str_time_symple: const char *CONV (), <time.c 137>
+   57 							snprintf: <>
+   58 				open_history: int (), <io.c 162>
+   59 					strncpy: <>
+   60 					record_close: int (), <csa.c 81>
+   61 						file_close: 9
+   62 					snprintf: <>
+   63 					record_open: int (), <csa.c 47>
+   64 						strncpy: <>
+   65 						file_open: 5
+   66 						assert: <>
+   67 					file_close: 9
+   68 					file_open: 5
+   69 				memcpy: <>
+   70 				BBIni: <>
+   71 				Xor: <>
+   72 				XorFile: <>
+   73 				XorDiag1: <>
+   74 				XorDiag2: <>
+   75 				BBOr: <>
+   76 				eval_material: int CONV (), <evaluate.c 23>
+   77 					PopuCount: <>
+   78 					I2HandPawn: <>
+   79 					I2HandLance: <>
+   80 					I2HandKnight: <>
+   81 					I2HandSilver: <>
+   82 					I2HandGold: <>
+   83 					I2HandBishop: <>
+   84 					I2HandRook: <>
+   85 				hash_func: uint64_t CONV (), <hash.c 28>
+   86 					Foo: <>
+   87 				memset: <>
+   88 				InCheck: <>
+   89 				is_mate: int CONV (), <utility.c 288>
+   90 					assert: <>
+   91 					InCheck: <>
+   92 					GenEvasion: <>
+   93 				PopuCount: <>
+   94 				I2HandPawn: <>
+   95 				I2HandLance: <>
+   96 				I2HandKnight: <>
+   97 				I2HandSilver: <>
+   98 				I2HandGold: <>
+   99 				I2HandBishop: <>
+  100 				I2HandRook: <>
+  101 				exam_tree: int CONV (), <valid.c 71>
+  102 					I2HandPawn: <>
+  103 					I2HandLance: <>
+  104 					I2HandKnight: <>
+  105 					I2HandSilver: <>
+  106 					I2HandGold: <>
+  107 					I2HandBishop: <>
+  108 					I2HandRook: <>
+  109 					abs: <>
+  110 					NpchkReturn: <>
+  111 					InCheck: <>
+  112 					Flip: <>
+  113 					assert: <>
+  114 					exam_bb: <>
+  115 				ini_game: 45
+  116 				lock: void CONV (), <thread.c 22>
+  117 					tlp_yield: void (), <thread.c 42>
+  118 						Sleep: <>
+  119 					asm: <>
+  120 				dfpn_client_start: void CONV (), <thread.c 47>
+  121 					memcmp: <>
+  122 					sckt_shutdown: int CONV (), <sckt.c 139>
+  123 						out_warning: void (), <io.c 60>
+  124 							lock: 116
+  125 							fprintf: <>
+  126 							va_start: <>
+  127 							vfprintf: <>
+  128 							va_end: <>
+  129 							fflush: <>
+  130 							unlock: void CONV (), <thread.c 18>
+  131 						shutdown: <>
+  132 						str_WSAError: const char * (), <sckt.c 15>
+  133 							snprintf: <>
+  134 							WSAGetLastError: <>
+  135 						WSACleanup: <>
+  136 						recv: <>
+  137 						closesocket: <>
+  138 					sckt_connect: sckt_t CONV (), <sckt.c 89>
+  139 						WSAStartup: <>
+  140 						MAKEWORD: <>
+  141 						str_WSAError: 132
+  142 						inet_addr: <>
+  143 						gethostbyname: <>
+  144 						WSACleanup: <>
+  145 						socket: <>
+  146 						htons: <>
+  147 						connect: <>
+  148 						Out: <>
+  149 						Sleep: <>
+  150 					out_warning: 123
+  151 					Out: <>
+  152 					dfpn_client_receiver: unsigned int __stdcall (), <thread.c 78>
+  153 						FD_ZERO: <>
+  154 						FD_SET: <>
+  155 						select: <>
+  156 						out_warning: 123
+  157 						lock: 116
+  158 						dfpn_client_out: int CONV (), <sckt.c 272>
+  159 							va_start: <>
+  160 							vsnprintf: <>
+  161 							va_end: <>
+  162 							sckt_shutdown: 122
+  163 							out_warning: 123
+  164 							Out: <>
+  165 							send: <>
+  166 						unlock: void CONV (), <thread.c 18>
+  167 						strlen: <>
+  168 						recv: <>
+  169 						str_WSAError: 132
+  170 						strchr: <>
+  171 						memcpy: <>
+  172 						memmove: <>
+  173 						proce_line: int CONV (), <thread.c 161>
+  174 							strtok_r: <>
+  175 							strcmp: <>
+  176 							is_move: int CONV (), <proce.c 50>
+  177 								isdigit: <>
+  178 								isupper: <>
+  179 							memcpy: <>
+  180 						sckt_shutdown: 122
+  181 					dfpn_client_out: 158
+  182 				snprintf: <>
+  183 				dfpn_client_out: 158
+  184 				unlock: void CONV (), <thread.c 18>
+  185 			OutCsaShogi: <>
+  186 			Out: <>
+  187 			ini_trans_table: 48
+  188 			dfpn_ini_hash: int CONV (), <dfpnhash.c 25>
+  189 				memory_free: int CONV (), <utility.c 533>
+  190 					VirtualFree: <>
+  191 				memory_alloc: 49
+  192 				Out: <>
+  193 			book_on: int CONV (), <book.c 24>
+  194 				file_close: 9
+  195 				file_open: 5
+  196 			out_warning: 123
+  197 			get_elapsed: 53
+  198 		out_error: void (), <io.c 85>
+  199 			fprintf: <>
+  200 			va_start: <>
+  201 			vfprintf: <>
+  202 			va_end: <>
+  203 			fflush: <>
+  204 		main_child: int (), <main.c 41>
+  205 			ponder: int (), <ponder.c 5>
+  206 				abs: <>
+  207 				gen_legal_moves: int CONV (), <utility.c 240>
+  208 					GenCaptures: <>
+  209 					GenNoCaptures: <>
+  210 					GenCapNoProEx2: <>
+  211 					GenNoCapNoProEx2: <>
+  212 					GenDrop: <>
+  213 					MakeMove: <>
+  214 					InCheck: <>
+  215 					UnMakeMove: <>
+  216 					Flip: <>
+  217 					detect_repetition: int CONV (), <utility.c 315>
+  218 						GenEvasion: <>
+  219 						MakeMove: <>
+  220 						UnMakeMove: <>
+  221 						is_hand_eq_supe: int CONV (), <utility.c 297>
+  222 							IsHandKnight: <>
+  223 							IsHandSilver: <>
+  224 							IsHandGold: <>
+  225 							IsHandBishop: <>
+  226 							IsHandRook: <>
+  227 							I2HandRook: <>
+  228 							I2HandLance: <>
+  229 							I2HandSilver: <>
+  230 							I2HandGold: <>
+  231 							I2HandPawn: <>
+  232 				get_elapsed: 53
+  233 				Out: <>
+  234 				OutCsaShogi: <>
+  235 				iterate: int CONV (), <iterate.c 13>
+  236 					rep_book_prob: int CONV (), <iterate.c 741>
+  237 						Out: <>
+  238 					book_probe: int CONV (), <book.c 41>
+  239 						book_hash_func: uint64_t CONV (), <book.c 219>
+  240 							I2HandPawn: <>
+  241 							I2HandLance: <>
+  242 							I2HandKnight: <>
+  243 							I2HandSilver: <>
+  244 							I2HandGold: <>
+  245 							I2HandBishop: <>
+  246 							I2HandRook: <>
+  247 							Foo: <>
+  248 						book_read: int CONV (), <book.c 105>
+  249 							fseek: <>
+  250 							fread: <>
+  251 						rand64: 30
+  252 						normalize_book_move: int CONV (), <book.c 299>
+  253 						Out: <>
+  254 						OutCsaShogi: <>
+  255 						bm2move: unsigned int CONV (), <book.c 196>
+  256 							I2To: <>
+  257 							I2From: <>
+  258 							flip_ft: ft_t CONV (), <book.c 165>
+  259 							I2IsPromote: <>
+  260 							From2Move: <>
+  261 							Cap2Move: <>
+  262 							Piece2Move: <>
+  263 						str_CSA_move: const char * (), <csa.c 363>
+  264 							I2IsPromote: <>
+  265 							I2PieceMove: <>
+  266 							I2From: <>
+  267 							I2To: <>
+  268 							snprintf: <>
+  269 							From2Drop: <>
+  270 						is_move_valid: int CONV (), <valid.c 6>
+  271 							I2From: <>
+  272 							I2To: <>
+  273 							I2PieceMove: <>
+  274 							UToCap: <>
+  275 							BBOr: <>
+  276 							BBAnd: <>
+  277 							BBTest: <>
+  278 							From2Drop: <>
+  279 							IsHandPawn: <>
+  280 							BBToU: <>
+  281 							IsMateWPawnDrop: <>
+  282 							IsMateBPawnDrop: <>
+  283 							IsHandLance: <>
+  284 							IsHandKnight: <>
+  285 							IsHandSilver: <>
+  286 							IsHandGold: <>
+  287 							IsHandBishop: <>
+  288 							assert: <>
+  289 							IsHandRook: <>
+  290 						out_warning: 123
+  291 					get_elapsed: 53
+  292 					Out: <>
+  293 					str_time_symple: 56
+  294 					pv_close: void CONV (), <search.c 606>
+  295 					MnjOut: <>
+  296 					str_CSA_move: 263
+  297 					csa2usi: int CONV (), <csa.c 491>
+  298 						str2piece: int (), <csa.c 804>
+  299 							strcmp: <>
+  300 						abs: <>
+  301 					USIOut: <>
+  302 					ehash_clear: 46
+  303 					ini_trans_table: 48
+  304 					get_cputime: int CONV (), <time.c 151>
+  305 						GetCurrentProcess: <>
+  306 						GetProcessTimes: <>
+  307 					set_search_limit_time: void CONV (), <time.c 5>
+  308 						Out: <>
+  309 					adjust_fmg: void CONV (), <iterate.c 753>
+  310 					out_pv: void CONV (), <searchr.c 208>
+  311 						abs: <>
+  312 						str_time_symple: 56
+  313 						OutCsaShogi: <>
+  314 						Flip: <>
+  315 						str_CSA_move: 263
+  316 						Out: <>
+  317 						csa2usi: 297
+  318 						snprintf: <>
+  319 						MakeMove: <>
+  320 						hash_probe: unsigned int CONV (), <hash.c 151>
+  321 							NullDepth: <>
+  322 							SignKey: <>
+  323 							abs: <>
+  324 							out_warning: 123
+  325 							RecursionDepth: <>
+  326 							Cap2Move: <>
+  327 							I2To: <>
+  328 							assert: <>
+  329 							is_move_valid: 270
+  330 							eval_supe: int CONV (), <hash.c 503>
+  331 								is_hand_eq_supe: 221
+  332 							I2From: <>
+  333 							From2Drop: <>
+  334 							IsHandPawn: <>
+  335 							To2Move: <>
+  336 							IsHandLance: <>
+  337 							Drop2Move: <>
+  338 							IsHandSilver: <>
+  339 							IsHandGold: <>
+  340 						is_move_valid: 270
+  341 						InCheck: <>
+  342 						UnMakeMove: <>
+  343 						USIOut: <>
+  344 					hash_probe: 320
+  345 					out_warning: 123
+  346 					make_root_move_list: int (), <root.c 5>
+  347 						GenCaptures: <>
+  348 						GenNoCaptures: <>
+  349 						GenDrop: <>
+  350 						MakeMove: <>
+  351 						InCheck: <>
+  352 						is_move_ignore: int CONV (), <root.c 121>
+  353 						Flip: <>
+  354 						detect_repetition: 217
+  355 						search_quies: int CONV (), <quiesrch.c 10>
+  356 							evaluate: int CONV (), <evaluate.c 68>
+  357 								assert: <>
+  358 								ehash_probe: int CONV (), <evaluate.c 150>
+  359 								I2HandPawn: <>
+  360 								I2HandLance: <>
+  361 								I2HandKnight: <>
+  362 								I2HandSilver: <>
+  363 								I2HandGold: <>
+  364 								I2HandBishop: <>
+  365 								I2HandRook: <>
+  366 								calc_difference: int CONV (), <evaluate.c 173>
+  367 									I2PieceMove: <>
+  368 									assert: <>
+  369 									I2From: <>
+  370 									I2To: <>
+  371 									BBOr: <>
+  372 									Xor: <>
+  373 									BBTest: <>
+  374 									FirstOne: <>
+  375 									Inv: <>
+  376 									doapc: int CONV (), <evaluate.c 498>
+  377 										Inv: <>
+  378 										PcPcOnSq: <>
+  379 										PcPcOnSqAny: <>
+  380 									From2Drop: <>
+  381 									I2HandPawn: <>
+  382 									I2HandLance: <>
+  383 									I2HandKnight: <>
+  384 									I2HandSilver: <>
+  385 									I2HandGold: <>
+  386 									I2HandBishop: <>
+  387 									I2HandRook: <>
+  388 									doacapt: int CONV (), <evaluate.c 531>
+  389 										Inv: <>
+  390 										PcPcOnSq: <>
+  391 									UToCap: <>
+  392 									I2IsPromote: <>
+  393 								ehash_store: void CONV (), <evaluate.c 163>
+  394 								make_list: int CONV (), <evaluate.c 270>
+  395 									Inv: <>
+  396 									I2HandPawn: <>
+  397 									I2HandLance: <>
+  398 									I2HandKnight: <>
+  399 									I2HandSilver: <>
+  400 									I2HandGold: <>
+  401 									I2HandBishop: <>
+  402 									I2HandRook: <>
+  403 									BBTest: <>
+  404 									FirstOne: <>
+  405 									Xor: <>
+  406 									assert: <>
+  407 								Inv: <>
+  408 								PcPcOnSq: <>
+  409 								inaniwa_score: int (), <evaluate.c 573>
+  410 								abs: <>
+  411 								out_warning: 123
+  412 							DOut: <>
+  413 							pv_close: 294
+  414 							is_mate_in3ply: unsigned int CONV (), <mate3.c 70>
+  415 								mhash_probe: int CONV (), <mate3.c 40>
+  416 									Cap2Move: <>
+  417 									I2To: <>
+  418 								GenCheck: <>
+  419 								assert: <>
+  420 								is_move_valid: 270
+  421 								MakeMove: <>
+  422 								InCheck: <>
+  423 								UnMakeMove: <>
+  424 								mate3_and: int CONV (), <mate3.c 111>
+  425 									assert: <>
+  426 									InCheck: <>
+  427 									checker: void CONV (), <mate3.c 270>
+  428 										b_attacks_to_piece: bitboard_t CONV (), <attack.c 293>
+  429 											BBIni: <>
+  430 											BBAndOr: <>
+  431 											AttackBishop: <>
+  432 											AttackRank: <>
+  433 											AttackFile: <>
+  434 										w_attacks_to_piece: bitboard_t CONV (), <attack.c 314>
+  435 											BBIni: <>
+  436 											BBAndOr: <>
+  437 											AttackBishop: <>
+  438 											AttackRank: <>
+  439 											AttackFile: <>
+  440 										assert: <>
+  441 										BBTest: <>
+  442 										LastOne: <>
+  443 										Xor: <>
+  444 										BBContract: <>
+  445 									gen_next_evasion_mate: int CONV (), <mate3.c 184>
+  446 										gen_king_cap_checker: unsigned int CONV (), <mate3.c 301>
+  447 											BBContract: <>
+  448 											is_white_attacked: unsigned int CONV (), <attack.c 335>
+  449 												BBAnd: <>
+  450 												BBAndOr: <>
+  451 												AttackBishop: <>
+  452 												AttackFile: <>
+  453 												AttackRank: <>
+  454 												BBToU: <>
+  455 											Cap2Move: <>
+  456 											is_black_attacked: unsigned int CONV (), <attack.c 352>
+  457 												BBAnd: <>
+  458 												BBAndOr: <>
+  459 												AttackBishop: <>
+  460 												AttackFile: <>
+  461 												AttackRank: <>
+  462 												BBTest: <>
+  463 											To2Move: <>
+  464 											From2Move: <>
+  465 											Piece2Move: <>
+  466 										gen_move_to: unsigned int *CONV (), <mate3.c 324>
+  467 											w_attacks_to_piece: 434
+  468 											BBNotAnd: <>
+  469 											BBTest: <>
+  470 											LastOne: <>
+  471 											Xor: <>
+  472 											is_pinned_on_white_king: unsigned int CONV (), <attack.c 5>
+  473 												AttackRank: <>
+  474 												BBContract: <>
+  475 												AttackFile: <>
+  476 												BBAnd: <>
+  477 												BBOr: <>
+  478 												AttackDiag1: <>
+  479 												assert: <>
+  480 												AttackDiag2: <>
+  481 											assert: <>
+  482 											From2Move: <>
+  483 											To2Move: <>
+  484 											Piece2Move: <>
+  485 											Cap2Move: <>
+  486 											b_attacks_to_piece: 428
+  487 											FirstOne: <>
+  488 											is_pinned_on_black_king: unsigned int CONV (), <attack.c 46>
+  489 												AttackRank: <>
+  490 												BBContract: <>
+  491 												AttackFile: <>
+  492 												BBAnd: <>
+  493 												BBOr: <>
+  494 												AttackDiag1: <>
+  495 												assert: <>
+  496 												AttackDiag2: <>
+  497 										gen_king_move: unsigned int *CONV (), <mate3.c 427>
+  498 											BBAnd: <>
+  499 											BBNotAnd: <>
+  500 											BBTest: <>
+  501 											LastOne: <>
+  502 											Xor: <>
+  503 											abs: <>
+  504 											is_white_attacked: 448
+  505 											From2Move: <>
+  506 											To2Move: <>
+  507 											Piece2Move: <>
+  508 											Cap2Move: <>
+  509 											is_black_attacked: 456
+  510 										abs: <>
+  511 										gen_intercept: unsigned int *CONV (), <mate3.c 489>
+  512 											BBNotAnd: <>
+  513 											assert: <>
+  514 											attacks_to_piece: bitboard_t CONV (), <attack.c 262>
+  515 												BBIni: <>
+  516 												BBOr: <>
+  517 												BBAndOr: <>
+  518 												AttackBishop: <>
+  519 												AttackRank: <>
+  520 												AttackFile: <>
+  521 											BBAnd: <>
+  522 											BBTest: <>
+  523 											LastOne: <>
+  524 											Xor: <>
+  525 											is_pinned_on_white_king: 472
+  526 											is_pinned_on_black_king: 488
+  527 											From2Move: <>
+  528 											To2Move: <>
+  529 											Piece2Move: <>
+  530 											I2To: <>
+  531 											IsHandRook: <>
+  532 											Drop: <>
+  533 											IsHandLance: <>
+  534 											IsHandPawn: <>
+  535 											BBToU: <>
+  536 											IsMateWPawnDrop: <>
+  537 											IsHandKnight: <>
+  538 											IsMateBPawnDrop: <>
+  539 											IsHandSilver: <>
+  540 											IsHandGold: <>
+  541 											IsHandBishop: <>
+  542 											I2From: <>
+  543 										assert: <>
+  544 									MakeMove: <>
+  545 									Flip: <>
+  546 									IsMateIn1Ply: <>
+  547 									mate_weak_or: int CONV (), <mate3.c 140>
+  548 										IsDiscoverWK: <>
+  549 										To2Move: <>
+  550 										From2Move: <>
+  551 										Piece2Move: <>
+  552 										Cap2Move: <>
+  553 										IsDiscoverBK: <>
+  554 										MakeMove: <>
+  555 										I2From: <>
+  556 										InCheck: <>
+  557 										UnMakeMove: <>
+  558 										assert: <>
+  559 										mate3_and: 424
+  560 										Flip: <>
+  561 									I2To: <>
+  562 									UnMakeMove: <>
+  563 								Flip: <>
+  564 								mhash_store: void CONV (), <mate3.c 60>
+  565 								I2To: <>
+  566 							assert: <>
+  567 							is_move_valid: 270
+  568 							gen_next_quies: int CONV (), <quiesrch.c 85>
+  569 								GenCaptures: <>
+  570 								UToCap: <>
+  571 								I2IsPromote: <>
+  572 								I2PieceMove: <>
+  573 								estimate_score_diff: int CONV (), <evaldiff.c 113>
+  574 									Inv: <>
+  575 									I2From: <>
+  576 									I2To: <>
+  577 									I2PieceMove: <>
+  578 									UToCap: <>
+  579 									PcOnSq: <>
+  580 									From2Drop: <>
+  581 									I2IsPromote: <>
+  582 								eval_max_score: int CONV (), <evaldiff.c 64>
+  583 									I2From: <>
+  584 									UToCap: <>
+  585 									I2PieceMove: <>
+  586 									I2IsPromote: <>
+  587 								swap: int CONV (), <swap.c 6>
+  588 									I2From: <>
+  589 									I2To: <>
+  590 									From2Drop: <>
+  591 									I2PieceMove: <>
+  592 									UToCap: <>
+  593 									I2IsPromote: <>
+  594 									attacks_to_piece: 514
+  595 									Xor: <>
+  596 									AttackRank: <>
+  597 									BBAnd: <>
+  598 									BBOr: <>
+  599 									BBAndOr: <>
+  600 									AttackFile: <>
+  601 									AttackDiag1: <>
+  602 									AttackDiag2: <>
+  603 									BBContract: <>
+  604 									BBTest: <>
+  605 									FirstOne: <>
+  606 									assert: <>
+  607 									Flip: <>
+  608 							str_CSA_move: 263
+  609 							MakeMove: <>
+  610 							InCheck: <>
+  611 							UnMakeMove: <>
+  612 							search_quies: 355
+  613 							Flip: <>
+  614 							check_futile_score_quies: void CONV (), <evaldiff.c 4>
+  615 								I2From: <>
+  616 								I2PieceMove: <>
+  617 								UToCap: <>
+  618 								estimate_score_diff: 573
+  619 								I2IsPromote: <>
+  620 							IsMove: <>
+  621 							pv_copy: void CONV (), <search.c 614>
+  622 								memcpy: <>
+  623 						I2IsPromote: <>
+  624 						UnMakeMove: <>
+  625 						I2From: <>
+  626 						Out: <>
+  627 						str_CSA_move: 263
+  628 						UToCap: <>
+  629 					dfpn_client_check_results: void CONV (), <iterate.c 704>
+  630 						lock: 116
+  631 						strcmp: <>
+  632 						str_CSA_move: 263
+  633 						unlock: void CONV (), <thread.c 18>
+  634 					assert: <>
+  635 					lock: 116
+  636 					dfpn_client_out: 158
+  637 					unlock: void CONV (), <thread.c 18>
+  638 					abs: <>
+  639 					tlp_start: int (), <thread.c 234>
+  640 						start_address: unsigned int __stdcall (), <thread.c 332>
+  641 							lock: 116
+  642 							Out: <>
+  643 							unlock: void CONV (), <thread.c 18>
+  644 							wait_work: void (), <thread.c 349>
+  645 								tlp_yield: 117
+  646 								lock: 116
+  647 								unlock: void CONV (), <thread.c 18>
+  648 								tlp_search: int CONV (), <search.c 450>
+  649 									assert: <>
+  650 									lock: 116
+  651 									unlock: void CONV (), <thread.c 18>
+  652 									gen_next_evasion: int CONV (), <next.c 234>
+  653 										GenEvasion: <>
+  654 										out_warning: 123
+  655 										out_board: int (), <io.c 224>
+  656 											I2To: <>
+  657 											I2From: <>
+  658 											I2IsPromote: <>
+  659 											fprintf: <>
+  660 											OutBoard0: <>
+  661 											out_hand: void CONV (), <io.c 428>
+  662 												out_hand0: void CONV (), <io.c 439>
+  663 													fprintf: <>
+  664 												I2HandPawn: <>
+  665 												I2HandLance: <>
+  666 												I2HandKnight: <>
+  667 												I2HandSilver: <>
+  668 												I2HandGold: <>
+  669 												I2HandBishop: <>
+  670 												I2HandRook: <>
+  671 											fflush: <>
+  672 										Out: <>
+  673 										str_CSA_move: 263
+  674 										I2PieceMove: <>
+  675 										UToCap: <>
+  676 										swap: 587
+  677 										estimate_score_diff: 573
+  678 										assert: <>
+  679 									gen_next_move: int CONV (), <next.c 6>
+  680 										GenCaptures: <>
+  681 										swap: 587
+  682 										UToFromToPromo: <>
+  683 										UToCap: <>
+  684 										is_move_valid: 270
+  685 										out_warning: 123
+  686 										GenNoCaptures: <>
+  687 										GenDrop: <>
+  688 										I2IsPromote: <>
+  689 										I2PieceMove: <>
+  690 										phash: unsigned int CONV (), <phash.c 259>
+  691 										assert: <>
+  692 									hist_add: void CONV (), <search.c 854>
+  693 										UToCap: <>
+  694 										I2IsPromote: <>
+  695 										I2PieceMove: <>
+  696 										assert: <>
+  697 									IsMoveCheck: <>
+  698 									I2To: <>
+  699 									UToCap: <>
+  700 									I2IsPromote: <>
+  701 									I2PieceMove: <>
+  702 									LimitExtension: <>
+  703 									phash: 690
+  704 									estimate_score_diff: 573
+  705 									eval_max_score: 582
+  706 									MakeMove: <>
+  707 									I2From: <>
+  708 									InCheck: <>
+  709 									UnMakeMove: <>
+  710 									evaluate: 356
+  711 									Flip: <>
+  712 									search: int CONV (), <search.c 15>
+  713 										search_quies: 355
+  714 										evaluate: 356
+  715 										pv_close: 294
+  716 										detect_signals: int CONV (), <search.c 624>
+  717 											dfpn_client_check_results: 629
+  718 											next_cmdline: int (), <io.c 276>
+  719 												strchr: <>
+  720 												read_command: int CONV (), <io.c 450>
+  721 													strlen: <>
+  722 													sckt_in: int CONV (), <sckt.c 203>
+  723 														Out: <>
+  724 														FD_ZERO: <>
+  725 														FD_SET: <>
+  726 														select: <>
+  727 														str_WSAError: 132
+  728 														sckt_out: int CONV (), <sckt.c 250>
+  729 															va_start: <>
+  730 															vsnprintf: <>
+  731 															va_end: <>
+  732 															Out: <>
+  733 															send: <>
+  734 															str_WSAError: 132
+  735 															get_elapsed: 53
+  736 														recv: <>
+  737 													read: <>
+  738 													Out: <>
+  739 													strchr: <>
+  740 												check_input_buffer: int CONV (), <io.c 495>
+  741 													sckt_check: int CONV (), <sckt.c 184>
+  742 														FD_ZERO: <>
+  743 														FD_SET: <>
+  744 														select: <>
+  745 														str_WSAError: 132
+  746 												memmove: <>
+  747 												strlen: <>
+  748 												memcpy: <>
+  749 												out_file: void CONV (), <io.c 505>
+  750 													va_start: <>
+  751 													vfprintf: <>
+  752 													va_end: <>
+  753 													fflush: <>
+  754 											out_warning: 123
+  755 											ShutdownAll: <>
+  756 											procedure: int CONV (), <proce.c 59>
+  757 												proce_csalan: int CONV (), <proce.c 105>
+  758 													strtok_r: <>
+  759 													is_move: 176
+  760 													strtol: <>
+  761 													adjust_time: void CONV (), <time.c 77>
+  762 														out_warning: 123
+  763 													Out: <>
+  764 													Flip: <>
+  765 													cmd_usrmove: int CONV (), <proce.c 439>
+  766 														strtok_r: <>
+  767 														strtol: <>
+  768 														strcmp: <>
+  769 														str_CSA_move: 263
+  770 														update_time: int CONV (), <time.c 62>
+  771 															get_elapsed: 53
+  772 														Flip: <>
+  773 														adjust_time: 761
+  774 														out_CSA: void (), <csa.c 88>
+  775 															out_CSA_header: void (), <csa.c 547>
+  776 																fprintf: <>
+  777 																time: <>
+  778 																out_warning: 123
+  779 																localtime_s: <>
+  780 																memcmp: <>
+  781 																out_board: 655
+  782 															fprintf: <>
+  783 															Flip: <>
+  784 															UnMakeMove: <>
+  785 															MakeMove: <>
+  786 															str_CSA_move: 263
+  787 															fflush: <>
+  788 														set_search_limit_time: 307
+  789 														OutCsaShogi: <>
+  790 														str_time_symple: 56
+  791 														Out: <>
+  792 														interpret_CSA_move: int (), <csa.c 274>
+  793 															str2piece: 298
+  794 															To2Move: <>
+  795 															Drop2Move: <>
+  796 															abs: <>
+  797 															From2Move: <>
+  798 															Cap2Move: <>
+  799 															Piece2Move: <>
+  800 															GenCaptures: <>
+  801 															GenNoCaptures: <>
+  802 															GenCapNoProEx2: <>
+  803 															GenNoCapNoProEx2: <>
+  804 															GenDrop: <>
+  805 															IsHandPawn: <>
+  806 															BBToU: <>
+  807 														make_move_root: int CONV (), <makemove.c 298>
+  808 															MakeMove: <>
+  809 															InCheck: <>
+  810 															UnMakeMove: <>
+  811 															Flip: <>
+  812 															detect_repetition: 217
+  813 															update_time: 770
+  814 															is_mate: 89
+  815 															out_CSA: 774
+  816 															memmove: <>
+  817 															lock: 116
+  818 															snprintf: <>
+  819 															dfpn_client_out: 158
+  820 															str_CSA_move: 263
+  821 															unlock: void CONV (), <thread.c 18>
+  822 														sckt_out: 728
+  823 														cmd_suspend: int CONV (), <proce.c 1113>
+  824 														snprintf: <>
+  825 														com_turn_start: int CONV (), <utility.c 392>
+  826 															assert: <>
+  827 															iterate: 235
+  828 															sckt_out: 728
+  829 															OutCsaShogi: <>
+  830 															csa2usi: 297
+  831 															str_CSA_move: 263
+  832 															USIOut: <>
+  833 															snprintf: <>
+  834 															Flip: <>
+  835 															OutBeep: <>
+  836 															show_prompt: void (), <io.c 139>
+  837 																Out: <>
+  838 															update_time: 770
+  839 															out_CSA: 774
+  840 															make_move_root: 807
+  841 															Out: <>
+  842 															out_board: 655
+  843 													strcmp: <>
+  844 													cmd_resign: int CONV (), <proce.c 928>
+  845 														strtok_r: <>
+  846 														update_time: 770
+  847 														out_CSA: 774
+  848 														strtol: <>
+  849 													sckt_out: 728
+  850 													sckt_recv_all: int CONV (), <sckt.c 173>
+  851 														recv: <>
+  852 													ShutdownAll: <>
+  853 													cmd_quit: int CONV (), <proce.c 1108>
+  854 													client_next_game: int CONV (), <sckt.c 22>
+  855 														sckt_connect: 138
+  856 														sckt_out: 728
+  857 														Out: <>
+  858 														next_cmdline: 718
+  859 														strcmp: <>
+  860 														memcmp: <>
+  861 														strncpy: <>
+  862 														ShutdownAll: <>
+  863 														ini_game: 45
+  864 														get_elapsed: 53
+  865 														com_turn_start: 825
+  866 												proce_mnj: int CONV (), <proce.c 154>
+  867 													strtok_r: <>
+  868 													strcmp: <>
+  869 													cmd_suspend: 823
+  870 													cmd_new: int CONV (), <proce.c 997>
+  871 														strtok_r: <>
+  872 														memset: <>
+  873 														read_board_rep1: int (), <csa.c 393>
+  874 															memcpy: <>
+  875 															str2piece: 298
+  876 															abs: <>
+  877 														strcmp: <>
+  878 														ini_game: 45
+  879 														get_elapsed: 53
+  880 													analyze: int (), <ponder.c 63>
+  881 														MnjOut: <>
+  882 														get_elapsed: 53
+  883 														iterate: 235
+  884 														abs: <>
+  885 													cmd_mnjignore: int CONV (), <proce.c 197>
+  886 														strtok_r: <>
+  887 														strtol: <>
+  888 														interpret_CSA_move: 792
+  889 														analyze: 880
+  890 													cmd_mnjmove: int CONV (), <proce.c 234>
+  891 														strtok_r: <>
+  892 														strtol: <>
+  893 														unmake_move_root: int CONV (), <makemove.c 397>
+  894 															Flip: <>
+  895 															UnMakeMove: <>
+  896 															lock: 116
+  897 															snprintf: <>
+  898 															dfpn_client_out: 158
+  899 															unlock: void CONV (), <thread.c 18>
+  900 														interpret_CSA_move: 792
+  901 														get_elapsed: 53
+  902 														make_move_root: 807
+  903 														out_board: 655
+  904 														analyze: 880
+  905 													strtol: <>
+  906 												proce_usi: int CONV (), <proce.c 273>
+  907 													strtok_r: <>
+  908 													strcmp: <>
+  909 													USIOut: <>
+  910 													usi_ignore: int CONV (), <proce.c 319>
+  911 														strtok_r: <>
+  912 														usi2csa: int CONV (), <csa.c 436>
+  913 															abs: <>
+  914 															isascii: <>
+  915 															isalpha: <>
+  916 															snprintf: <>
+  917 														interpret_CSA_move: 792
+  918 													get_elapsed: 53
+  919 													usi_root_list: int CONV (), <iterate.c 632>
+  920 														Out: <>
+  921 														make_root_move_list: 346
+  922 														get_elapsed: 53
+  923 														str_time_symple: 56
+  924 														snprintf: <>
+  925 														csa2usi: 297
+  926 														str_CSA_move: 263
+  927 														USIOut: <>
+  928 													usi_go: int CONV (), <proce.c 338>
+  929 														strtok_r: <>
+  930 														strcmp: <>
+  931 														usi_book: int CONV (), <iterate.c 683>
+  932 															rep_book_prob: 236
+  933 															USIOut: <>
+  934 															book_probe: 238
+  935 															csa2usi: 297
+  936 															str_CSA_move: 263
+  937 														strtol: <>
+  938 														get_elapsed: 53
+  939 														com_turn_start: 825
+  940 														USIOut: <>
+  941 													cmd_move_now: int CONV (), <proce.c 433>
+  942 													usi_posi: int CONV (), <proce.c 396>
+  943 														strtok_r: <>
+  944 														strcmp: <>
+  945 														ini_game: 45
+  946 														usi2csa: 912
+  947 														interpret_CSA_move: 792
+  948 														make_move_root: 807
+  949 														get_elapsed: 53
+  950 													cmd_quit: 853
+  951 												proce_cui: int CONV (), <proce.c 66>
+  952 													strtok_r: <>
+  953 													is_move: 176
+  954 													cmd_usrmove: 765
+  955 													strcmp: <>
+  956 													cmd_move_now: 941
+  957 													cmd_beep: int CONV (), <proce.c 555>
+  958 														strtok_r: <>
+  959 														strcmp: <>
+  960 													CmdBook: <>
+  961 													cmd_display: int CONV (), <proce.c 688>
+  962 														strtok_r: <>
+  963 														strtol: <>
+  964 														Out: <>
+  965 														out_board: 655
+  966 													cmd_hash: int CONV (), <proce.c 723>
+  967 														strtok_r: <>
+  968 														strtol: <>
+  969 														memory_free: 189
+  970 														ini_trans_table: 48
+  971 													cmd_limit: int CONV (), <proce.c 744>
+  972 														strtok_r: <>
+  973 														strcmp: <>
+  974 														strtol: <>
+  975 													cmd_move: int CONV (), <proce.c 952>
+  976 														strtok_r: <>
+  977 														get_elapsed: 53
+  978 														com_turn_start: 825
+  979 														strtol: <>
+  980 														interpret_CSA_move: 792
+  981 														make_move_root: 807
+  982 													cmd_new: 870
+  983 													cmd_outmove: int CONV (), <proce.c 1028>
+  984 														Out: <>
+  985 														DFPNOut: <>
+  986 														gen_legal_moves: 207
+  987 														str_CSA_move: 263
+  988 														memcpy: <>
+  989 													cmd_peek: int CONV (), <proce.c 571>
+  990 														strtok_r: <>
+  991 														strcmp: <>
+  992 													cmd_stdout: int CONV (), <proce.c 587>
+  993 														strtok_r: <>
+  994 														strcmp: <>
+  995 													cmd_ping: int CONV (), <proce.c 717>
+  996 														OutCsaShogi: <>
+  997 														Out: <>
+  998 													cmd_ponder: int CONV (), <proce.c 619>
+  999 														strtok_r: <>
+ 1000 														strcmp: <>
+ 1001 													cmd_problem: int CONV (), <proce.c 1069>
+ 1002 														strtok_r: <>
+ 1003 														strcmp: <>
+ 1004 														strtol: <>
+ 1005 														record_open: 63
+ 1006 														solve_mate_problems: int CONV (), <problem.c 86>
+ 1007 															in_CSA: int (), <csa.c 177>
+ 1008 																in_CSA_header: int (), <csa.c 585>
+ 1009 																	read_CSA_line: int (), <csa.c 815>
+ 1010 																		skip_comment: int (), <csa.c 843>
+ 1011 																			read_char: int (), <csa.c 859>
+ 1012 																				fgetc: <>
+ 1013 																		isgraph: <>
+ 1014 																		read_char: 1011
+ 1015 																		snprintf: <>
+ 1016 																		isascii: <>
+ 1017 																		isspace: <>
+ 1018 																	memcmp: <>
+ 1019 																	snprintf: <>
+ 1020 																	strncpy: <>
+ 1021 																	memset: <>
+ 1022 																	read_board_rep1: 873
+ 1023 																	isdigit: <>
+ 1024 																	read_board_rep2: int (), <csa.c 780>
+ 1025 																		str2piece: 298
+ 1026 																	read_board_rep3: int (), <csa.c 688>
+ 1027 																		I2HandPawn: <>
+ 1028 																		I2HandLance: <>
+ 1029 																		I2HandKnight: <>
+ 1030 																		I2HandSilver: <>
+ 1031 																		I2HandGold: <>
+ 1032 																		I2HandBishop: <>
+ 1033 																		I2HandRook: <>
+ 1034 																		abs: <>
+ 1035 																		assert: <>
+ 1036 																		str2piece: 298
+ 1037 																	strcmp: <>
+ 1038 																	ini_game: 45
+ 1039 																read_CSA_line: 1009
+ 1040 																strcmp: <>
+ 1041 																snprintf: <>
+ 1042 																interpret_CSA_move: 792
+ 1043 																strtol: <>
+ 1044 																make_move_root: 807
+ 1045 															make_move_root: 807
+ 1046 															Out: <>
+ 1047 															dfpn: int CONV (), <dfpn.c 25>
+ 1048 																get_cputime: 304
+ 1049 																get_elapsed: 53
+ 1050 																assert: <>
+ 1051 																mid: int CONV (), <dfpn.c 130>
+ 1052 																	detect_signals: 716
+ 1053 																	init_children: int CONV (), <dfpn.c 243>
+ 1054 																		GenCheck: <>
+ 1055 																		I2From: <>
+ 1056 																		I2To: <>
+ 1057 																		assert: <>
+ 1058 																		is_move_valid: 270
+ 1059 																		MakeMove: <>
+ 1060 																		InCheck: <>
+ 1061 																		UnMakeMove: <>
+ 1062 																		b_have_evasion: int CONV (), <genevasn.c 548>
+ 1063 																			Xor: <>
+ 1064 																			XorFile: <>
+ 1065 																			XorDiag2: <>
+ 1066 																			XorDiag1: <>
+ 1067 																			BBNotAnd: <>
+ 1068 																			BBTest: <>
+ 1069 																			LastOne: <>
+ 1070 																			is_black_attacked: 456
+ 1071 																			w_attacks_to_piece: 434
+ 1072 																			PopuCount: <>
+ 1073 																			BBOr: <>
+ 1074 																			BBAnd: <>
+ 1075 																			is_pinned_on_black_king: 488
+ 1076 																			AttackFile: <>
+ 1077 																			AttackBishop: <>
+ 1078 																			AttackRook: <>
+ 1079 																			AttackHorse: <>
+ 1080 																			AttackDragon: <>
+ 1081 																			IsHandSGBR: <>
+ 1082 																			IsHandLance: <>
+ 1083 																			IsHandKnight: <>
+ 1084 																			IsHandPawn: <>
+ 1085 																			BBToU: <>
+ 1086 																			IsMateBPawnDrop: <>
+ 1087 																		w_have_evasion: int CONV (), <genevasn.c 720>
+ 1088 																			Xor: <>
+ 1089 																			XorFile: <>
+ 1090 																			XorDiag2: <>
+ 1091 																			XorDiag1: <>
+ 1092 																			BBNotAnd: <>
+ 1093 																			BBTest: <>
+ 1094 																			FirstOne: <>
+ 1095 																			is_white_attacked: 448
+ 1096 																			b_attacks_to_piece: 428
+ 1097 																			PopuCount: <>
+ 1098 																			BBOr: <>
+ 1099 																			BBAnd: <>
+ 1100 																			is_pinned_on_white_king: 472
+ 1101 																			AttackFile: <>
+ 1102 																			AttackBishop: <>
+ 1103 																			AttackRook: <>
+ 1104 																			AttackHorse: <>
+ 1105 																			AttackDragon: <>
+ 1106 																			IsHandSGBR: <>
+ 1107 																			IsHandLance: <>
+ 1108 																			IsHandKnight: <>
+ 1109 																			IsHandPawn: <>
+ 1110 																			BBToU: <>
+ 1111 																			IsMateWPawnDrop: <>
+ 1112 																		dfpn_max_hand_b: unsigned int CONV (), <dfpnhash.c 323>
+ 1113 																		dfpn_max_hand_w: unsigned int CONV (), <dfpnhash.c 333>
+ 1114 																		From2Drop: <>
+ 1115 																		BBContract: <>
+ 1116 																		dfpn_detect_rep: int CONV (), <dfpnhash.c 343>
+ 1117 																		DOut: <>
+ 1118 																		str_CSA_move: 263
+ 1119 																		dfpn_hash_probe: void CONV (), <dfpnhash.c 60>
+ 1120 																			DFPNSignKey: <>
+ 1121 																			UINT64_C: <>
+ 1122 																			assert: <>
+ 1123 																			DOut: <>
+ 1124 																			dfpn_hand_supe: int CONV (), <dfpnhash.c 356>
+ 1125 																				IsHandPawn: <>
+ 1126 																				IsHandLance: <>
+ 1127 																				IsHandKnight: <>
+ 1128 																				IsHandSilver: <>
+ 1129 																				IsHandGold: <>
+ 1130 																				IsHandBishop: <>
+ 1131 																				IsHandRook: <>
+ 1132 																		Flip: <>
+ 1133 																		GenEvasion: <>
+ 1134 																		BBIni: <>
+ 1135 																		I2PieceMove: <>
+ 1136 																		UToCap: <>
+ 1137 																		b_have_checks: int CONV (), <genchk.c 1219>
+ 1138 																			BBOr: <>
+ 1139 																			BBNot: <>
+ 1140 																			IsHandGold: <>
+ 1141 																			BBAnd: <>
+ 1142 																			BBTest: <>
+ 1143 																			IsHandSilver: <>
+ 1144 																			IsHandKnight: <>
+ 1145 																			IsHandLance: <>
+ 1146 																			IsHandRook: <>
+ 1147 																			IsHandBishop: <>
+ 1148 																			IsHandPawn: <>
+ 1149 																			BBToU: <>
+ 1150 																			is_mate_b_pawn_drop: int CONV (), <attack.c 87>
+ 1151 																				BBAnd: <>
+ 1152 																				BBAndOr: <>
+ 1153 																				AttackBishop: <>
+ 1154 																				AttackRook: <>
+ 1155 																				BBOr: <>
+ 1156 																				BBTest: <>
+ 1157 																				FirstOne: <>
+ 1158 																				Xor: <>
+ 1159 																				IsDiscoverWK: <>
+ 1160 																				XorFile: <>
+ 1161 																				XorDiag2: <>
+ 1162 																				XorDiag1: <>
+ 1163 																				BBNotAnd: <>
+ 1164 																				is_white_attacked: 448
+ 1165 																			AttackFile: <>
+ 1166 																			AttackRank: <>
+ 1167 																			AttackDiag1: <>
+ 1168 																			AttackDiag2: <>
+ 1169 																			is_pinned_on_white_king: 472
+ 1170 																			BBIni: <>
+ 1171 																			add_behind_attacks: void CONV (), <genchk.c 1946>
+ 1172 																				assert: <>
+ 1173 																				BBNot: <>
+ 1174 																				BBOr: <>
+ 1175 																			LastOne: <>
+ 1176 																			Xor: <>
+ 1177 																			AttackDragon: <>
+ 1178 																			AttackHorse: <>
+ 1179 																			last_one12: int CONV (), <bitop.c 128>
+ 1180 																			AttackRook: <>
+ 1181 																			last_one0: 39
+ 1182 																			AttackBishop: <>
+ 1183 																			last_one1: 40
+ 1184 																			last_one01: int CONV (), <bitop.c 122>
+ 1185 																			BBContract: <>
+ 1186 																		w_have_checks: int CONV (), <genchk.c 1582>
+ 1187 																			BBOr: <>
+ 1188 																			BBNot: <>
+ 1189 																			IsHandGold: <>
+ 1190 																			BBAnd: <>
+ 1191 																			BBTest: <>
+ 1192 																			IsHandSilver: <>
+ 1193 																			IsHandKnight: <>
+ 1194 																			IsHandLance: <>
+ 1195 																			IsHandRook: <>
+ 1196 																			IsHandBishop: <>
+ 1197 																			IsHandPawn: <>
+ 1198 																			BBToU: <>
+ 1199 																			is_mate_w_pawn_drop: int CONV (), <attack.c 131>
+ 1200 																				BBAnd: <>
+ 1201 																				BBAndOr: <>
+ 1202 																				AttackBishop: <>
+ 1203 																				AttackRook: <>
+ 1204 																				BBOr: <>
+ 1205 																				BBTest: <>
+ 1206 																				FirstOne: <>
+ 1207 																				Xor: <>
+ 1208 																				IsDiscoverBK: <>
+ 1209 																				XorFile: <>
+ 1210 																				XorDiag2: <>
+ 1211 																				XorDiag1: <>
+ 1212 																				BBNotAnd: <>
+ 1213 																				is_black_attacked: 456
+ 1214 																			AttackFile: <>
+ 1215 																			AttackRank: <>
+ 1216 																			AttackDiag1: <>
+ 1217 																			AttackDiag2: <>
+ 1218 																			is_pinned_on_black_king: 488
+ 1219 																			BBIni: <>
+ 1220 																			add_behind_attacks: 1171
+ 1221 																			FirstOne: <>
+ 1222 																			Xor: <>
+ 1223 																			AttackDragon: <>
+ 1224 																			AttackHorse: <>
+ 1225 																			first_one01: int CONV (), <bitop.c 110>
+ 1226 																			AttackRook: <>
+ 1227 																			first_one2: 42
+ 1228 																			AttackBishop: <>
+ 1229 																			first_one1: 43
+ 1230 																			first_one12: int CONV (), <bitop.c 116>
+ 1231 																			BBContract: <>
+ 1232 																		BBOr: <>
+ 1233 																		IsMateIn1Ply: <>
+ 1234 																	dfpn_hash_store: void CONV (), <dfpnhash.c 137>
+ 1235 																		assert: <>
+ 1236 																		UINT64_C: <>
+ 1237 																		calc_hand_win: unsigned int CONV (), <dfpnhash.c 397>
+ 1238 																			hand_and: unsigned int CONV (), <dfpnhash.c 444>
+ 1239 																			dfpn_hand_supe: 1124
+ 1240 																			assert: <>
+ 1241 																			dbg_is_hand_valid: int CONV (), <dfpnhash.c 458>
+ 1242 																				I2HandPawn: <>
+ 1243 																				I2HandLance: <>
+ 1244 																				I2HandKnight: <>
+ 1245 																				I2HandSilver: <>
+ 1246 																				I2HandGold: <>
+ 1247 																				I2HandBishop: <>
+ 1248 																				I2HandRook: <>
+ 1249 																			I2From: <>
+ 1250 																			UToCap: <>
+ 1251 																			From2Drop: <>
+ 1252 																		calc_hand_lose: unsigned int CONV (), <dfpnhash.c 368>
+ 1253 																			dfpn_max_hand_w: 1113
+ 1254 																			hand_or: unsigned int CONV (), <dfpnhash.c 430>
+ 1255 																			hand_and: 1238
+ 1256 																			assert: <>
+ 1257 																			dbg_is_hand_valid: 1241
+ 1258 																			dfpn_hand_supe: 1124
+ 1259 																			dfpn_max_hand_b: 1112
+ 1260 																			I2From: <>
+ 1261 																			UToCap: <>
+ 1262 																			From2Drop: <>
+ 1263 																		Flip: <>
+ 1264 																		DFPNSignKey: <>
+ 1265 																		dfpn_hand_supe: 1124
+ 1266 																		out_warning: 123
+ 1267 																		DOut: <>
+ 1268 																	DOut: <>
+ 1269 																	min_delta_c: unsigned int CONV (), <dfpn.c 495>
+ 1270 																		assert: <>
+ 1271 																	sum_phi_c: unsigned int CONV (), <dfpn.c 515>
+ 1272 																	select_child: void CONV (), <dfpn.c 429>
+ 1273 																		assert: <>
+ 1274 																		I2To: <>
+ 1275 																		abs: <>
+ 1276 																	assert: <>
+ 1277 																	useless_delta_ticking: int CONV (), <dfpn.c 227>
+ 1278 																	Flip: <>
+ 1279 																	MakeMove: <>
+ 1280 																	mid: 1051
+ 1281 																	UnMakeMove: <>
+ 1282 																	dfpn_hash_probe: 1119
+ 1283 																num2str: void CONV (), <dfpn.c 122>
+ 1284 																	snprintf: <>
+ 1285 																Out: <>
+ 1286 																DFPNOut: <>
+ 1287 																str_CSA_move: 263
+ 1288 																dfpn_hash_sat: float CONV (), <dfpnhash.c 44>
+ 1289 															record_wind: int (), <csa.c 128>
+ 1290 																read_CSA_line: 1009
+ 1291 																strcmp: <>
+ 1292 														solve_problems: int CONV (), <problem.c 5>
+ 1293 															get_elapsed: 53
+ 1294 															in_CSA: 1007
+ 1295 															snprintf: <>
+ 1296 															Out: <>
+ 1297 															interpret_CSA_move: 792
+ 1298 															make_move_root: 807
+ 1299 															out_board: 655
+ 1300 															iterate: 235
+ 1301 															str_CSA_move: 263
+ 1302 															record_wind: 1289
+ 1303 														record_close: 60
+ 1304 														get_elapsed: 53
+ 1305 													cmd_quit: 853
+ 1306 													cmd_read: int CONV (), <proce.c 852>
+ 1307 														strtok_r: <>
+ 1308 														strcmp: <>
+ 1309 														strtol: <>
+ 1310 														snprintf: <>
+ 1311 														file_open: 5
+ 1312 														file_close: 9
+ 1313 														getc: <>
+ 1314 														putc: <>
+ 1315 														read_record: int (), <csa.c 18>
+ 1316 															record_open: 63
+ 1317 															in_CSA_header: 1008
+ 1318 															record_close: 60
+ 1319 															in_CSA: 1007
+ 1320 														get_elapsed: 53
+ 1321 														remove: <>
+ 1322 														out_warning: 123
+ 1323 													cmd_resign: 844
+ 1324 													cmd_suspend: 823
+ 1325 													cmd_time: int CONV (), <proce.c 1123>
+ 1326 														strtok_r: <>
+ 1327 														strcmp: <>
+ 1328 														strtol: <>
+ 1329 														reset_time: int CONV (), <time.c 99>
+ 1330 															snprintf: <>
+ 1331 															Out: <>
+ 1332 													cmd_newlog: int CONV (), <proce.c 603>
+ 1333 														strtok_r: <>
+ 1334 														strcmp: <>
+ 1335 													cmd_connect: int CONV (), <proce.c 1408>
+ 1336 														strtok_r: <>
+ 1337 														strcmp: <>
+ 1338 														strncpy: <>
+ 1339 														strtol: <>
+ 1340 														client_next_game: 854
+ 1341 													cmd_sendpv: int CONV (), <proce.c 1449>
+ 1342 														strtok_r: <>
+ 1343 														strcmp: <>
+ 1344 													cmd_mnj: int CONV (), <proce.c 1465>
+ 1345 														strtok_r: <>
+ 1346 														strtol: <>
+ 1347 														strcmp: <>
+ 1348 														strncpy: <>
+ 1349 														strtod: <>
+ 1350 														mnj_reset_tbl: int CONV (), <utility.c 486>
+ 1351 															load_fv: 4
+ 1352 															clear_trans_table: 52
+ 1353 															ehash_clear: 46
+ 1354 															ini_rand: 13
+ 1355 															rand32: 31
+ 1356 															sqrt: <>
+ 1357 															get_elapsed: 53
+ 1358 															Out: <>
+ 1359 														sckt_connect: 138
+ 1360 														Out: <>
+ 1361 														MnjOut: <>
+ 1362 														cmd_suspend: 823
+ 1363 													cmd_dfpn: int CONV (), <proce.c 1277>
+ 1364 														strtok_r: <>
+ 1365 														strcmp: <>
+ 1366 														strtol: <>
+ 1367 														dfpn_ini_hash: 188
+ 1368 														dfpn: 1047
+ 1369 														strncpy: <>
+ 1370 														sckt_connect: 138
+ 1371 														DFPNOut: <>
+ 1372 													cmd_dfpn_client: int CONV (), <proce.c 1379>
+ 1373 														strtok_r: <>
+ 1374 														strcmp: <>
+ 1375 														strncpy: <>
+ 1376 														strtol: <>
+ 1377 														Out: <>
+ 1378 														ini_game: 45
+ 1379 														get_elapsed: 53
+ 1380 													cmd_thread: int CONV (), <proce.c 1344>
+ 1381 														strtok_r: <>
+ 1382 														strcmp: <>
+ 1383 														strtol: <>
+ 1384 														TlpEnd: <>
+ 1385 														tlp_start: 639
+ 1386 													cmd_stress: int CONV (), <proce.c 642>
+ 1387 														strtok_r: <>
+ 1388 														strcmp: <>
+ 1389 													cmd_learn: int CONV (), <proce.c 1187>
+ 1390 														strtok_r: <>
+ 1391 														strcmp: <>
+ 1392 														strtol: <>
+ 1393 														memory_free: 189
+ 1394 														ini_trans_table: 48
+ 1395 														learn: int (), <learn1.c 75>
+ 1396 															memory_alloc: 49
+ 1397 															fill_param_zero: void (), <learn2.c 49>
+ 1398 																set_derivative_param: 44
+ 1399 															Out: <>
+ 1400 															record_open: 63
+ 1401 															file_open: 5
+ 1402 															record_close: 60
+ 1403 															learn_parse1: int (), <learn1.c 163>
+ 1404 																ini_book: void (), <learn1.c 752>
+ 1405 																memory_alloc: 49
+ 1406 																parse1_worker: unsigned int __stdcall (), <learn1.c 253>
+ 1407 																	Move2S: <>
+ 1408 																	make_pv: void (), <learn1.c 321>
+ 1409 																		Flip: <>
+ 1410 																		evaluate: 356
+ 1411 																		GenCaptures: <>
+ 1412 																		GenNoCaptures: <>
+ 1413 																		GenDrop: <>
+ 1414 																		GenCapNoProEx2: <>
+ 1415 																		GenNoCapNoProEx2: <>
+ 1416 																		MakeMove: <>
+ 1417 																		InCheck: <>
+ 1418 																		UnMakeMove: <>
+ 1419 																		search: 712
+ 1420 																		abs: <>
+ 1421 																		out_warning: 123
+ 1422 																		func: double (), <learn1.c 714>
+ 1423 																			exp: <>
+ 1424 																		Move2S: <>
+ 1425 																	MakeMove: <>
+ 1426 																	Flip: <>
+ 1427 																	InCheck: <>
+ 1428 																	lock: 116
+ 1429 																	fwrite: <>
+ 1430 																	read_game: int (), <learn1.c 441>
+ 1431 																		Out: <>
+ 1432 																		in_CSA: 1007
+ 1433 																		memcmp: <>
+ 1434 																		rep_check_learn: int (), <learn1.c 795>
+ 1435 																		book_probe_learn: int (), <learn1.c 762>
+ 1436 																		make_move_root: 807
+ 1437 																		record_wind: 1289
+ 1438 																	unlock: void CONV (), <thread.c 18>
+ 1439 																tlp_yield: 117
+ 1440 																Out: <>
+ 1441 																memory_free: 189
+ 1442 															file_close: 9
+ 1443 															learn_parse2: int (), <learn1.c 507>
+ 1444 																memory_alloc: 49
+ 1445 																Out: <>
+ 1446 																parse2_worker: unsigned int __stdcall (), <learn1.c 571>
+ 1447 																	ini_param: void (), <learn2.c 16>
+ 1448 																	lock: 116
+ 1449 																	read_buf: int (), <learn1.c 617>
+ 1450 																		fread: <>
+ 1451 																		feof: <>
+ 1452 																	unlock: void CONV (), <thread.c 18>
+ 1453 																	ini_game: 45
+ 1454 																	s2move: unsigned int (), <learn1.c 739>
+ 1455 																		I2From: <>
+ 1456 																		I2To: <>
+ 1457 																		Piece2Move: <>
+ 1458 																		Cap2Move: <>
+ 1459 																	calc_deriv: int (), <learn1.c 636>
+ 1460 																		s2move: 1454
+ 1461 																		MakeMove: <>
+ 1462 																		Flip: <>
+ 1463 																		evaluate: 356
+ 1464 																		UnMakeMove: <>
+ 1465 																		func: 1422
+ 1466 																		dfunc: double (), <learn1.c 724>
+ 1467 																			exp: <>
+ 1468 																		inc_param: void (), <learn2.c 337>
+ 1469 																			make_list: int (), <learn2.c 374>
+ 1470 																				I2HandPawn: <>
+ 1471 																				I2HandLance: <>
+ 1472 																				I2HandKnight: <>
+ 1473 																				I2HandSilver: <>
+ 1474 																				I2HandGold: <>
+ 1475 																				I2HandBishop: <>
+ 1476 																				I2HandRook: <>
+ 1477 																				Inv: <>
+ 1478 																				BBTest: <>
+ 1479 																				FirstOne: <>
+ 1480 																				Xor: <>
+ 1481 																				assert: <>
+ 1482 																			Inv: <>
+ 1483 																			assert: <>
+ 1484 																	MakeMove: <>
+ 1485 																	Flip: <>
+ 1486 																	InCheck: <>
+ 1487 																tlp_yield: 117
+ 1488 																add_param: void (), <learn2.c 28>
+ 1489 																calc_penalty: double (), <learn2.c 196>
+ 1490 																param_sym: void (), <learn2.c 71>
+ 1491 																renovate_param: void (), <learn2.c 207>
+ 1492 																	rand32: 31
+ 1493 																	rmt: void (), <learn2.c 670>
+ 1494 																		out_warning: 123
+ 1495 																	fv_sym: void (), <learn2.c 135>
+ 1496 																		PcPcOnSq: <>
+ 1497 																	set_derivative_param: 44
+ 1498 																	ehash_clear: 46
+ 1499 																rewind: <>
+ 1500 																memory_free: 189
+ 1501 																out_param: int (), <learn2.c 264>
+ 1502 																	file_open: 5
+ 1503 																	fprintf: <>
+ 1504 																	file_close: 9
+ 1505 																	fwrite: <>
+ 1506 															out_warning: 123
+ 1507 															memory_free: 189
+ 1508 														ini_game: 45
+ 1509 														get_elapsed: 53
+ 1510 											get_elapsed: 53
+ 1511 											sckt_out: 728
+ 1512 											lock: 116
+ 1513 											tlp_count_node: uint64_t (), <thread.c 311>
+ 1514 												tlp_count_node: 1513
+ 1515 											unlock: void CONV (), <thread.c 18>
+ 1516 											USIOut: <>
+ 1517 											MnjOut: <>
+ 1518 											abs: <>
+ 1519 											Out: <>
+ 1520 											str_CSA_move: 263
+ 1521 										detect_rep: int CONV (), <search.c 811>
+ 1522 											detect_repetition: 217
+ 1523 											rep_type: int CONV (), <search.c 829>
+ 1524 												is_hand_eq_supe: 221
+ 1525 										hash_probe: 320
+ 1526 										assert: <>
+ 1527 										IsMove: <>
+ 1528 										is_move_valid: 270
+ 1529 										DOut: <>
+ 1530 										is_mate_in3ply: 414
+ 1531 										hash_store: void CONV (), <hash.c 52>
+ 1532 											assert: <>
+ 1533 											abs: <>
+ 1534 											out_warning: 123
+ 1535 											SignKey: <>
+ 1536 										NullDepth: <>
+ 1537 										search: 712
+ 1538 										Flip: <>
+ 1539 										RecursionDepth: <>
+ 1540 										gen_next_evasion: 652
+ 1541 										gen_next_move: 679
+ 1542 										str_CSA_move: 263
+ 1543 										hist_add: 692
+ 1544 										IsMoveCheck: <>
+ 1545 										I2To: <>
+ 1546 										UToCap: <>
+ 1547 										I2IsPromote: <>
+ 1548 										I2PieceMove: <>
+ 1549 										LimitExtension: <>
+ 1550 										phash: 690
+ 1551 										estimate_score_diff: 573
+ 1552 										eval_max_score: 582
+ 1553 										swap: 587
+ 1554 										MakeMove: <>
+ 1555 										I2From: <>
+ 1556 										InCheck: <>
+ 1557 										UnMakeMove: <>
+ 1558 										check_futile_score_quies: 614
+ 1559 										hist_good: void CONV (), <search.c 864>
+ 1560 											UToCap: <>
+ 1561 											I2To: <>
+ 1562 											UToFromToPromo: <>
+ 1563 											swap: 587
+ 1564 											I2IsPromote: <>
+ 1565 											I2PieceMove: <>
+ 1566 											assert: <>
+ 1567 											is_move_valid: 270
+ 1568 											phash: 690
+ 1569 										tlp_split: int (), <thread.c 259>
+ 1570 											lock: 116
+ 1571 											unlock: void CONV (), <thread.c 18>
+ 1572 											find_child: tree_t * (), <thread.c 390>
+ 1573 											init_state: void (), <thread.c 402>
+ 1574 												memcpy: <>
+ 1575 											wait_work: 644
+ 1576 										Drop2From: <>
+ 1577 										out_warning: 123
+ 1578 										pv_copy: 621
+ 1579 									tlp_set_abort: void (), <thread.c 303>
+ 1580 										tlp_set_abort: 1579
+ 1581 								copy_state: void (), <thread.c 449>
+ 1582 									lock: 116
+ 1583 									memcpy: <>
+ 1584 									unlock: void CONV (), <thread.c 18>
+ 1585 						tlp_yield: 117
+ 1586 					set_root_beta: int CONV (), <iterate.c 769>
+ 1587 						out_error: 198
+ 1588 						exit: <>
+ 1589 					set_root_alpha: int CONV (), <iterate.c 793>
+ 1590 						out_error: 198
+ 1591 						exit: <>
+ 1592 					is_move_valid: 270
+ 1593 					MakeMove: <>
+ 1594 					InCheck: <>
+ 1595 					UnMakeMove: <>
+ 1596 					Flip: <>
+ 1597 					hash_store_pv: void CONV (), <hash.c 97>
+ 1598 						SignKey: <>
+ 1599 					searchr: int CONV (), <searchr.c 48>
+ 1600 						NextRootMove: <>
+ 1601 						csa2usi: 297
+ 1602 						str_CSA_move: 263
+ 1603 						MakeMove: <>
+ 1604 						assert: <>
+ 1605 						InCheck: <>
+ 1606 						Flip: <>
+ 1607 						search_wrapper: int CONV (), <searchr.c 11>
+ 1608 							Out: <>
+ 1609 							search: 712
+ 1610 							str_CSA_move: 263
+ 1611 						UnMakeMove: <>
+ 1612 						UToCap: <>
+ 1613 						I2IsPromote: <>
+ 1614 						I2PieceMove: <>
+ 1615 						phash: 690
+ 1616 						lock: 116
+ 1617 						dfpn_client_out: 158
+ 1618 						unlock: void CONV (), <thread.c 18>
+ 1619 						MnjOut: <>
+ 1620 						USIOut: <>
+ 1621 						pv_close: 294
+ 1622 						Out: <>
+ 1623 						OutCsaShogi: <>
+ 1624 						save_result: int CONV (), <searchr.c 347>
+ 1625 							get_elapsed: 53
+ 1626 							pv_close: 294
+ 1627 							lock: 116
+ 1628 							dfpn_client_out: 158
+ 1629 							str_CSA_move: 263
+ 1630 							unlock: void CONV (), <thread.c 18>
+ 1631 							MnjOut: <>
+ 1632 							out_pv: 310
+ 1633 					str_fail_high: const char *CONV (), <iterate.c 817>
+ 1634 					OutCsaShogi: <>
+ 1635 					is_answer_right: int CONV (), <iterate.c 831>
+ 1636 						str_CSA_move: 263
+ 1637 						strcmp: <>
+ 1638 					SignKey: <>
+ 1639 				str_CSA_move: 263
+ 1640 				make_move_root: 807
+ 1641 				unmake_move_root: 893
+ 1642 				com_turn_start: 825
+ 1643 			TlpEnd: <>
+ 1644 			show_prompt: 836
+ 1645 			next_cmdline: 718
+ 1646 			procedure: 756
+ 1647 		ShutdownAll: <>
+ 1648 		out_warning: 123
+ 1649 		fin: int (), <ini.c 156>
+ 1650 			memory_free: 189
+ 1651 			lock_free: int CONV (), <thread.c 13>
+ 1652 			tlp_yield: 117
+ 1653 			book_off: int CONV (), <book.c 33>
+ 1654 				file_close: 9
+ 1655 			record_close: 60
+ 1656 			file_close: 9
+ 1657 			ShutdownAll: <>

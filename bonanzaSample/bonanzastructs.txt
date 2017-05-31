@@ -1,0 +1,254 @@
+typedef union { 
+ unsigned int p[4] ; 
+ __m128i m ; 
+ } bitboard_t ;
+typedef struct { 
+ unsigned short smove, freq ; 
+ } book_move_t ;
+typedef struct { 
+ int from, to ; 
+ } ft_t ;
+typedef struct { 
+ unsigned int nwin, ngame, nwin_bnz, ngame_bnz, move ; 
+ } record_move_t ;
+typedef struct { 
+ uint64_t key ; 
+ unsigned short smove ; 
+ unsigned char result ; 
+ } cell_t ;
+typedef struct { 
+ uint64_t word1, word2, word3 ; 
+ } dfpn_hash_entry_t ;
+typedef struct { 
+ uint64_t hash_key ; 
+ uint64_t nodes ; 
+ uint64_t expanded ; 
+ unsigned int hand_b ; 
+ unsigned int min_hand_b ; 
+ unsigned int move ; 
+ unsigned int phi ; 
+ unsigned int delta ; 
+ unsigned int priority ; 
+ int is_delta_loop ; 
+ int is_phi_loop ; 
+ int is_loop ; 
+ int is_weak ; 
+ } child_t ;
+typedef struct { 
+ child_t * restrict children ; 
+ uint64_t hash_key ; 
+ uint64_t nodes ; 
+ uint64_t new_expansion ; 
+ unsigned int min_hand_b ; 
+ unsigned int hand_b ; 
+ unsigned int phi ; 
+ unsigned int delta ; 
+ unsigned int sum_phi ; 
+ unsigned int min_delta ; 
+ int is_delta_loop ; 
+ int is_phi_loop ; 
+ int nmove, turn, icurr_c ; 
+ } node_t ;
+typedef struct { 
+ uint64_t node_limit ; 
+ int turn_or ; 
+ int root_ply ; 
+ unsigned int sum_phi_max ; 
+ child_t child_tbl[ MAX_NMOVE * PLY_MAX ] ; 
+ node_t anode[ PLY_MAX ] ; 
+ } dfpn_tree_t ;
+typedef struct { 
+ struct { uint64_t a,b ; 
+ } cluster[NumBookCluster] ; 
+ } book_entry_t ;
+typedef struct { 
+ tree_t *ptree ; 
+ book_entry_t *pbook_entry ; 
+ FILE *pf_tmp ; 
+ record_t *precord ; 
+ unsigned int max_games, id ; 
+ int nworker ; 
+ uint64_t result[ NUM_RESULT ] ; 
+ uint64_t num_moves_counted, num_moves, result_norm, num_nodes ; 
+ double target, target_out_window ; 
+ unsigned int illegal_moves, max_pos_buf ; 
+ int info ; 
+ unsigned int record_moves[ MAX_RECORD_LENGTH ] ; 
+ unsigned int amove_legal[ MAX_LEGAL_MOVES ] ; 
+ unsigned int record_length, pos_buf ; 
+ unsigned short buf[ SIZE_PV_BUFFER ] ; 
+ int root_turn ; 
+ } parse1_data_t ;
+typedef struct { 
+ tree_t *ptree ; 
+ FILE *pf_tmp ; 
+ unsigned int id ; 
+ int nworker ; 
+ param_t param ; 
+ uint64_t num_moves_counted ; 
+ double target ; 
+ int info ; 
+ unsigned short buf[ SIZE_PV_BUFFER ] ; 
+ unsigned int pv[ PLY_MAX + 2 ] ; 
+ } parse2_data_t ;
+typedef struct { 
+ bitboard_t gold, silver, knight, lance ; 
+ } check_table_t ;
+typedef struct { 
+ fpos_t fpos ; 
+ unsigned int games, moves, lines ; 
+ } rpos_t ;
+typedef struct { 
+ double pawn, lance, knight, silver, gold, bishop, rook ; 
+ double pro_pawn, pro_lance, pro_knight, pro_silver, horse, dragon ; 
+ float pc_on_sq[nsquare][fe_end * (fe_end + 1) / 2] ; 
+ float kkp[nsquare][nsquare][kkp_end] ; 
+ } param_t ;
+typedef struct { 
+ uint64_t word1, word2 ; 
+ } trans_entry_t ;
+typedef struct { 
+ trans_entry_t prefer, always[2] ; 
+ } trans_table_t ;
+typedef struct { 
+ int count ; 
+ unsigned int cnst[2], vec[RAND_N] ; 
+ } rand_work_t ;
+typedef struct { 
+ int no1_value, no2_value ; 
+ unsigned int no1, no2 ; 
+ } move_killer_t ;
+typedef struct { 
+ unsigned int no1, no2 ; 
+ } killer_t ;
+typedef struct { 
+ union { char str_move[MAX_ANSWER][8] ; 
+ } info ; 
+ char str_name1[SIZE_PLAYERNAME] ; 
+ char str_name2[SIZE_PLAYERNAME] ; 
+ FILE *pf ; 
+ unsigned int games, moves, lines ; 
+ } record_t ;
+typedef struct { 
+ unsigned int a[PLY_MAX] ; 
+ unsigned char type ; 
+ unsigned char length ; 
+ unsigned char depth ; 
+ } pv_t ;
+typedef struct { 
+ unsigned char ir0, sr0 ; 
+ unsigned char irl90, srl90 ; 
+ unsigned char irl45, srl45 ; 
+ unsigned char irr45, srr45 ; 
+ } slide_tbl_t ;
+typedef struct { 
+ uint64_t hash_key ; 
+ bitboard_t b_occupied, w_occupied ; 
+ bitboard_t occupied_rl90, occupied_rl45, occupied_rr45 ; 
+ bitboard_t b_hdk, w_hdk ; 
+ bitboard_t b_tgold, w_tgold ; 
+ bitboard_t b_bh, w_bh ; 
+ bitboard_t b_rd, w_rd ; 
+ bitboard_t b_pawn_attacks, w_pawn_attacks ; 
+ bitboard_t b_lance, w_lance ; 
+ bitboard_t b_knight, w_knight ; 
+ bitboard_t b_silver, w_silver ; 
+ bitboard_t b_bishop, w_bishop ; 
+ bitboard_t b_rook, w_rook ; 
+ bitboard_t b_horse, w_horse ; 
+ bitboard_t b_dragon, w_dragon ; 
+ bitboard_t b_pawn, w_pawn ; 
+ bitboard_t b_gold, w_gold ; 
+ bitboard_t b_pro_pawn, w_pro_pawn ; 
+ bitboard_t b_pro_lance, w_pro_lance ; 
+ bitboard_t b_pro_knight, w_pro_knight ; 
+ bitboard_t b_pro_silver, w_pro_silver ; 
+ unsigned int hand_black, hand_white ; 
+ int material ; 
+ signed char asquare[nsquare] ; 
+ unsigned char isquare_b_king, isquare_w_king ; 
+ } posi_t ;
+typedef struct { 
+ unsigned int hand_black, hand_white ; 
+ char turn_to_move ; 
+ signed char asquare[nsquare] ; 
+ } min_posi_t ;
+typedef struct { 
+ uint64_t nodes ; 
+ unsigned int move, status ; 
+ volatile int dfpn_cresult ; 
+ } root_move_t ;
+typedef struct { 
+ unsigned int *move_last ; 
+ unsigned int move_cap1 ; 
+ unsigned int move_cap2 ; 
+ int phase_done, next_phase, remaining, value_cap1, value_cap2 ; 
+ } next_move_t ;
+typedef struct { 
+ uint64_t key_book ; 
+ unsigned int key_responsible, key_probed, key_played ; 
+ unsigned int hand_responsible, hand_probed, hand_played ; 
+ unsigned int move_played, move_responsible, move_probed, data ; 
+ } history_book_learn_t ;
+typedef struct tree tree_t ;
+struct tree { 
+ posi_t posi ; 
+ uint64_t rep_board_list[REP_HIST_LEN] ; 
+ uint64_t node_searched ; 
+ unsigned int *move_last[PLY_MAX] ; 
+ next_move_t anext_move[PLY_MAX] ; 
+ pv_t pv[PLY_MAX] ; 
+ move_killer_t amove_killer[PLY_MAX] ; 
+ unsigned int null_pruning_done ; 
+ unsigned int null_pruning_tried ; 
+ unsigned int check_extension_done ; 
+ unsigned int recap_extension_done ; 
+ unsigned int onerp_extension_done ; 
+ unsigned int neval_called ; 
+ unsigned int nquies_called ; 
+ unsigned int nfour_fold_rep ; 
+ unsigned int nperpetual_check ; 
+ unsigned int nsuperior_rep ; 
+ unsigned int nrep_tried ; 
+ unsigned int ntrans_always_hit ; 
+ unsigned int ntrans_prefer_hit ; 
+ unsigned int ntrans_probe ; 
+ unsigned int ntrans_exact ; 
+ unsigned int ntrans_lower ; 
+ unsigned int ntrans_upper ; 
+ unsigned int ntrans_superior_hit ; 
+ unsigned int ntrans_inferior_hit ; 
+ unsigned int fail_high ; 
+ unsigned int fail_high_first ; 
+ unsigned int rep_hand_list[REP_HIST_LEN] ; 
+ unsigned int amove_hash[PLY_MAX] ; 
+ unsigned int amove[MOVE_LIST_LEN] ; 
+ unsigned int current_move[PLY_MAX] ; 
+ killer_t killers[PLY_MAX] ; 
+ unsigned int hist_nmove[PLY_MAX] ; 
+ unsigned int hist_move[PLY_MAX][MAX_LEGAL_MOVES] ; 
+ int sort_value[MAX_LEGAL_MOVES] ; 
+ unsigned short hist_tried[HIST_SIZE] ; 
+ unsigned short hist_good[HIST_SIZE] ; 
+ short save_material[PLY_MAX] ; 
+ int save_eval[PLY_MAX + 1] ; 
+ unsigned char nsuc_check[PLY_MAX + 1] ; 
+ int nrep ; 
+ struct tree *tlp_ptrees_sibling[TLP_MAX_THREADS] ; 
+ struct tree *tlp_ptree_parent ; 
+ lock_t tlp_lock ; 
+ volatile int tlp_abort ; 
+ volatile int tlp_used ; 
+ unsigned short tlp_slot ; 
+ short tlp_beta ; 
+ short tlp_best ; 
+ volatile unsigned char tlp_nsibling ; 
+ unsigned char tlp_depth ; 
+ unsigned char tlp_state_node ; 
+ unsigned char tlp_id ; 
+ char tlp_turn ; 
+ char tlp_ply ; 
+ } ;
+typedef struct { 
+ char str_move[7], result ; 
+ } dfpn_client_cresult_t ;
