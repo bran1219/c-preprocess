@@ -257,7 +257,7 @@ sub reversePolishNotation{
 	my @rpnstack = ();
 	# $de = '!|\s|\(|\)|>|<|=';
 	# print "debug4-1:$conditions\n";
-	$conditions =~ s/defined\((.+?)\)/$1/go;
+	$conditions =~ s/defined\((.+?)\)/defined$1/go;
 	# $conditions =~ s/!\s*/!/go;
 	# print "debug4-2:$conditions\n";
 	my @inwds = lexer($conditions, '!|\s|\(|\)|>|<|=');
@@ -302,6 +302,13 @@ sub reversePolishNotation{
 			# print "debug4-4:$inwds[$i] => $mydefs->{$inwds[$i]}\n";
 			if ($inwds[$i] =~ /^(\d+)$/){
 				$digit = $1;
+			}
+			elsif ($inwds[$i] =~ /defined(.+)/){
+				my $tmp = $1;
+				# print "debug4-5:$tmp => $mydefs->{$tmp}\n";
+				if (defined($mydefs->{$tmp})){
+					$digit = 1;
+				}
 			}
 			elsif (defined($mydefs->{$inwds[$i]})){
 				$digit = $mydefs->{$inwds[$i]};
