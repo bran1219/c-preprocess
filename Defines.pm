@@ -1,0 +1,31 @@
+package Defines;
+
+sub new {
+  my $class = shift;
+  my $self = {
+	DSQLITE_THREADSAFE=>1,
+	SQLITE_ENABLE_FTS4=>1,
+	SQLITE_ENABLE_FTS5=>1,
+	SQLITE_ENABLE_JSON1=>1,
+	SQLITE_ENABLE_RTREE=>1,
+	SQLITE_ENABLE_EXPLAIN_COMMENTS=>1,
+	HAVE_USLEEP=>1,
+	HAVE_READLINE=>1,
+	_MSC_VER=>1,
+	__GNUC__=>1,
+	_HAVE__MINGW_H=>1,
+	SQLITE_MAX_MMAP_SIZE=>3,
+	SQLITE_DIRECT_OVERFLOW_READ=>1,
+	_M_X64=>1,
+	__x86_64=>1,
+	__x86_64__=>1,
+	SQLITE_OS_WIN=>1,
+	SQLITE_WIN32_MALLOC=>1,
+	SQLITE_MUTEX_PTHREADS=>0,
+	HAVE_READLINE=>0
+  };
+  return bless $self, $class;
+}
+
+
+1;
