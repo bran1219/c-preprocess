@@ -446,18 +446,18 @@ sub procifdef{
 	# binmode fp;
 	while(<fp>){
 		$linenum++;
-		if ($_ =~ /struct SSM_STA_ORGA{/){
-			if ($debugprint == 0){
+		#if ($_ =~ //){
+		#	if ($debugprint == 0){
 				# print "debug start---------\n";
 				# $debugprint = 1;
-				$dbsline = $linenum;
-			}
-		}
-		else{
-			if ($dbsline-$linenum>30){
-				$debugprint = 0;
-			}
-		}
+		#		$dbsline = $linenum;
+		#	}
+		#}
+		#else{
+		#	if ($dbsline-$linenum>30){
+		#		$debugprint = 0;
+		#	}
+		#}
 		$_ =~ s/ifdef\s+(.+)/if defined($1)/g;
 		$_ =~ s/ifndef\s+(.+)/if !defined($1)/g;
 		if ($_ =~ /^\s*$/){

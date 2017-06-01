@@ -11,9 +11,9 @@ cflow --format=posix --omit-arguments \
 perl myCflow2Dot.pl tmp.txt > tmpmydot.txt
 perl countLeafs2.pl tmpmydot.txt 0 > tmpmydotcount.txt
 cat structs/*.[ch] > structs.txt
-perl mystructs2dot.pl structs.txt > structsmydot.txt
-perl countLeafs2.pl structsmydot.txt 0 > structsmydotcount.txt
+perl mystructs2dot.pl structs.txt > tmpstructsmydot.txt
+perl countLeafs2.pl tmpstructsmydot.txt 0 > tmpstructsmydotcount.txt
 
-exedot.sh structsmydot.txt
+exedot.sh tmpstructsmydot.txt
 exedot.sh tmpmydot.txt
 

@@ -1,13 +1,13 @@
 digraph mygraph {
 node [shape=plaintext];edge [color=black style=dashed];
-node_1 [ label="main\n int ()\nmain.c:8" ]
+node_1 [ label="main\n int ()\ndeifdef/main.c:8" ]
 node_2 [ label="strcmp\n\n:0" ]
 	node_1 -> node_2 ;
-node_3 [ label="ini\n int ()\nini.c:36" ]
+node_3 [ label="ini\n int ()\ndeifdef/ini.c:36" ]
 	node_1 -> node_3 ;
-node_4 [ label="load_fv\n int CONV ()\nini.c:12" ]
+node_4 [ label="load_fv\n int CONV ()\ndeifdef/ini.c:12" ]
 	node_3 -> node_4 ;
-node_5 [ label="file_open\n FILE * ()\nio.c:108" ]
+node_5 [ label="file_open\n FILE * ()\ndeifdef/io.c:108" ]
 	node_4 -> node_5 ;
 node_6 [ label="fopen\n\n:0" ]
 	node_5 -> node_6 ;
@@ -15,27 +15,27 @@ node_7 [ label="snprintf\n\n:0" ]
 	node_5 -> node_7 ;
 node_8 [ label="fread\n\n:0" ]
 	node_4 -> node_8 ;
-node_9 [ label="file_close\n int ()\nio.c:122" ]
+node_9 [ label="file_close\n int ()\ndeifdef/io.c:122" ]
 	node_4 -> node_9 ;
 node_10 [ label="ferror\n\n:0" ]
 	node_9 -> node_10 ;
 node_11 [ label="fclose\n\n:0" ]
 	node_9 -> node_11 ;
-node_12 [ label="lock_init\n int CONV ()\nthread.c:8" ]
+node_12 [ label="lock_init\n int CONV ()\ndeifdef/thread.c:8" ]
 	node_3 -> node_12 ;
-node_13 [ label="ini_rand\n void ()\nrand.c:7" ]
+node_13 [ label="ini_rand\n void ()\ndeifdef/rand.c:7" ]
 	node_3 -> node_13 ;
-node_14 [ label="ini_is_same\n void ()\nini.c:235" ]
+node_14 [ label="ini_is_same\n void ()\ndeifdef/ini.c:235" ]
 	node_3 -> node_14 ;
-node_15 [ label="ini_tables\n void ()\nini.c:262" ]
+node_15 [ label="ini_tables\n void ()\ndeifdef/ini.c:262" ]
 	node_3 -> node_15 ;
-node_16 [ label="bb_set_mask\n bitboard_t ()\nini.c:643" ]
+node_16 [ label="bb_set_mask\n bitboard_t ()\ndeifdef/ini.c:643" ]
 	node_15 -> node_16 ;
 node_17 [ label="BBIni\n\n:0" ]
 	node_16 -> node_17 ;
 node_18 [ label="BBIni\n\n:0" ]
 	node_15 -> node_18 ;
-node_19 [ label="set_attacks\n void ()\nini.c:635" ]
+node_19 [ label="set_attacks\n void ()\ndeifdef/ini.c:635" ]
 	node_15 -> node_19 ;
 node_20 [ label="Xor\n\n:0" ]
 	node_19 -> node_20 ;
@@ -49,18 +49,18 @@ node_24 [ label="Xor\n\n:0" ]
 	node_15 -> node_24 ;
 node_25 [ label="BBXor\n\n:0" ]
 	node_15 -> node_25 ;
-node_26 [ label="ini_attack_tables\n void ()\nini.c:490" ]
+node_26 [ label="ini_attack_tables\n void ()\ndeifdef/ini.c:490" ]
 	node_3 -> node_26 ;
 node_27 [ label="BBIni\n\n:0" ]
 	node_26 -> node_27 ;
 	node_26 -> node_19 ;
-node_29 [ label="ini_random_table\n void ()\nini.c:431" ]
+node_29 [ label="ini_random_table\n void ()\ndeifdef/ini.c:431" ]
 	node_3 -> node_29 ;
-node_30 [ label="rand64\n uint64_t ()\nrand.c:63" ]
+node_30 [ label="rand64\n uint64_t ()\ndeifdef/rand.c:63" ]
 	node_29 -> node_30 ;
-node_31 [ label="rand32\n unsigned int ()\nrand.c:23" ]
+node_31 [ label="rand32\n unsigned int ()\ndeifdef/rand.c:23" ]
 	node_30 -> node_31 ;
-node_32 [ label="ini_check_table\n void ()\nini.c:653" ]
+node_32 [ label="ini_check_table\n void ()\ndeifdef/ini.c:653" ]
 	node_3 -> node_32 ;
 node_33 [ label="BBIni\n\n:0" ]
 	node_32 -> node_33 ;
@@ -74,54 +74,54 @@ node_37 [ label="Xor\n\n:0" ]
 	node_32 -> node_37 ;
 node_38 [ label="BBNotAnd\n\n:0" ]
 	node_32 -> node_38 ;
-node_39 [ label="last_one0\n int CONV ()\nbitop.c:136" ]
+node_39 [ label="last_one0\n int CONV ()\ndeifdef/bitop.c:136" ]
 	node_32 -> node_39 ;
-node_40 [ label="last_one1\n int CONV ()\nbitop.c:137" ]
+node_40 [ label="last_one1\n int CONV ()\ndeifdef/bitop.c:137" ]
 	node_32 -> node_40 ;
 node_41 [ label="BBAnd\n\n:0" ]
 	node_32 -> node_41 ;
-node_42 [ label="first_one2\n int CONV ()\nbitop.c:135" ]
+node_42 [ label="first_one2\n int CONV ()\ndeifdef/bitop.c:135" ]
 	node_32 -> node_42 ;
-node_43 [ label="first_one1\n int CONV ()\nbitop.c:134" ]
+node_43 [ label="first_one1\n int CONV ()\ndeifdef/bitop.c:134" ]
 	node_32 -> node_43 ;
-node_44 [ label="set_derivative_param\n void ()\nini.c:177" ]
+node_44 [ label="set_derivative_param\n void ()\ndeifdef/ini.c:177" ]
 	node_3 -> node_44 ;
-node_45 [ label="ini_game\n int CONV ()\nutility.c:9" ]
+node_45 [ label="ini_game\n int CONV ()\ndeifdef/utility.c:9" ]
 	node_3 -> node_45 ;
-node_46 [ label="ehash_clear\n void CONV ()\nevaluate.c:149" ]
+node_46 [ label="ehash_clear\n void CONV ()\ndeifdef/evaluate.c:149" ]
 	node_45 -> node_46 ;
 node_47 [ label="memset\n\n:0" ]
 	node_46 -> node_47 ;
-node_48 [ label="ini_trans_table\n int CONV ()\nhash.c:11" ]
+node_48 [ label="ini_trans_table\n int CONV ()\ndeifdef/hash.c:11" ]
 	node_45 -> node_48 ;
-node_49 [ label="memory_alloc\n void *CONV ()\nutility.c:527" ]
+node_49 [ label="memory_alloc\n void *CONV ()\ndeifdef/utility.c:527" ]
 	node_48 -> node_49 ;
 node_50 [ label="VirtualAlloc\n\n:0" ]
 	node_49 -> node_50 ;
 node_51 [ label="Out\n\n:0" ]
 	node_48 -> node_51 ;
-node_52 [ label="clear_trans_table\n int CONV ()\nhash.c:534" ]
+node_52 [ label="clear_trans_table\n int CONV ()\ndeifdef/hash.c:534" ]
 	node_48 -> node_52 ;
-node_53 [ label="get_elapsed\n int CONV ()\ntime.c:170" ]
+node_53 [ label="get_elapsed\n int CONV ()\ndeifdef/time.c:170" ]
 	node_52 -> node_53 ;
 node_54 [ label="GetSystemTimeAsFileTime\n\n:0" ]
 	node_53 -> node_54 ;
 node_55 [ label="Out\n\n:0" ]
 	node_52 -> node_55 ;
-node_56 [ label="str_time_symple\n const char *CONV ()\ntime.c:137" ]
+node_56 [ label="str_time_symple\n const char *CONV ()\ndeifdef/time.c:137" ]
 	node_52 -> node_56 ;
 node_57 [ label="snprintf\n\n:0" ]
 	node_56 -> node_57 ;
-node_58 [ label="open_history\n int ()\nio.c:162" ]
+node_58 [ label="open_history\n int ()\ndeifdef/io.c:162" ]
 	node_45 -> node_58 ;
 node_59 [ label="strncpy\n\n:0" ]
 	node_58 -> node_59 ;
-node_60 [ label="record_close\n int ()\ncsa.c:81" ]
+node_60 [ label="record_close\n int ()\ndeifdef/csa.c:81" ]
 	node_58 -> node_60 ;
 	node_60 -> node_9 ;
 node_62 [ label="snprintf\n\n:0" ]
 	node_58 -> node_62 ;
-node_63 [ label="record_open\n int ()\ncsa.c:47" ]
+node_63 [ label="record_open\n int ()\ndeifdef/csa.c:47" ]
 	node_58 -> node_63 ;
 node_64 [ label="strncpy\n\n:0" ]
 	node_63 -> node_64 ;
@@ -144,7 +144,7 @@ node_74 [ label="XorDiag2\n\n:0" ]
 	node_45 -> node_74 ;
 node_75 [ label="BBOr\n\n:0" ]
 	node_45 -> node_75 ;
-node_76 [ label="eval_material\n int CONV ()\nevaluate.c:23" ]
+node_76 [ label="eval_material\n int CONV ()\ndeifdef/evaluate.c:23" ]
 	node_45 -> node_76 ;
 node_77 [ label="PopuCount\n\n:0" ]
 	node_76 -> node_77 ;
@@ -162,7 +162,7 @@ node_83 [ label="I2HandBishop\n\n:0" ]
 	node_76 -> node_83 ;
 node_84 [ label="I2HandRook\n\n:0" ]
 	node_76 -> node_84 ;
-node_85 [ label="hash_func\n uint64_t CONV ()\nhash.c:28" ]
+node_85 [ label="hash_func\n uint64_t CONV ()\ndeifdef/hash.c:28" ]
 	node_45 -> node_85 ;
 node_86 [ label="Foo\n\n:0" ]
 	node_85 -> node_86 ;
@@ -170,7 +170,7 @@ node_87 [ label="memset\n\n:0" ]
 	node_45 -> node_87 ;
 node_88 [ label="InCheck\n\n:0" ]
 	node_45 -> node_88 ;
-node_89 [ label="is_mate\n int CONV ()\nutility.c:288" ]
+node_89 [ label="is_mate\n int CONV ()\ndeifdef/utility.c:288" ]
 	node_45 -> node_89 ;
 node_90 [ label="assert\n\n:0" ]
 	node_89 -> node_90 ;
@@ -194,7 +194,7 @@ node_99 [ label="I2HandBishop\n\n:0" ]
 	node_45 -> node_99 ;
 node_100 [ label="I2HandRook\n\n:0" ]
 	node_45 -> node_100 ;
-node_101 [ label="exam_tree\n int CONV ()\nvalid.c:71" ]
+node_101 [ label="exam_tree\n int CONV ()\ndeifdef/valid.c:71" ]
 	node_45 -> node_101 ;
 node_102 [ label="I2HandPawn\n\n:0" ]
 	node_101 -> node_102 ;
@@ -223,21 +223,21 @@ node_113 [ label="assert\n\n:0" ]
 node_114 [ label="exam_bb\n\n:0" ]
 	node_101 -> node_114 ;
 	node_45 -> node_45 ;
-node_116 [ label="lock\n void CONV ()\nthread.c:22" ]
+node_116 [ label="lock\n void CONV ()\ndeifdef/thread.c:22" ]
 	node_45 -> node_116 ;
-node_117 [ label="tlp_yield\n void ()\nthread.c:42" ]
+node_117 [ label="tlp_yield\n void ()\ndeifdef/thread.c:42" ]
 	node_116 -> node_117 ;
 node_118 [ label="Sleep\n\n:0" ]
 	node_117 -> node_118 ;
 node_119 [ label="asm\n\n:0" ]
 	node_116 -> node_119 ;
-node_120 [ label="dfpn_client_start\n void CONV ()\nthread.c:47" ]
+node_120 [ label="dfpn_client_start\n void CONV ()\ndeifdef/thread.c:47" ]
 	node_45 -> node_120 ;
 node_121 [ label="memcmp\n\n:0" ]
 	node_120 -> node_121 ;
-node_122 [ label="sckt_shutdown\n int CONV ()\nsckt.c:139" ]
+node_122 [ label="sckt_shutdown\n int CONV ()\ndeifdef/sckt.c:139" ]
 	node_120 -> node_122 ;
-node_123 [ label="out_warning\n void ()\nio.c:60" ]
+node_123 [ label="out_warning\n void ()\ndeifdef/io.c:60" ]
 	node_122 -> node_123 ;
 	node_123 -> node_116 ;
 node_125 [ label="fprintf\n\n:0" ]
@@ -250,11 +250,11 @@ node_128 [ label="va_end\n\n:0" ]
 	node_123 -> node_128 ;
 node_129 [ label="fflush\n\n:0" ]
 	node_123 -> node_129 ;
-node_130 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_130 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_123 -> node_130 ;
 node_131 [ label="shutdown\n\n:0" ]
 	node_122 -> node_131 ;
-node_132 [ label="str_WSAError\n const char * ()\nsckt.c:15" ]
+node_132 [ label="str_WSAError\n const char * ()\ndeifdef/sckt.c:15" ]
 	node_122 -> node_132 ;
 node_133 [ label="snprintf\n\n:0" ]
 	node_132 -> node_133 ;
@@ -266,7 +266,7 @@ node_136 [ label="recv\n\n:0" ]
 	node_122 -> node_136 ;
 node_137 [ label="closesocket\n\n:0" ]
 	node_122 -> node_137 ;
-node_138 [ label="sckt_connect\n sckt_t CONV ()\nsckt.c:89" ]
+node_138 [ label="sckt_connect\n sckt_t CONV ()\ndeifdef/sckt.c:89" ]
 	node_120 -> node_138 ;
 node_139 [ label="WSAStartup\n\n:0" ]
 	node_138 -> node_139 ;
@@ -292,7 +292,7 @@ node_149 [ label="Sleep\n\n:0" ]
 	node_120 -> node_123 ;
 node_151 [ label="Out\n\n:0" ]
 	node_120 -> node_151 ;
-node_152 [ label="dfpn_client_receiver\n unsigned int __stdcall ()\nthread.c:78" ]
+node_152 [ label="dfpn_client_receiver\n unsigned int __stdcall ()\ndeifdef/thread.c:78" ]
 	node_120 -> node_152 ;
 node_153 [ label="FD_ZERO\n\n:0" ]
 	node_152 -> node_153 ;
@@ -302,7 +302,7 @@ node_155 [ label="select\n\n:0" ]
 	node_152 -> node_155 ;
 	node_152 -> node_123 ;
 	node_152 -> node_116 ;
-node_158 [ label="dfpn_client_out\n int CONV ()\nsckt.c:272" ]
+node_158 [ label="dfpn_client_out\n int CONV ()\ndeifdef/sckt.c:272" ]
 	node_152 -> node_158 ;
 node_159 [ label="va_start\n\n:0" ]
 	node_158 -> node_159 ;
@@ -316,7 +316,7 @@ node_164 [ label="Out\n\n:0" ]
 	node_158 -> node_164 ;
 node_165 [ label="send\n\n:0" ]
 	node_158 -> node_165 ;
-node_166 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_166 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_152 -> node_166 ;
 node_167 [ label="strlen\n\n:0" ]
 	node_152 -> node_167 ;
@@ -329,13 +329,13 @@ node_171 [ label="memcpy\n\n:0" ]
 	node_152 -> node_171 ;
 node_172 [ label="memmove\n\n:0" ]
 	node_152 -> node_172 ;
-node_173 [ label="proce_line\n int CONV ()\nthread.c:161" ]
+node_173 [ label="proce_line\n int CONV ()\ndeifdef/thread.c:161" ]
 	node_152 -> node_173 ;
 node_174 [ label="strtok_r\n\n:0" ]
 	node_173 -> node_174 ;
 node_175 [ label="strcmp\n\n:0" ]
 	node_173 -> node_175 ;
-node_176 [ label="is_move\n int CONV ()\nproce.c:50" ]
+node_176 [ label="is_move\n int CONV ()\ndeifdef/proce.c:50" ]
 	node_173 -> node_176 ;
 node_177 [ label="isdigit\n\n:0" ]
 	node_176 -> node_177 ;
@@ -348,29 +348,29 @@ node_179 [ label="memcpy\n\n:0" ]
 node_182 [ label="snprintf\n\n:0" ]
 	node_45 -> node_182 ;
 	node_45 -> node_158 ;
-node_184 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_184 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_45 -> node_184 ;
 node_185 [ label="OutCsaShogi\n\n:0" ]
 	node_3 -> node_185 ;
 node_186 [ label="Out\n\n:0" ]
 	node_3 -> node_186 ;
 	node_3 -> node_48 ;
-node_188 [ label="dfpn_ini_hash\n int CONV ()\ndfpnhash.c:25" ]
+node_188 [ label="dfpn_ini_hash\n int CONV ()\ndeifdef/dfpnhash.c:25" ]
 	node_3 -> node_188 ;
-node_189 [ label="memory_free\n int CONV ()\nutility.c:533" ]
+node_189 [ label="memory_free\n int CONV ()\ndeifdef/utility.c:533" ]
 	node_188 -> node_189 ;
 node_190 [ label="VirtualFree\n\n:0" ]
 	node_189 -> node_190 ;
 	node_188 -> node_49 ;
 node_192 [ label="Out\n\n:0" ]
 	node_188 -> node_192 ;
-node_193 [ label="book_on\n int CONV ()\nbook.c:24" ]
+node_193 [ label="book_on\n int CONV ()\ndeifdef/book.c:24" ]
 	node_3 -> node_193 ;
 	node_193 -> node_9 ;
 	node_193 -> node_5 ;
 	node_3 -> node_123 ;
 	node_3 -> node_53 ;
-node_198 [ label="out_error\n void ()\nio.c:85" ]
+node_198 [ label="out_error\n void ()\ndeifdef/io.c:85" ]
 	node_1 -> node_198 ;
 node_199 [ label="fprintf\n\n:0" ]
 	node_198 -> node_199 ;
@@ -382,13 +382,13 @@ node_202 [ label="va_end\n\n:0" ]
 	node_198 -> node_202 ;
 node_203 [ label="fflush\n\n:0" ]
 	node_198 -> node_203 ;
-node_204 [ label="main_child\n int ()\nmain.c:41" ]
+node_204 [ label="main_child\n int ()\ndeifdef/main.c:41" ]
 	node_1 -> node_204 ;
-node_205 [ label="ponder\n int ()\nponder.c:5" ]
+node_205 [ label="ponder\n int ()\ndeifdef/ponder.c:5" ]
 	node_204 -> node_205 ;
 node_206 [ label="abs\n\n:0" ]
 	node_205 -> node_206 ;
-node_207 [ label="gen_legal_moves\n int CONV ()\nutility.c:240" ]
+node_207 [ label="gen_legal_moves\n int CONV ()\ndeifdef/utility.c:240" ]
 	node_205 -> node_207 ;
 node_208 [ label="GenCaptures\n\n:0" ]
 	node_207 -> node_208 ;
@@ -408,7 +408,7 @@ node_215 [ label="UnMakeMove\n\n:0" ]
 	node_207 -> node_215 ;
 node_216 [ label="Flip\n\n:0" ]
 	node_207 -> node_216 ;
-node_217 [ label="detect_repetition\n int CONV ()\nutility.c:315" ]
+node_217 [ label="detect_repetition\n int CONV ()\ndeifdef/utility.c:315" ]
 	node_207 -> node_217 ;
 node_218 [ label="GenEvasion\n\n:0" ]
 	node_217 -> node_218 ;
@@ -416,7 +416,7 @@ node_219 [ label="MakeMove\n\n:0" ]
 	node_217 -> node_219 ;
 node_220 [ label="UnMakeMove\n\n:0" ]
 	node_217 -> node_220 ;
-node_221 [ label="is_hand_eq_supe\n int CONV ()\nutility.c:297" ]
+node_221 [ label="is_hand_eq_supe\n int CONV ()\ndeifdef/utility.c:297" ]
 	node_217 -> node_221 ;
 node_222 [ label="IsHandKnight\n\n:0" ]
 	node_221 -> node_222 ;
@@ -443,15 +443,15 @@ node_233 [ label="Out\n\n:0" ]
 	node_205 -> node_233 ;
 node_234 [ label="OutCsaShogi\n\n:0" ]
 	node_205 -> node_234 ;
-node_235 [ label="iterate\n int CONV ()\niterate.c:13" ]
+node_235 [ label="iterate\n int CONV ()\ndeifdef/iterate.c:13" ]
 	node_205 -> node_235 ;
-node_236 [ label="rep_book_prob\n int CONV ()\niterate.c:741" ]
+node_236 [ label="rep_book_prob\n int CONV ()\ndeifdef/iterate.c:741" ]
 	node_235 -> node_236 ;
 node_237 [ label="Out\n\n:0" ]
 	node_236 -> node_237 ;
-node_238 [ label="book_probe\n int CONV ()\nbook.c:41" ]
+node_238 [ label="book_probe\n int CONV ()\ndeifdef/book.c:41" ]
 	node_235 -> node_238 ;
-node_239 [ label="book_hash_func\n uint64_t CONV ()\nbook.c:219" ]
+node_239 [ label="book_hash_func\n uint64_t CONV ()\ndeifdef/book.c:219" ]
 	node_238 -> node_239 ;
 node_240 [ label="I2HandPawn\n\n:0" ]
 	node_239 -> node_240 ;
@@ -469,26 +469,26 @@ node_246 [ label="I2HandRook\n\n:0" ]
 	node_239 -> node_246 ;
 node_247 [ label="Foo\n\n:0" ]
 	node_239 -> node_247 ;
-node_248 [ label="book_read\n int CONV ()\nbook.c:105" ]
+node_248 [ label="book_read\n int CONV ()\ndeifdef/book.c:105" ]
 	node_238 -> node_248 ;
 node_249 [ label="fseek\n\n:0" ]
 	node_248 -> node_249 ;
 node_250 [ label="fread\n\n:0" ]
 	node_248 -> node_250 ;
 	node_238 -> node_30 ;
-node_252 [ label="normalize_book_move\n int CONV ()\nbook.c:299" ]
+node_252 [ label="normalize_book_move\n int CONV ()\ndeifdef/book.c:299" ]
 	node_238 -> node_252 ;
 node_253 [ label="Out\n\n:0" ]
 	node_238 -> node_253 ;
 node_254 [ label="OutCsaShogi\n\n:0" ]
 	node_238 -> node_254 ;
-node_255 [ label="bm2move\n unsigned int CONV ()\nbook.c:196" ]
+node_255 [ label="bm2move\n unsigned int CONV ()\ndeifdef/book.c:196" ]
 	node_238 -> node_255 ;
 node_256 [ label="I2To\n\n:0" ]
 	node_255 -> node_256 ;
 node_257 [ label="I2From\n\n:0" ]
 	node_255 -> node_257 ;
-node_258 [ label="flip_ft\n ft_t CONV ()\nbook.c:165" ]
+node_258 [ label="flip_ft\n ft_t CONV ()\ndeifdef/book.c:165" ]
 	node_255 -> node_258 ;
 node_259 [ label="I2IsPromote\n\n:0" ]
 	node_255 -> node_259 ;
@@ -498,7 +498,7 @@ node_261 [ label="Cap2Move\n\n:0" ]
 	node_255 -> node_261 ;
 node_262 [ label="Piece2Move\n\n:0" ]
 	node_255 -> node_262 ;
-node_263 [ label="str_CSA_move\n const char * ()\ncsa.c:363" ]
+node_263 [ label="str_CSA_move\n const char * ()\ndeifdef/csa.c:363" ]
 	node_238 -> node_263 ;
 node_264 [ label="I2IsPromote\n\n:0" ]
 	node_263 -> node_264 ;
@@ -512,7 +512,7 @@ node_268 [ label="snprintf\n\n:0" ]
 	node_263 -> node_268 ;
 node_269 [ label="From2Drop\n\n:0" ]
 	node_263 -> node_269 ;
-node_270 [ label="is_move_valid\n int CONV ()\nvalid.c:6" ]
+node_270 [ label="is_move_valid\n int CONV ()\ndeifdef/valid.c:6" ]
 	node_238 -> node_270 ;
 node_271 [ label="I2From\n\n:0" ]
 	node_270 -> node_271 ;
@@ -557,14 +557,14 @@ node_289 [ label="IsHandRook\n\n:0" ]
 node_292 [ label="Out\n\n:0" ]
 	node_235 -> node_292 ;
 	node_235 -> node_56 ;
-node_294 [ label="pv_close\n void CONV ()\nsearch.c:606" ]
+node_294 [ label="pv_close\n void CONV ()\ndeifdef/search.c:606" ]
 	node_235 -> node_294 ;
 node_295 [ label="MnjOut\n\n:0" ]
 	node_235 -> node_295 ;
 	node_235 -> node_263 ;
-node_297 [ label="csa2usi\n int CONV ()\ncsa.c:491" ]
+node_297 [ label="csa2usi\n int CONV ()\ndeifdef/csa.c:491" ]
 	node_235 -> node_297 ;
-node_298 [ label="str2piece\n int ()\ncsa.c:804" ]
+node_298 [ label="str2piece\n int ()\ndeifdef/csa.c:804" ]
 	node_297 -> node_298 ;
 node_299 [ label="strcmp\n\n:0" ]
 	node_298 -> node_299 ;
@@ -574,19 +574,19 @@ node_301 [ label="USIOut\n\n:0" ]
 	node_235 -> node_301 ;
 	node_235 -> node_46 ;
 	node_235 -> node_48 ;
-node_304 [ label="get_cputime\n int CONV ()\ntime.c:151" ]
+node_304 [ label="get_cputime\n int CONV ()\ndeifdef/time.c:151" ]
 	node_235 -> node_304 ;
 node_305 [ label="GetCurrentProcess\n\n:0" ]
 	node_304 -> node_305 ;
 node_306 [ label="GetProcessTimes\n\n:0" ]
 	node_304 -> node_306 ;
-node_307 [ label="set_search_limit_time\n void CONV ()\ntime.c:5" ]
+node_307 [ label="set_search_limit_time\n void CONV ()\ndeifdef/time.c:5" ]
 	node_235 -> node_307 ;
 node_308 [ label="Out\n\n:0" ]
 	node_307 -> node_308 ;
-node_309 [ label="adjust_fmg\n void CONV ()\niterate.c:753" ]
+node_309 [ label="adjust_fmg\n void CONV ()\ndeifdef/iterate.c:753" ]
 	node_235 -> node_309 ;
-node_310 [ label="out_pv\n void CONV ()\nsearchr.c:208" ]
+node_310 [ label="out_pv\n void CONV ()\ndeifdef/searchr.c:208" ]
 	node_235 -> node_310 ;
 node_311 [ label="abs\n\n:0" ]
 	node_310 -> node_311 ;
@@ -603,7 +603,7 @@ node_318 [ label="snprintf\n\n:0" ]
 	node_310 -> node_318 ;
 node_319 [ label="MakeMove\n\n:0" ]
 	node_310 -> node_319 ;
-node_320 [ label="hash_probe\n unsigned int CONV ()\nhash.c:151" ]
+node_320 [ label="hash_probe\n unsigned int CONV ()\ndeifdef/hash.c:151" ]
 	node_310 -> node_320 ;
 node_321 [ label="NullDepth\n\n:0" ]
 	node_320 -> node_321 ;
@@ -621,7 +621,7 @@ node_327 [ label="I2To\n\n:0" ]
 node_328 [ label="assert\n\n:0" ]
 	node_320 -> node_328 ;
 	node_320 -> node_270 ;
-node_330 [ label="eval_supe\n int CONV ()\nhash.c:503" ]
+node_330 [ label="eval_supe\n int CONV ()\ndeifdef/hash.c:503" ]
 	node_320 -> node_330 ;
 	node_330 -> node_221 ;
 node_332 [ label="I2From\n\n:0" ]
@@ -649,7 +649,7 @@ node_343 [ label="USIOut\n\n:0" ]
 	node_310 -> node_343 ;
 	node_235 -> node_320 ;
 	node_235 -> node_123 ;
-node_346 [ label="make_root_move_list\n int ()\nroot.c:5" ]
+node_346 [ label="make_root_move_list\n int ()\ndeifdef/root.c:5" ]
 	node_235 -> node_346 ;
 node_347 [ label="GenCaptures\n\n:0" ]
 	node_346 -> node_347 ;
@@ -661,18 +661,18 @@ node_350 [ label="MakeMove\n\n:0" ]
 	node_346 -> node_350 ;
 node_351 [ label="InCheck\n\n:0" ]
 	node_346 -> node_351 ;
-node_352 [ label="is_move_ignore\n int CONV ()\nroot.c:121" ]
+node_352 [ label="is_move_ignore\n int CONV ()\ndeifdef/root.c:121" ]
 	node_346 -> node_352 ;
 node_353 [ label="Flip\n\n:0" ]
 	node_346 -> node_353 ;
 	node_346 -> node_217 ;
-node_355 [ label="search_quies\n int CONV ()\nquiesrch.c:10" ]
+node_355 [ label="search_quies\n int CONV ()\ndeifdef/quiesrch.c:10" ]
 	node_346 -> node_355 ;
-node_356 [ label="evaluate\n int CONV ()\nevaluate.c:68" ]
+node_356 [ label="evaluate\n int CONV ()\ndeifdef/evaluate.c:68" ]
 	node_355 -> node_356 ;
 node_357 [ label="assert\n\n:0" ]
 	node_356 -> node_357 ;
-node_358 [ label="ehash_probe\n int CONV ()\nevaluate.c:150" ]
+node_358 [ label="ehash_probe\n int CONV ()\ndeifdef/evaluate.c:150" ]
 	node_356 -> node_358 ;
 node_359 [ label="I2HandPawn\n\n:0" ]
 	node_356 -> node_359 ;
@@ -688,7 +688,7 @@ node_364 [ label="I2HandBishop\n\n:0" ]
 	node_356 -> node_364 ;
 node_365 [ label="I2HandRook\n\n:0" ]
 	node_356 -> node_365 ;
-node_366 [ label="calc_difference\n int CONV ()\nevaluate.c:173" ]
+node_366 [ label="calc_difference\n int CONV ()\ndeifdef/evaluate.c:173" ]
 	node_356 -> node_366 ;
 node_367 [ label="I2PieceMove\n\n:0" ]
 	node_366 -> node_367 ;
@@ -708,7 +708,7 @@ node_374 [ label="FirstOne\n\n:0" ]
 	node_366 -> node_374 ;
 node_375 [ label="Inv\n\n:0" ]
 	node_366 -> node_375 ;
-node_376 [ label="doapc\n int CONV ()\nevaluate.c:498" ]
+node_376 [ label="doapc\n int CONV ()\ndeifdef/evaluate.c:498" ]
 	node_366 -> node_376 ;
 node_377 [ label="Inv\n\n:0" ]
 	node_376 -> node_377 ;
@@ -732,7 +732,7 @@ node_386 [ label="I2HandBishop\n\n:0" ]
 	node_366 -> node_386 ;
 node_387 [ label="I2HandRook\n\n:0" ]
 	node_366 -> node_387 ;
-node_388 [ label="doacapt\n int CONV ()\nevaluate.c:531" ]
+node_388 [ label="doacapt\n int CONV ()\ndeifdef/evaluate.c:531" ]
 	node_366 -> node_388 ;
 node_389 [ label="Inv\n\n:0" ]
 	node_388 -> node_389 ;
@@ -742,9 +742,9 @@ node_391 [ label="UToCap\n\n:0" ]
 	node_366 -> node_391 ;
 node_392 [ label="I2IsPromote\n\n:0" ]
 	node_366 -> node_392 ;
-node_393 [ label="ehash_store\n void CONV ()\nevaluate.c:163" ]
+node_393 [ label="ehash_store\n void CONV ()\ndeifdef/evaluate.c:163" ]
 	node_356 -> node_393 ;
-node_394 [ label="make_list\n int CONV ()\nevaluate.c:270" ]
+node_394 [ label="make_list\n int CONV ()\ndeifdef/evaluate.c:270" ]
 	node_356 -> node_394 ;
 node_395 [ label="Inv\n\n:0" ]
 	node_394 -> node_395 ;
@@ -774,7 +774,7 @@ node_407 [ label="Inv\n\n:0" ]
 	node_356 -> node_407 ;
 node_408 [ label="PcPcOnSq\n\n:0" ]
 	node_356 -> node_408 ;
-node_409 [ label="inaniwa_score\n int ()\nevaluate.c:573" ]
+node_409 [ label="inaniwa_score\n int ()\ndeifdef/evaluate.c:573" ]
 	node_356 -> node_409 ;
 node_410 [ label="abs\n\n:0" ]
 	node_356 -> node_410 ;
@@ -782,9 +782,9 @@ node_410 [ label="abs\n\n:0" ]
 node_412 [ label="DOut\n\n:0" ]
 	node_355 -> node_412 ;
 	node_355 -> node_294 ;
-node_414 [ label="is_mate_in3ply\n unsigned int CONV ()\nmate3.c:70" ]
+node_414 [ label="is_mate_in3ply\n unsigned int CONV ()\ndeifdef/mate3.c:70" ]
 	node_355 -> node_414 ;
-node_415 [ label="mhash_probe\n int CONV ()\nmate3.c:40" ]
+node_415 [ label="mhash_probe\n int CONV ()\ndeifdef/mate3.c:40" ]
 	node_414 -> node_415 ;
 node_416 [ label="Cap2Move\n\n:0" ]
 	node_415 -> node_416 ;
@@ -801,15 +801,15 @@ node_422 [ label="InCheck\n\n:0" ]
 	node_414 -> node_422 ;
 node_423 [ label="UnMakeMove\n\n:0" ]
 	node_414 -> node_423 ;
-node_424 [ label="mate3_and\n int CONV ()\nmate3.c:111" ]
+node_424 [ label="mate3_and\n int CONV ()\ndeifdef/mate3.c:111" ]
 	node_414 -> node_424 ;
 node_425 [ label="assert\n\n:0" ]
 	node_424 -> node_425 ;
 node_426 [ label="InCheck\n\n:0" ]
 	node_424 -> node_426 ;
-node_427 [ label="checker\n void CONV ()\nmate3.c:270" ]
+node_427 [ label="checker\n void CONV ()\ndeifdef/mate3.c:270" ]
 	node_424 -> node_427 ;
-node_428 [ label="b_attacks_to_piece\n bitboard_t CONV ()\nattack.c:293" ]
+node_428 [ label="b_attacks_to_piece\n bitboard_t CONV ()\ndeifdef/attack.c:293" ]
 	node_427 -> node_428 ;
 node_429 [ label="BBIni\n\n:0" ]
 	node_428 -> node_429 ;
@@ -821,7 +821,7 @@ node_432 [ label="AttackRank\n\n:0" ]
 	node_428 -> node_432 ;
 node_433 [ label="AttackFile\n\n:0" ]
 	node_428 -> node_433 ;
-node_434 [ label="w_attacks_to_piece\n bitboard_t CONV ()\nattack.c:314" ]
+node_434 [ label="w_attacks_to_piece\n bitboard_t CONV ()\ndeifdef/attack.c:314" ]
 	node_427 -> node_434 ;
 node_435 [ label="BBIni\n\n:0" ]
 	node_434 -> node_435 ;
@@ -843,13 +843,13 @@ node_443 [ label="Xor\n\n:0" ]
 	node_427 -> node_443 ;
 node_444 [ label="BBContract\n\n:0" ]
 	node_427 -> node_444 ;
-node_445 [ label="gen_next_evasion_mate\n int CONV ()\nmate3.c:184" ]
+node_445 [ label="gen_next_evasion_mate\n int CONV ()\ndeifdef/mate3.c:184" ]
 	node_424 -> node_445 ;
-node_446 [ label="gen_king_cap_checker\n unsigned int CONV ()\nmate3.c:301" ]
+node_446 [ label="gen_king_cap_checker\n unsigned int CONV ()\ndeifdef/mate3.c:301" ]
 	node_445 -> node_446 ;
 node_447 [ label="BBContract\n\n:0" ]
 	node_446 -> node_447 ;
-node_448 [ label="is_white_attacked\n unsigned int CONV ()\nattack.c:335" ]
+node_448 [ label="is_white_attacked\n unsigned int CONV ()\ndeifdef/attack.c:335" ]
 	node_446 -> node_448 ;
 node_449 [ label="BBAnd\n\n:0" ]
 	node_448 -> node_449 ;
@@ -865,7 +865,7 @@ node_454 [ label="BBToU\n\n:0" ]
 	node_448 -> node_454 ;
 node_455 [ label="Cap2Move\n\n:0" ]
 	node_446 -> node_455 ;
-node_456 [ label="is_black_attacked\n unsigned int CONV ()\nattack.c:352" ]
+node_456 [ label="is_black_attacked\n unsigned int CONV ()\ndeifdef/attack.c:352" ]
 	node_446 -> node_456 ;
 node_457 [ label="BBAnd\n\n:0" ]
 	node_456 -> node_457 ;
@@ -885,7 +885,7 @@ node_464 [ label="From2Move\n\n:0" ]
 	node_446 -> node_464 ;
 node_465 [ label="Piece2Move\n\n:0" ]
 	node_446 -> node_465 ;
-node_466 [ label="gen_move_to\n unsigned int *CONV ()\nmate3.c:324" ]
+node_466 [ label="gen_move_to\n unsigned int *CONV ()\ndeifdef/mate3.c:324" ]
 	node_445 -> node_466 ;
 	node_466 -> node_434 ;
 node_468 [ label="BBNotAnd\n\n:0" ]
@@ -896,7 +896,7 @@ node_470 [ label="LastOne\n\n:0" ]
 	node_466 -> node_470 ;
 node_471 [ label="Xor\n\n:0" ]
 	node_466 -> node_471 ;
-node_472 [ label="is_pinned_on_white_king\n unsigned int CONV ()\nattack.c:5" ]
+node_472 [ label="is_pinned_on_white_king\n unsigned int CONV ()\ndeifdef/attack.c:5" ]
 	node_466 -> node_472 ;
 node_473 [ label="AttackRank\n\n:0" ]
 	node_472 -> node_473 ;
@@ -927,7 +927,7 @@ node_485 [ label="Cap2Move\n\n:0" ]
 	node_466 -> node_428 ;
 node_487 [ label="FirstOne\n\n:0" ]
 	node_466 -> node_487 ;
-node_488 [ label="is_pinned_on_black_king\n unsigned int CONV ()\nattack.c:46" ]
+node_488 [ label="is_pinned_on_black_king\n unsigned int CONV ()\ndeifdef/attack.c:46" ]
 	node_466 -> node_488 ;
 node_489 [ label="AttackRank\n\n:0" ]
 	node_488 -> node_489 ;
@@ -945,7 +945,7 @@ node_495 [ label="assert\n\n:0" ]
 	node_488 -> node_495 ;
 node_496 [ label="AttackDiag2\n\n:0" ]
 	node_488 -> node_496 ;
-node_497 [ label="gen_king_move\n unsigned int *CONV ()\nmate3.c:427" ]
+node_497 [ label="gen_king_move\n unsigned int *CONV ()\ndeifdef/mate3.c:427" ]
 	node_445 -> node_497 ;
 node_498 [ label="BBAnd\n\n:0" ]
 	node_497 -> node_498 ;
@@ -971,13 +971,13 @@ node_508 [ label="Cap2Move\n\n:0" ]
 	node_497 -> node_456 ;
 node_510 [ label="abs\n\n:0" ]
 	node_445 -> node_510 ;
-node_511 [ label="gen_intercept\n unsigned int *CONV ()\nmate3.c:489" ]
+node_511 [ label="gen_intercept\n unsigned int *CONV ()\ndeifdef/mate3.c:489" ]
 	node_445 -> node_511 ;
 node_512 [ label="BBNotAnd\n\n:0" ]
 	node_511 -> node_512 ;
 node_513 [ label="assert\n\n:0" ]
 	node_511 -> node_513 ;
-node_514 [ label="attacks_to_piece\n bitboard_t CONV ()\nattack.c:262" ]
+node_514 [ label="attacks_to_piece\n bitboard_t CONV ()\ndeifdef/attack.c:262" ]
 	node_511 -> node_514 ;
 node_515 [ label="BBIni\n\n:0" ]
 	node_514 -> node_515 ;
@@ -1041,7 +1041,7 @@ node_545 [ label="Flip\n\n:0" ]
 	node_424 -> node_545 ;
 node_546 [ label="IsMateIn1Ply\n\n:0" ]
 	node_424 -> node_546 ;
-node_547 [ label="mate_weak_or\n int CONV ()\nmate3.c:140" ]
+node_547 [ label="mate_weak_or\n int CONV ()\ndeifdef/mate3.c:140" ]
 	node_424 -> node_547 ;
 node_548 [ label="IsDiscoverWK\n\n:0" ]
 	node_547 -> node_548 ;
@@ -1074,14 +1074,14 @@ node_562 [ label="UnMakeMove\n\n:0" ]
 	node_424 -> node_562 ;
 node_563 [ label="Flip\n\n:0" ]
 	node_414 -> node_563 ;
-node_564 [ label="mhash_store\n void CONV ()\nmate3.c:60" ]
+node_564 [ label="mhash_store\n void CONV ()\ndeifdef/mate3.c:60" ]
 	node_414 -> node_564 ;
 node_565 [ label="I2To\n\n:0" ]
 	node_414 -> node_565 ;
 node_566 [ label="assert\n\n:0" ]
 	node_355 -> node_566 ;
 	node_355 -> node_270 ;
-node_568 [ label="gen_next_quies\n int CONV ()\nquiesrch.c:85" ]
+node_568 [ label="gen_next_quies\n int CONV ()\ndeifdef/quiesrch.c:85" ]
 	node_355 -> node_568 ;
 node_569 [ label="GenCaptures\n\n:0" ]
 	node_568 -> node_569 ;
@@ -1091,7 +1091,7 @@ node_571 [ label="I2IsPromote\n\n:0" ]
 	node_568 -> node_571 ;
 node_572 [ label="I2PieceMove\n\n:0" ]
 	node_568 -> node_572 ;
-node_573 [ label="estimate_score_diff\n int CONV ()\nevaldiff.c:113" ]
+node_573 [ label="estimate_score_diff\n int CONV ()\ndeifdef/evaldiff.c:113" ]
 	node_568 -> node_573 ;
 node_574 [ label="Inv\n\n:0" ]
 	node_573 -> node_574 ;
@@ -1109,7 +1109,7 @@ node_580 [ label="From2Drop\n\n:0" ]
 	node_573 -> node_580 ;
 node_581 [ label="I2IsPromote\n\n:0" ]
 	node_573 -> node_581 ;
-node_582 [ label="eval_max_score\n int CONV ()\nevaldiff.c:64" ]
+node_582 [ label="eval_max_score\n int CONV ()\ndeifdef/evaldiff.c:64" ]
 	node_568 -> node_582 ;
 node_583 [ label="I2From\n\n:0" ]
 	node_582 -> node_583 ;
@@ -1119,7 +1119,7 @@ node_585 [ label="I2PieceMove\n\n:0" ]
 	node_582 -> node_585 ;
 node_586 [ label="I2IsPromote\n\n:0" ]
 	node_582 -> node_586 ;
-node_587 [ label="swap\n int CONV ()\nswap.c:6" ]
+node_587 [ label="swap\n int CONV ()\ndeifdef/swap.c:6" ]
 	node_568 -> node_587 ;
 node_588 [ label="I2From\n\n:0" ]
 	node_587 -> node_588 ;
@@ -1170,7 +1170,7 @@ node_611 [ label="UnMakeMove\n\n:0" ]
 	node_355 -> node_355 ;
 node_613 [ label="Flip\n\n:0" ]
 	node_355 -> node_613 ;
-node_614 [ label="check_futile_score_quies\n void CONV ()\nevaldiff.c:4" ]
+node_614 [ label="check_futile_score_quies\n void CONV ()\ndeifdef/evaldiff.c:4" ]
 	node_355 -> node_614 ;
 node_615 [ label="I2From\n\n:0" ]
 	node_614 -> node_615 ;
@@ -1183,7 +1183,7 @@ node_619 [ label="I2IsPromote\n\n:0" ]
 	node_614 -> node_619 ;
 node_620 [ label="IsMove\n\n:0" ]
 	node_355 -> node_620 ;
-node_621 [ label="pv_copy\n void CONV ()\nsearch.c:614" ]
+node_621 [ label="pv_copy\n void CONV ()\ndeifdef/search.c:614" ]
 	node_355 -> node_621 ;
 node_622 [ label="memcpy\n\n:0" ]
 	node_621 -> node_622 ;
@@ -1198,50 +1198,50 @@ node_626 [ label="Out\n\n:0" ]
 	node_346 -> node_263 ;
 node_628 [ label="UToCap\n\n:0" ]
 	node_346 -> node_628 ;
-node_629 [ label="dfpn_client_check_results\n void CONV ()\niterate.c:704" ]
+node_629 [ label="dfpn_client_check_results\n void CONV ()\ndeifdef/iterate.c:704" ]
 	node_235 -> node_629 ;
 	node_629 -> node_116 ;
 node_631 [ label="strcmp\n\n:0" ]
 	node_629 -> node_631 ;
 	node_629 -> node_263 ;
-node_633 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_633 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_629 -> node_633 ;
 node_634 [ label="assert\n\n:0" ]
 	node_235 -> node_634 ;
 	node_235 -> node_116 ;
 	node_235 -> node_158 ;
-node_637 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_637 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_235 -> node_637 ;
 node_638 [ label="abs\n\n:0" ]
 	node_235 -> node_638 ;
-node_639 [ label="tlp_start\n int ()\nthread.c:234" ]
+node_639 [ label="tlp_start\n int ()\ndeifdef/thread.c:234" ]
 	node_235 -> node_639 ;
-node_640 [ label="start_address\n unsigned int __stdcall ()\nthread.c:332" ]
+node_640 [ label="start_address\n unsigned int __stdcall ()\ndeifdef/thread.c:332" ]
 	node_639 -> node_640 ;
 	node_640 -> node_116 ;
 node_642 [ label="Out\n\n:0" ]
 	node_640 -> node_642 ;
-node_643 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_643 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_640 -> node_643 ;
-node_644 [ label="wait_work\n void ()\nthread.c:349" ]
+node_644 [ label="wait_work\n void ()\ndeifdef/thread.c:349" ]
 	node_640 -> node_644 ;
 	node_644 -> node_117 ;
 	node_644 -> node_116 ;
-node_647 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_647 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_644 -> node_647 ;
-node_648 [ label="tlp_search\n int CONV ()\nsearch.c:450" ]
+node_648 [ label="tlp_search\n int CONV ()\ndeifdef/search.c:450" ]
 	node_644 -> node_648 ;
 node_649 [ label="assert\n\n:0" ]
 	node_648 -> node_649 ;
 	node_648 -> node_116 ;
-node_651 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_651 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_648 -> node_651 ;
-node_652 [ label="gen_next_evasion\n int CONV ()\nnext.c:234" ]
+node_652 [ label="gen_next_evasion\n int CONV ()\ndeifdef/next.c:234" ]
 	node_648 -> node_652 ;
 node_653 [ label="GenEvasion\n\n:0" ]
 	node_652 -> node_653 ;
 	node_652 -> node_123 ;
-node_655 [ label="out_board\n int ()\nio.c:224" ]
+node_655 [ label="out_board\n int ()\ndeifdef/io.c:224" ]
 	node_652 -> node_655 ;
 node_656 [ label="I2To\n\n:0" ]
 	node_655 -> node_656 ;
@@ -1253,9 +1253,9 @@ node_659 [ label="fprintf\n\n:0" ]
 	node_655 -> node_659 ;
 node_660 [ label="OutBoard0\n\n:0" ]
 	node_655 -> node_660 ;
-node_661 [ label="out_hand\n void CONV ()\nio.c:428" ]
+node_661 [ label="out_hand\n void CONV ()\ndeifdef/io.c:428" ]
 	node_655 -> node_661 ;
-node_662 [ label="out_hand0\n void CONV ()\nio.c:439" ]
+node_662 [ label="out_hand0\n void CONV ()\ndeifdef/io.c:439" ]
 	node_661 -> node_662 ;
 node_663 [ label="fprintf\n\n:0" ]
 	node_662 -> node_663 ;
@@ -1286,7 +1286,7 @@ node_675 [ label="UToCap\n\n:0" ]
 	node_652 -> node_573 ;
 node_678 [ label="assert\n\n:0" ]
 	node_652 -> node_678 ;
-node_679 [ label="gen_next_move\n int CONV ()\nnext.c:6" ]
+node_679 [ label="gen_next_move\n int CONV ()\ndeifdef/next.c:6" ]
 	node_648 -> node_679 ;
 node_680 [ label="GenCaptures\n\n:0" ]
 	node_679 -> node_680 ;
@@ -1305,11 +1305,11 @@ node_688 [ label="I2IsPromote\n\n:0" ]
 	node_679 -> node_688 ;
 node_689 [ label="I2PieceMove\n\n:0" ]
 	node_679 -> node_689 ;
-node_690 [ label="phash\n unsigned int CONV ()\nphash.c:259" ]
+node_690 [ label="phash\n unsigned int CONV ()\ndeifdef/phash.c:259" ]
 	node_679 -> node_690 ;
 node_691 [ label="assert\n\n:0" ]
 	node_679 -> node_691 ;
-node_692 [ label="hist_add\n void CONV ()\nsearch.c:854" ]
+node_692 [ label="hist_add\n void CONV ()\ndeifdef/search.c:854" ]
 	node_648 -> node_692 ;
 node_693 [ label="UToCap\n\n:0" ]
 	node_692 -> node_693 ;
@@ -1345,23 +1345,23 @@ node_709 [ label="UnMakeMove\n\n:0" ]
 	node_648 -> node_356 ;
 node_711 [ label="Flip\n\n:0" ]
 	node_648 -> node_711 ;
-node_712 [ label="search\n int CONV ()\nsearch.c:15" ]
+node_712 [ label="search\n int CONV ()\ndeifdef/search.c:15" ]
 	node_648 -> node_712 ;
 	node_712 -> node_355 ;
 	node_712 -> node_356 ;
 	node_712 -> node_294 ;
-node_716 [ label="detect_signals\n int CONV ()\nsearch.c:624" ]
+node_716 [ label="detect_signals\n int CONV ()\ndeifdef/search.c:624" ]
 	node_712 -> node_716 ;
 	node_716 -> node_629 ;
-node_718 [ label="next_cmdline\n int ()\nio.c:276" ]
+node_718 [ label="next_cmdline\n int ()\ndeifdef/io.c:276" ]
 	node_716 -> node_718 ;
 node_719 [ label="strchr\n\n:0" ]
 	node_718 -> node_719 ;
-node_720 [ label="read_command\n int CONV ()\nio.c:450" ]
+node_720 [ label="read_command\n int CONV ()\ndeifdef/io.c:450" ]
 	node_718 -> node_720 ;
 node_721 [ label="strlen\n\n:0" ]
 	node_720 -> node_721 ;
-node_722 [ label="sckt_in\n int CONV ()\nsckt.c:203" ]
+node_722 [ label="sckt_in\n int CONV ()\ndeifdef/sckt.c:203" ]
 	node_720 -> node_722 ;
 node_723 [ label="Out\n\n:0" ]
 	node_722 -> node_723 ;
@@ -1372,7 +1372,7 @@ node_725 [ label="FD_SET\n\n:0" ]
 node_726 [ label="select\n\n:0" ]
 	node_722 -> node_726 ;
 	node_722 -> node_132 ;
-node_728 [ label="sckt_out\n int CONV ()\nsckt.c:250" ]
+node_728 [ label="sckt_out\n int CONV ()\ndeifdef/sckt.c:250" ]
 	node_722 -> node_728 ;
 node_729 [ label="va_start\n\n:0" ]
 	node_728 -> node_729 ;
@@ -1394,9 +1394,9 @@ node_738 [ label="Out\n\n:0" ]
 	node_720 -> node_738 ;
 node_739 [ label="strchr\n\n:0" ]
 	node_720 -> node_739 ;
-node_740 [ label="check_input_buffer\n int CONV ()\nio.c:495" ]
+node_740 [ label="check_input_buffer\n int CONV ()\ndeifdef/io.c:495" ]
 	node_718 -> node_740 ;
-node_741 [ label="sckt_check\n int CONV ()\nsckt.c:184" ]
+node_741 [ label="sckt_check\n int CONV ()\ndeifdef/sckt.c:184" ]
 	node_740 -> node_741 ;
 node_742 [ label="FD_ZERO\n\n:0" ]
 	node_741 -> node_742 ;
@@ -1411,7 +1411,7 @@ node_747 [ label="strlen\n\n:0" ]
 	node_718 -> node_747 ;
 node_748 [ label="memcpy\n\n:0" ]
 	node_718 -> node_748 ;
-node_749 [ label="out_file\n void CONV ()\nio.c:505" ]
+node_749 [ label="out_file\n void CONV ()\ndeifdef/io.c:505" ]
 	node_718 -> node_749 ;
 node_750 [ label="va_start\n\n:0" ]
 	node_749 -> node_750 ;
@@ -1424,23 +1424,23 @@ node_753 [ label="fflush\n\n:0" ]
 	node_716 -> node_123 ;
 node_755 [ label="ShutdownAll\n\n:0" ]
 	node_716 -> node_755 ;
-node_756 [ label="procedure\n int CONV ()\nproce.c:59" ]
+node_756 [ label="procedure\n int CONV ()\ndeifdef/proce.c:59" ]
 	node_716 -> node_756 ;
-node_757 [ label="proce_csalan\n int CONV ()\nproce.c:105" ]
+node_757 [ label="proce_csalan\n int CONV ()\ndeifdef/proce.c:105" ]
 	node_756 -> node_757 ;
 node_758 [ label="strtok_r\n\n:0" ]
 	node_757 -> node_758 ;
 	node_757 -> node_176 ;
 node_760 [ label="strtol\n\n:0" ]
 	node_757 -> node_760 ;
-node_761 [ label="adjust_time\n void CONV ()\ntime.c:77" ]
+node_761 [ label="adjust_time\n void CONV ()\ndeifdef/time.c:77" ]
 	node_757 -> node_761 ;
 	node_761 -> node_123 ;
 node_763 [ label="Out\n\n:0" ]
 	node_757 -> node_763 ;
 node_764 [ label="Flip\n\n:0" ]
 	node_757 -> node_764 ;
-node_765 [ label="cmd_usrmove\n int CONV ()\nproce.c:439" ]
+node_765 [ label="cmd_usrmove\n int CONV ()\ndeifdef/proce.c:439" ]
 	node_757 -> node_765 ;
 node_766 [ label="strtok_r\n\n:0" ]
 	node_765 -> node_766 ;
@@ -1449,15 +1449,15 @@ node_767 [ label="strtol\n\n:0" ]
 node_768 [ label="strcmp\n\n:0" ]
 	node_765 -> node_768 ;
 	node_765 -> node_263 ;
-node_770 [ label="update_time\n int CONV ()\ntime.c:62" ]
+node_770 [ label="update_time\n int CONV ()\ndeifdef/time.c:62" ]
 	node_765 -> node_770 ;
 	node_770 -> node_53 ;
 node_772 [ label="Flip\n\n:0" ]
 	node_765 -> node_772 ;
 	node_765 -> node_761 ;
-node_774 [ label="out_CSA\n void ()\ncsa.c:88" ]
+node_774 [ label="out_CSA\n void ()\ndeifdef/csa.c:88" ]
 	node_765 -> node_774 ;
-node_775 [ label="out_CSA_header\n void ()\ncsa.c:547" ]
+node_775 [ label="out_CSA_header\n void ()\ndeifdef/csa.c:547" ]
 	node_774 -> node_775 ;
 node_776 [ label="fprintf\n\n:0" ]
 	node_775 -> node_776 ;
@@ -1486,7 +1486,7 @@ node_789 [ label="OutCsaShogi\n\n:0" ]
 	node_765 -> node_56 ;
 node_791 [ label="Out\n\n:0" ]
 	node_765 -> node_791 ;
-node_792 [ label="interpret_CSA_move\n int ()\ncsa.c:274" ]
+node_792 [ label="interpret_CSA_move\n int ()\ndeifdef/csa.c:274" ]
 	node_765 -> node_792 ;
 	node_792 -> node_298 ;
 node_794 [ label="To2Move\n\n:0" ]
@@ -1515,7 +1515,7 @@ node_805 [ label="IsHandPawn\n\n:0" ]
 	node_792 -> node_805 ;
 node_806 [ label="BBToU\n\n:0" ]
 	node_792 -> node_806 ;
-node_807 [ label="make_move_root\n int CONV ()\nmakemove.c:298" ]
+node_807 [ label="make_move_root\n int CONV ()\ndeifdef/makemove.c:298" ]
 	node_765 -> node_807 ;
 node_808 [ label="MakeMove\n\n:0" ]
 	node_807 -> node_808 ;
@@ -1536,14 +1536,14 @@ node_818 [ label="snprintf\n\n:0" ]
 	node_807 -> node_818 ;
 	node_807 -> node_158 ;
 	node_807 -> node_263 ;
-node_821 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_821 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_807 -> node_821 ;
 	node_765 -> node_728 ;
-node_823 [ label="cmd_suspend\n int CONV ()\nproce.c:1113" ]
+node_823 [ label="cmd_suspend\n int CONV ()\ndeifdef/proce.c:1113" ]
 	node_765 -> node_823 ;
 node_824 [ label="snprintf\n\n:0" ]
 	node_765 -> node_824 ;
-node_825 [ label="com_turn_start\n int CONV ()\nutility.c:392" ]
+node_825 [ label="com_turn_start\n int CONV ()\ndeifdef/utility.c:392" ]
 	node_765 -> node_825 ;
 node_826 [ label="assert\n\n:0" ]
 	node_825 -> node_826 ;
@@ -1561,7 +1561,7 @@ node_834 [ label="Flip\n\n:0" ]
 	node_825 -> node_834 ;
 node_835 [ label="OutBeep\n\n:0" ]
 	node_825 -> node_835 ;
-node_836 [ label="show_prompt\n void ()\nio.c:139" ]
+node_836 [ label="show_prompt\n void ()\ndeifdef/io.c:139" ]
 	node_825 -> node_836 ;
 node_837 [ label="Out\n\n:0" ]
 	node_836 -> node_837 ;
@@ -1573,7 +1573,7 @@ node_841 [ label="Out\n\n:0" ]
 	node_825 -> node_655 ;
 node_843 [ label="strcmp\n\n:0" ]
 	node_757 -> node_843 ;
-node_844 [ label="cmd_resign\n int CONV ()\nproce.c:928" ]
+node_844 [ label="cmd_resign\n int CONV ()\ndeifdef/proce.c:928" ]
 	node_757 -> node_844 ;
 node_845 [ label="strtok_r\n\n:0" ]
 	node_844 -> node_845 ;
@@ -1582,15 +1582,15 @@ node_845 [ label="strtok_r\n\n:0" ]
 node_848 [ label="strtol\n\n:0" ]
 	node_844 -> node_848 ;
 	node_757 -> node_728 ;
-node_850 [ label="sckt_recv_all\n int CONV ()\nsckt.c:173" ]
+node_850 [ label="sckt_recv_all\n int CONV ()\ndeifdef/sckt.c:173" ]
 	node_757 -> node_850 ;
 node_851 [ label="recv\n\n:0" ]
 	node_850 -> node_851 ;
 node_852 [ label="ShutdownAll\n\n:0" ]
 	node_757 -> node_852 ;
-node_853 [ label="cmd_quit\n int CONV ()\nproce.c:1108" ]
+node_853 [ label="cmd_quit\n int CONV ()\ndeifdef/proce.c:1108" ]
 	node_757 -> node_853 ;
-node_854 [ label="client_next_game\n int CONV ()\nsckt.c:22" ]
+node_854 [ label="client_next_game\n int CONV ()\ndeifdef/sckt.c:22" ]
 	node_757 -> node_854 ;
 	node_854 -> node_138 ;
 	node_854 -> node_728 ;
@@ -1608,20 +1608,20 @@ node_862 [ label="ShutdownAll\n\n:0" ]
 	node_854 -> node_45 ;
 	node_854 -> node_53 ;
 	node_854 -> node_825 ;
-node_866 [ label="proce_mnj\n int CONV ()\nproce.c:154" ]
+node_866 [ label="proce_mnj\n int CONV ()\ndeifdef/proce.c:154" ]
 	node_756 -> node_866 ;
 node_867 [ label="strtok_r\n\n:0" ]
 	node_866 -> node_867 ;
 node_868 [ label="strcmp\n\n:0" ]
 	node_866 -> node_868 ;
 	node_866 -> node_823 ;
-node_870 [ label="cmd_new\n int CONV ()\nproce.c:997" ]
+node_870 [ label="cmd_new\n int CONV ()\ndeifdef/proce.c:997" ]
 	node_866 -> node_870 ;
 node_871 [ label="strtok_r\n\n:0" ]
 	node_870 -> node_871 ;
 node_872 [ label="memset\n\n:0" ]
 	node_870 -> node_872 ;
-node_873 [ label="read_board_rep1\n int ()\ncsa.c:393" ]
+node_873 [ label="read_board_rep1\n int ()\ndeifdef/csa.c:393" ]
 	node_870 -> node_873 ;
 node_874 [ label="memcpy\n\n:0" ]
 	node_873 -> node_874 ;
@@ -1632,7 +1632,7 @@ node_877 [ label="strcmp\n\n:0" ]
 	node_870 -> node_877 ;
 	node_870 -> node_45 ;
 	node_870 -> node_53 ;
-node_880 [ label="analyze\n int ()\nponder.c:63" ]
+node_880 [ label="analyze\n int ()\ndeifdef/ponder.c:63" ]
 	node_866 -> node_880 ;
 node_881 [ label="MnjOut\n\n:0" ]
 	node_880 -> node_881 ;
@@ -1640,7 +1640,7 @@ node_881 [ label="MnjOut\n\n:0" ]
 	node_880 -> node_235 ;
 node_884 [ label="abs\n\n:0" ]
 	node_880 -> node_884 ;
-node_885 [ label="cmd_mnjignore\n int CONV ()\nproce.c:197" ]
+node_885 [ label="cmd_mnjignore\n int CONV ()\ndeifdef/proce.c:197" ]
 	node_866 -> node_885 ;
 node_886 [ label="strtok_r\n\n:0" ]
 	node_885 -> node_886 ;
@@ -1648,13 +1648,13 @@ node_887 [ label="strtol\n\n:0" ]
 	node_885 -> node_887 ;
 	node_885 -> node_792 ;
 	node_885 -> node_880 ;
-node_890 [ label="cmd_mnjmove\n int CONV ()\nproce.c:234" ]
+node_890 [ label="cmd_mnjmove\n int CONV ()\ndeifdef/proce.c:234" ]
 	node_866 -> node_890 ;
 node_891 [ label="strtok_r\n\n:0" ]
 	node_890 -> node_891 ;
 node_892 [ label="strtol\n\n:0" ]
 	node_890 -> node_892 ;
-node_893 [ label="unmake_move_root\n int CONV ()\nmakemove.c:397" ]
+node_893 [ label="unmake_move_root\n int CONV ()\ndeifdef/makemove.c:397" ]
 	node_890 -> node_893 ;
 node_894 [ label="Flip\n\n:0" ]
 	node_893 -> node_894 ;
@@ -1664,7 +1664,7 @@ node_895 [ label="UnMakeMove\n\n:0" ]
 node_897 [ label="snprintf\n\n:0" ]
 	node_893 -> node_897 ;
 	node_893 -> node_158 ;
-node_899 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_899 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_893 -> node_899 ;
 	node_890 -> node_792 ;
 	node_890 -> node_53 ;
@@ -1673,7 +1673,7 @@ node_899 [ label="unlock\n void CONV ()\nthread.c:18" ]
 	node_890 -> node_880 ;
 node_905 [ label="strtol\n\n:0" ]
 	node_866 -> node_905 ;
-node_906 [ label="proce_usi\n int CONV ()\nproce.c:273" ]
+node_906 [ label="proce_usi\n int CONV ()\ndeifdef/proce.c:273" ]
 	node_756 -> node_906 ;
 node_907 [ label="strtok_r\n\n:0" ]
 	node_906 -> node_907 ;
@@ -1681,11 +1681,11 @@ node_908 [ label="strcmp\n\n:0" ]
 	node_906 -> node_908 ;
 node_909 [ label="USIOut\n\n:0" ]
 	node_906 -> node_909 ;
-node_910 [ label="usi_ignore\n int CONV ()\nproce.c:319" ]
+node_910 [ label="usi_ignore\n int CONV ()\ndeifdef/proce.c:319" ]
 	node_906 -> node_910 ;
 node_911 [ label="strtok_r\n\n:0" ]
 	node_910 -> node_911 ;
-node_912 [ label="usi2csa\n int CONV ()\ncsa.c:436" ]
+node_912 [ label="usi2csa\n int CONV ()\ndeifdef/csa.c:436" ]
 	node_910 -> node_912 ;
 node_913 [ label="abs\n\n:0" ]
 	node_912 -> node_913 ;
@@ -1697,7 +1697,7 @@ node_916 [ label="snprintf\n\n:0" ]
 	node_912 -> node_916 ;
 	node_910 -> node_792 ;
 	node_906 -> node_53 ;
-node_919 [ label="usi_root_list\n int CONV ()\niterate.c:632" ]
+node_919 [ label="usi_root_list\n int CONV ()\ndeifdef/iterate.c:632" ]
 	node_906 -> node_919 ;
 node_920 [ label="Out\n\n:0" ]
 	node_919 -> node_920 ;
@@ -1710,13 +1710,13 @@ node_924 [ label="snprintf\n\n:0" ]
 	node_919 -> node_263 ;
 node_927 [ label="USIOut\n\n:0" ]
 	node_919 -> node_927 ;
-node_928 [ label="usi_go\n int CONV ()\nproce.c:338" ]
+node_928 [ label="usi_go\n int CONV ()\ndeifdef/proce.c:338" ]
 	node_906 -> node_928 ;
 node_929 [ label="strtok_r\n\n:0" ]
 	node_928 -> node_929 ;
 node_930 [ label="strcmp\n\n:0" ]
 	node_928 -> node_930 ;
-node_931 [ label="usi_book\n int CONV ()\niterate.c:683" ]
+node_931 [ label="usi_book\n int CONV ()\ndeifdef/iterate.c:683" ]
 	node_928 -> node_931 ;
 	node_931 -> node_236 ;
 node_933 [ label="USIOut\n\n:0" ]
@@ -1730,9 +1730,9 @@ node_937 [ label="strtol\n\n:0" ]
 	node_928 -> node_825 ;
 node_940 [ label="USIOut\n\n:0" ]
 	node_928 -> node_940 ;
-node_941 [ label="cmd_move_now\n int CONV ()\nproce.c:433" ]
+node_941 [ label="cmd_move_now\n int CONV ()\ndeifdef/proce.c:433" ]
 	node_906 -> node_941 ;
-node_942 [ label="usi_posi\n int CONV ()\nproce.c:396" ]
+node_942 [ label="usi_posi\n int CONV ()\ndeifdef/proce.c:396" ]
 	node_906 -> node_942 ;
 node_943 [ label="strtok_r\n\n:0" ]
 	node_942 -> node_943 ;
@@ -1744,7 +1744,7 @@ node_944 [ label="strcmp\n\n:0" ]
 	node_942 -> node_807 ;
 	node_942 -> node_53 ;
 	node_906 -> node_853 ;
-node_951 [ label="proce_cui\n int CONV ()\nproce.c:66" ]
+node_951 [ label="proce_cui\n int CONV ()\ndeifdef/proce.c:66" ]
 	node_756 -> node_951 ;
 node_952 [ label="strtok_r\n\n:0" ]
 	node_951 -> node_952 ;
@@ -1753,7 +1753,7 @@ node_952 [ label="strtok_r\n\n:0" ]
 node_955 [ label="strcmp\n\n:0" ]
 	node_951 -> node_955 ;
 	node_951 -> node_941 ;
-node_957 [ label="cmd_beep\n int CONV ()\nproce.c:555" ]
+node_957 [ label="cmd_beep\n int CONV ()\ndeifdef/proce.c:555" ]
 	node_951 -> node_957 ;
 node_958 [ label="strtok_r\n\n:0" ]
 	node_957 -> node_958 ;
@@ -1761,7 +1761,7 @@ node_959 [ label="strcmp\n\n:0" ]
 	node_957 -> node_959 ;
 node_960 [ label="CmdBook\n\n:0" ]
 	node_951 -> node_960 ;
-node_961 [ label="cmd_display\n int CONV ()\nproce.c:688" ]
+node_961 [ label="cmd_display\n int CONV ()\ndeifdef/proce.c:688" ]
 	node_951 -> node_961 ;
 node_962 [ label="strtok_r\n\n:0" ]
 	node_961 -> node_962 ;
@@ -1770,7 +1770,7 @@ node_963 [ label="strtol\n\n:0" ]
 node_964 [ label="Out\n\n:0" ]
 	node_961 -> node_964 ;
 	node_961 -> node_655 ;
-node_966 [ label="cmd_hash\n int CONV ()\nproce.c:723" ]
+node_966 [ label="cmd_hash\n int CONV ()\ndeifdef/proce.c:723" ]
 	node_951 -> node_966 ;
 node_967 [ label="strtok_r\n\n:0" ]
 	node_966 -> node_967 ;
@@ -1778,7 +1778,7 @@ node_968 [ label="strtol\n\n:0" ]
 	node_966 -> node_968 ;
 	node_966 -> node_189 ;
 	node_966 -> node_48 ;
-node_971 [ label="cmd_limit\n int CONV ()\nproce.c:744" ]
+node_971 [ label="cmd_limit\n int CONV ()\ndeifdef/proce.c:744" ]
 	node_951 -> node_971 ;
 node_972 [ label="strtok_r\n\n:0" ]
 	node_971 -> node_972 ;
@@ -1786,7 +1786,7 @@ node_973 [ label="strcmp\n\n:0" ]
 	node_971 -> node_973 ;
 node_974 [ label="strtol\n\n:0" ]
 	node_971 -> node_974 ;
-node_975 [ label="cmd_move\n int CONV ()\nproce.c:952" ]
+node_975 [ label="cmd_move\n int CONV ()\ndeifdef/proce.c:952" ]
 	node_951 -> node_975 ;
 node_976 [ label="strtok_r\n\n:0" ]
 	node_975 -> node_976 ;
@@ -1797,7 +1797,7 @@ node_979 [ label="strtol\n\n:0" ]
 	node_975 -> node_792 ;
 	node_975 -> node_807 ;
 	node_951 -> node_870 ;
-node_983 [ label="cmd_outmove\n int CONV ()\nproce.c:1028" ]
+node_983 [ label="cmd_outmove\n int CONV ()\ndeifdef/proce.c:1028" ]
 	node_951 -> node_983 ;
 node_984 [ label="Out\n\n:0" ]
 	node_983 -> node_984 ;
@@ -1807,31 +1807,31 @@ node_985 [ label="DFPNOut\n\n:0" ]
 	node_983 -> node_263 ;
 node_988 [ label="memcpy\n\n:0" ]
 	node_983 -> node_988 ;
-node_989 [ label="cmd_peek\n int CONV ()\nproce.c:571" ]
+node_989 [ label="cmd_peek\n int CONV ()\ndeifdef/proce.c:571" ]
 	node_951 -> node_989 ;
 node_990 [ label="strtok_r\n\n:0" ]
 	node_989 -> node_990 ;
 node_991 [ label="strcmp\n\n:0" ]
 	node_989 -> node_991 ;
-node_992 [ label="cmd_stdout\n int CONV ()\nproce.c:587" ]
+node_992 [ label="cmd_stdout\n int CONV ()\ndeifdef/proce.c:587" ]
 	node_951 -> node_992 ;
 node_993 [ label="strtok_r\n\n:0" ]
 	node_992 -> node_993 ;
 node_994 [ label="strcmp\n\n:0" ]
 	node_992 -> node_994 ;
-node_995 [ label="cmd_ping\n int CONV ()\nproce.c:717" ]
+node_995 [ label="cmd_ping\n int CONV ()\ndeifdef/proce.c:717" ]
 	node_951 -> node_995 ;
 node_996 [ label="OutCsaShogi\n\n:0" ]
 	node_995 -> node_996 ;
 node_997 [ label="Out\n\n:0" ]
 	node_995 -> node_997 ;
-node_998 [ label="cmd_ponder\n int CONV ()\nproce.c:619" ]
+node_998 [ label="cmd_ponder\n int CONV ()\ndeifdef/proce.c:619" ]
 	node_951 -> node_998 ;
 node_999 [ label="strtok_r\n\n:0" ]
 	node_998 -> node_999 ;
 node_1000 [ label="strcmp\n\n:0" ]
 	node_998 -> node_1000 ;
-node_1001 [ label="cmd_problem\n int CONV ()\nproce.c:1069" ]
+node_1001 [ label="cmd_problem\n int CONV ()\ndeifdef/proce.c:1069" ]
 	node_951 -> node_1001 ;
 node_1002 [ label="strtok_r\n\n:0" ]
 	node_1001 -> node_1002 ;
@@ -1840,17 +1840,17 @@ node_1003 [ label="strcmp\n\n:0" ]
 node_1004 [ label="strtol\n\n:0" ]
 	node_1001 -> node_1004 ;
 	node_1001 -> node_63 ;
-node_1006 [ label="solve_mate_problems\n int CONV ()\nproblem.c:86" ]
+node_1006 [ label="solve_mate_problems\n int CONV ()\ndeifdef/problem.c:86" ]
 	node_1001 -> node_1006 ;
-node_1007 [ label="in_CSA\n int ()\ncsa.c:177" ]
+node_1007 [ label="in_CSA\n int ()\ndeifdef/csa.c:177" ]
 	node_1006 -> node_1007 ;
-node_1008 [ label="in_CSA_header\n int ()\ncsa.c:585" ]
+node_1008 [ label="in_CSA_header\n int ()\ndeifdef/csa.c:585" ]
 	node_1007 -> node_1008 ;
-node_1009 [ label="read_CSA_line\n int ()\ncsa.c:815" ]
+node_1009 [ label="read_CSA_line\n int ()\ndeifdef/csa.c:815" ]
 	node_1008 -> node_1009 ;
-node_1010 [ label="skip_comment\n int ()\ncsa.c:843" ]
+node_1010 [ label="skip_comment\n int ()\ndeifdef/csa.c:843" ]
 	node_1009 -> node_1010 ;
-node_1011 [ label="read_char\n int ()\ncsa.c:859" ]
+node_1011 [ label="read_char\n int ()\ndeifdef/csa.c:859" ]
 	node_1010 -> node_1011 ;
 node_1012 [ label="fgetc\n\n:0" ]
 	node_1011 -> node_1012 ;
@@ -1874,10 +1874,10 @@ node_1021 [ label="memset\n\n:0" ]
 	node_1008 -> node_873 ;
 node_1023 [ label="isdigit\n\n:0" ]
 	node_1008 -> node_1023 ;
-node_1024 [ label="read_board_rep2\n int ()\ncsa.c:780" ]
+node_1024 [ label="read_board_rep2\n int ()\ndeifdef/csa.c:780" ]
 	node_1008 -> node_1024 ;
 	node_1024 -> node_298 ;
-node_1026 [ label="read_board_rep3\n int ()\ncsa.c:688" ]
+node_1026 [ label="read_board_rep3\n int ()\ndeifdef/csa.c:688" ]
 	node_1008 -> node_1026 ;
 node_1027 [ label="I2HandPawn\n\n:0" ]
 	node_1026 -> node_1027 ;
@@ -1913,16 +1913,16 @@ node_1043 [ label="strtol\n\n:0" ]
 	node_1006 -> node_807 ;
 node_1046 [ label="Out\n\n:0" ]
 	node_1006 -> node_1046 ;
-node_1047 [ label="dfpn\n int CONV ()\ndfpn.c:25" ]
+node_1047 [ label="dfpn\n int CONV ()\ndeifdef/dfpn.c:25" ]
 	node_1006 -> node_1047 ;
 	node_1047 -> node_304 ;
 	node_1047 -> node_53 ;
 node_1050 [ label="assert\n\n:0" ]
 	node_1047 -> node_1050 ;
-node_1051 [ label="mid\n int CONV ()\ndfpn.c:130" ]
+node_1051 [ label="mid\n int CONV ()\ndeifdef/dfpn.c:130" ]
 	node_1047 -> node_1051 ;
 	node_1051 -> node_716 ;
-node_1053 [ label="init_children\n int CONV ()\ndfpn.c:243" ]
+node_1053 [ label="init_children\n int CONV ()\ndeifdef/dfpn.c:243" ]
 	node_1051 -> node_1053 ;
 node_1054 [ label="GenCheck\n\n:0" ]
 	node_1053 -> node_1054 ;
@@ -1939,7 +1939,7 @@ node_1060 [ label="InCheck\n\n:0" ]
 	node_1053 -> node_1060 ;
 node_1061 [ label="UnMakeMove\n\n:0" ]
 	node_1053 -> node_1061 ;
-node_1062 [ label="b_have_evasion\n int CONV ()\ngenevasn.c:548" ]
+node_1062 [ label="b_have_evasion\n int CONV ()\ndeifdef/genevasn.c:548" ]
 	node_1053 -> node_1062 ;
 node_1063 [ label="Xor\n\n:0" ]
 	node_1062 -> node_1063 ;
@@ -1986,7 +1986,7 @@ node_1085 [ label="BBToU\n\n:0" ]
 	node_1062 -> node_1085 ;
 node_1086 [ label="IsMateBPawnDrop\n\n:0" ]
 	node_1062 -> node_1086 ;
-node_1087 [ label="w_have_evasion\n int CONV ()\ngenevasn.c:720" ]
+node_1087 [ label="w_have_evasion\n int CONV ()\ndeifdef/genevasn.c:720" ]
 	node_1053 -> node_1087 ;
 node_1088 [ label="Xor\n\n:0" ]
 	node_1087 -> node_1088 ;
@@ -2033,20 +2033,20 @@ node_1110 [ label="BBToU\n\n:0" ]
 	node_1087 -> node_1110 ;
 node_1111 [ label="IsMateWPawnDrop\n\n:0" ]
 	node_1087 -> node_1111 ;
-node_1112 [ label="dfpn_max_hand_b\n unsigned int CONV ()\ndfpnhash.c:323" ]
+node_1112 [ label="dfpn_max_hand_b\n unsigned int CONV ()\ndeifdef/dfpnhash.c:323" ]
 	node_1053 -> node_1112 ;
-node_1113 [ label="dfpn_max_hand_w\n unsigned int CONV ()\ndfpnhash.c:333" ]
+node_1113 [ label="dfpn_max_hand_w\n unsigned int CONV ()\ndeifdef/dfpnhash.c:333" ]
 	node_1053 -> node_1113 ;
 node_1114 [ label="From2Drop\n\n:0" ]
 	node_1053 -> node_1114 ;
 node_1115 [ label="BBContract\n\n:0" ]
 	node_1053 -> node_1115 ;
-node_1116 [ label="dfpn_detect_rep\n int CONV ()\ndfpnhash.c:343" ]
+node_1116 [ label="dfpn_detect_rep\n int CONV ()\ndeifdef/dfpnhash.c:343" ]
 	node_1053 -> node_1116 ;
 node_1117 [ label="DOut\n\n:0" ]
 	node_1053 -> node_1117 ;
 	node_1053 -> node_263 ;
-node_1119 [ label="dfpn_hash_probe\n void CONV ()\ndfpnhash.c:60" ]
+node_1119 [ label="dfpn_hash_probe\n void CONV ()\ndeifdef/dfpnhash.c:60" ]
 	node_1053 -> node_1119 ;
 node_1120 [ label="DFPNSignKey\n\n:0" ]
 	node_1119 -> node_1120 ;
@@ -2056,7 +2056,7 @@ node_1122 [ label="assert\n\n:0" ]
 	node_1119 -> node_1122 ;
 node_1123 [ label="DOut\n\n:0" ]
 	node_1119 -> node_1123 ;
-node_1124 [ label="dfpn_hand_supe\n int CONV ()\ndfpnhash.c:356" ]
+node_1124 [ label="dfpn_hand_supe\n int CONV ()\ndeifdef/dfpnhash.c:356" ]
 	node_1119 -> node_1124 ;
 node_1125 [ label="IsHandPawn\n\n:0" ]
 	node_1124 -> node_1125 ;
@@ -2082,7 +2082,7 @@ node_1135 [ label="I2PieceMove\n\n:0" ]
 	node_1053 -> node_1135 ;
 node_1136 [ label="UToCap\n\n:0" ]
 	node_1053 -> node_1136 ;
-node_1137 [ label="b_have_checks\n int CONV ()\ngenchk.c:1219" ]
+node_1137 [ label="b_have_checks\n int CONV ()\ndeifdef/genchk.c:1219" ]
 	node_1053 -> node_1137 ;
 node_1138 [ label="BBOr\n\n:0" ]
 	node_1137 -> node_1138 ;
@@ -2108,7 +2108,7 @@ node_1148 [ label="IsHandPawn\n\n:0" ]
 	node_1137 -> node_1148 ;
 node_1149 [ label="BBToU\n\n:0" ]
 	node_1137 -> node_1149 ;
-node_1150 [ label="is_mate_b_pawn_drop\n int CONV ()\nattack.c:87" ]
+node_1150 [ label="is_mate_b_pawn_drop\n int CONV ()\ndeifdef/attack.c:87" ]
 	node_1137 -> node_1150 ;
 node_1151 [ label="BBAnd\n\n:0" ]
 	node_1150 -> node_1151 ;
@@ -2148,7 +2148,7 @@ node_1168 [ label="AttackDiag2\n\n:0" ]
 	node_1137 -> node_472 ;
 node_1170 [ label="BBIni\n\n:0" ]
 	node_1137 -> node_1170 ;
-node_1171 [ label="add_behind_attacks\n void CONV ()\ngenchk.c:1946" ]
+node_1171 [ label="add_behind_attacks\n void CONV ()\ndeifdef/genchk.c:1946" ]
 	node_1137 -> node_1171 ;
 node_1172 [ label="assert\n\n:0" ]
 	node_1171 -> node_1172 ;
@@ -2164,7 +2164,7 @@ node_1177 [ label="AttackDragon\n\n:0" ]
 	node_1137 -> node_1177 ;
 node_1178 [ label="AttackHorse\n\n:0" ]
 	node_1137 -> node_1178 ;
-node_1179 [ label="last_one12\n int CONV ()\nbitop.c:128" ]
+node_1179 [ label="last_one12\n int CONV ()\ndeifdef/bitop.c:128" ]
 	node_1137 -> node_1179 ;
 node_1180 [ label="AttackRook\n\n:0" ]
 	node_1137 -> node_1180 ;
@@ -2172,11 +2172,11 @@ node_1180 [ label="AttackRook\n\n:0" ]
 node_1182 [ label="AttackBishop\n\n:0" ]
 	node_1137 -> node_1182 ;
 	node_1137 -> node_40 ;
-node_1184 [ label="last_one01\n int CONV ()\nbitop.c:122" ]
+node_1184 [ label="last_one01\n int CONV ()\ndeifdef/bitop.c:122" ]
 	node_1137 -> node_1184 ;
 node_1185 [ label="BBContract\n\n:0" ]
 	node_1137 -> node_1185 ;
-node_1186 [ label="w_have_checks\n int CONV ()\ngenchk.c:1582" ]
+node_1186 [ label="w_have_checks\n int CONV ()\ndeifdef/genchk.c:1582" ]
 	node_1053 -> node_1186 ;
 node_1187 [ label="BBOr\n\n:0" ]
 	node_1186 -> node_1187 ;
@@ -2202,7 +2202,7 @@ node_1197 [ label="IsHandPawn\n\n:0" ]
 	node_1186 -> node_1197 ;
 node_1198 [ label="BBToU\n\n:0" ]
 	node_1186 -> node_1198 ;
-node_1199 [ label="is_mate_w_pawn_drop\n int CONV ()\nattack.c:131" ]
+node_1199 [ label="is_mate_w_pawn_drop\n int CONV ()\ndeifdef/attack.c:131" ]
 	node_1186 -> node_1199 ;
 node_1200 [ label="BBAnd\n\n:0" ]
 	node_1199 -> node_1200 ;
@@ -2251,7 +2251,7 @@ node_1223 [ label="AttackDragon\n\n:0" ]
 	node_1186 -> node_1223 ;
 node_1224 [ label="AttackHorse\n\n:0" ]
 	node_1186 -> node_1224 ;
-node_1225 [ label="first_one01\n int CONV ()\nbitop.c:110" ]
+node_1225 [ label="first_one01\n int CONV ()\ndeifdef/bitop.c:110" ]
 	node_1186 -> node_1225 ;
 node_1226 [ label="AttackRook\n\n:0" ]
 	node_1186 -> node_1226 ;
@@ -2259,7 +2259,7 @@ node_1226 [ label="AttackRook\n\n:0" ]
 node_1228 [ label="AttackBishop\n\n:0" ]
 	node_1186 -> node_1228 ;
 	node_1186 -> node_43 ;
-node_1230 [ label="first_one12\n int CONV ()\nbitop.c:116" ]
+node_1230 [ label="first_one12\n int CONV ()\ndeifdef/bitop.c:116" ]
 	node_1186 -> node_1230 ;
 node_1231 [ label="BBContract\n\n:0" ]
 	node_1186 -> node_1231 ;
@@ -2267,20 +2267,20 @@ node_1232 [ label="BBOr\n\n:0" ]
 	node_1053 -> node_1232 ;
 node_1233 [ label="IsMateIn1Ply\n\n:0" ]
 	node_1053 -> node_1233 ;
-node_1234 [ label="dfpn_hash_store\n void CONV ()\ndfpnhash.c:137" ]
+node_1234 [ label="dfpn_hash_store\n void CONV ()\ndeifdef/dfpnhash.c:137" ]
 	node_1051 -> node_1234 ;
 node_1235 [ label="assert\n\n:0" ]
 	node_1234 -> node_1235 ;
 node_1236 [ label="UINT64_C\n\n:0" ]
 	node_1234 -> node_1236 ;
-node_1237 [ label="calc_hand_win\n unsigned int CONV ()\ndfpnhash.c:397" ]
+node_1237 [ label="calc_hand_win\n unsigned int CONV ()\ndeifdef/dfpnhash.c:397" ]
 	node_1234 -> node_1237 ;
-node_1238 [ label="hand_and\n unsigned int CONV ()\ndfpnhash.c:444" ]
+node_1238 [ label="hand_and\n unsigned int CONV ()\ndeifdef/dfpnhash.c:444" ]
 	node_1237 -> node_1238 ;
 	node_1237 -> node_1124 ;
 node_1240 [ label="assert\n\n:0" ]
 	node_1237 -> node_1240 ;
-node_1241 [ label="dbg_is_hand_valid\n int CONV ()\ndfpnhash.c:458" ]
+node_1241 [ label="dbg_is_hand_valid\n int CONV ()\ndeifdef/dfpnhash.c:458" ]
 	node_1237 -> node_1241 ;
 node_1242 [ label="I2HandPawn\n\n:0" ]
 	node_1241 -> node_1242 ;
@@ -2302,10 +2302,10 @@ node_1250 [ label="UToCap\n\n:0" ]
 	node_1237 -> node_1250 ;
 node_1251 [ label="From2Drop\n\n:0" ]
 	node_1237 -> node_1251 ;
-node_1252 [ label="calc_hand_lose\n unsigned int CONV ()\ndfpnhash.c:368" ]
+node_1252 [ label="calc_hand_lose\n unsigned int CONV ()\ndeifdef/dfpnhash.c:368" ]
 	node_1234 -> node_1252 ;
 	node_1252 -> node_1113 ;
-node_1254 [ label="hand_or\n unsigned int CONV ()\ndfpnhash.c:430" ]
+node_1254 [ label="hand_or\n unsigned int CONV ()\ndeifdef/dfpnhash.c:430" ]
 	node_1252 -> node_1254 ;
 	node_1252 -> node_1238 ;
 node_1256 [ label="assert\n\n:0" ]
@@ -2329,13 +2329,13 @@ node_1267 [ label="DOut\n\n:0" ]
 	node_1234 -> node_1267 ;
 node_1268 [ label="DOut\n\n:0" ]
 	node_1051 -> node_1268 ;
-node_1269 [ label="min_delta_c\n unsigned int CONV ()\ndfpn.c:495" ]
+node_1269 [ label="min_delta_c\n unsigned int CONV ()\ndeifdef/dfpn.c:495" ]
 	node_1051 -> node_1269 ;
 node_1270 [ label="assert\n\n:0" ]
 	node_1269 -> node_1270 ;
-node_1271 [ label="sum_phi_c\n unsigned int CONV ()\ndfpn.c:515" ]
+node_1271 [ label="sum_phi_c\n unsigned int CONV ()\ndeifdef/dfpn.c:515" ]
 	node_1051 -> node_1271 ;
-node_1272 [ label="select_child\n void CONV ()\ndfpn.c:429" ]
+node_1272 [ label="select_child\n void CONV ()\ndeifdef/dfpn.c:429" ]
 	node_1051 -> node_1272 ;
 node_1273 [ label="assert\n\n:0" ]
 	node_1272 -> node_1273 ;
@@ -2345,7 +2345,7 @@ node_1275 [ label="abs\n\n:0" ]
 	node_1272 -> node_1275 ;
 node_1276 [ label="assert\n\n:0" ]
 	node_1051 -> node_1276 ;
-node_1277 [ label="useless_delta_ticking\n int CONV ()\ndfpn.c:227" ]
+node_1277 [ label="useless_delta_ticking\n int CONV ()\ndeifdef/dfpn.c:227" ]
 	node_1051 -> node_1277 ;
 node_1278 [ label="Flip\n\n:0" ]
 	node_1051 -> node_1278 ;
@@ -2355,7 +2355,7 @@ node_1279 [ label="MakeMove\n\n:0" ]
 node_1281 [ label="UnMakeMove\n\n:0" ]
 	node_1051 -> node_1281 ;
 	node_1051 -> node_1119 ;
-node_1283 [ label="num2str\n void CONV ()\ndfpn.c:122" ]
+node_1283 [ label="num2str\n void CONV ()\ndeifdef/dfpn.c:122" ]
 	node_1047 -> node_1283 ;
 node_1284 [ label="snprintf\n\n:0" ]
 	node_1283 -> node_1284 ;
@@ -2364,14 +2364,14 @@ node_1285 [ label="Out\n\n:0" ]
 node_1286 [ label="DFPNOut\n\n:0" ]
 	node_1047 -> node_1286 ;
 	node_1047 -> node_263 ;
-node_1288 [ label="dfpn_hash_sat\n float CONV ()\ndfpnhash.c:44" ]
+node_1288 [ label="dfpn_hash_sat\n float CONV ()\ndeifdef/dfpnhash.c:44" ]
 	node_1047 -> node_1288 ;
-node_1289 [ label="record_wind\n int ()\ncsa.c:128" ]
+node_1289 [ label="record_wind\n int ()\ndeifdef/csa.c:128" ]
 	node_1006 -> node_1289 ;
 	node_1289 -> node_1009 ;
 node_1291 [ label="strcmp\n\n:0" ]
 	node_1289 -> node_1291 ;
-node_1292 [ label="solve_problems\n int CONV ()\nproblem.c:5" ]
+node_1292 [ label="solve_problems\n int CONV ()\ndeifdef/problem.c:5" ]
 	node_1001 -> node_1292 ;
 	node_1292 -> node_53 ;
 	node_1292 -> node_1007 ;
@@ -2388,7 +2388,7 @@ node_1296 [ label="Out\n\n:0" ]
 	node_1001 -> node_60 ;
 	node_1001 -> node_53 ;
 	node_951 -> node_853 ;
-node_1306 [ label="cmd_read\n int CONV ()\nproce.c:852" ]
+node_1306 [ label="cmd_read\n int CONV ()\ndeifdef/proce.c:852" ]
 	node_951 -> node_1306 ;
 node_1307 [ label="strtok_r\n\n:0" ]
 	node_1306 -> node_1307 ;
@@ -2404,7 +2404,7 @@ node_1313 [ label="getc\n\n:0" ]
 	node_1306 -> node_1313 ;
 node_1314 [ label="putc\n\n:0" ]
 	node_1306 -> node_1314 ;
-node_1315 [ label="read_record\n int ()\ncsa.c:18" ]
+node_1315 [ label="read_record\n int ()\ndeifdef/csa.c:18" ]
 	node_1306 -> node_1315 ;
 	node_1315 -> node_63 ;
 	node_1315 -> node_1008 ;
@@ -2416,7 +2416,7 @@ node_1321 [ label="remove\n\n:0" ]
 	node_1306 -> node_123 ;
 	node_951 -> node_844 ;
 	node_951 -> node_823 ;
-node_1325 [ label="cmd_time\n int CONV ()\nproce.c:1123" ]
+node_1325 [ label="cmd_time\n int CONV ()\ndeifdef/proce.c:1123" ]
 	node_951 -> node_1325 ;
 node_1326 [ label="strtok_r\n\n:0" ]
 	node_1325 -> node_1326 ;
@@ -2424,19 +2424,19 @@ node_1327 [ label="strcmp\n\n:0" ]
 	node_1325 -> node_1327 ;
 node_1328 [ label="strtol\n\n:0" ]
 	node_1325 -> node_1328 ;
-node_1329 [ label="reset_time\n int CONV ()\ntime.c:99" ]
+node_1329 [ label="reset_time\n int CONV ()\ndeifdef/time.c:99" ]
 	node_1325 -> node_1329 ;
 node_1330 [ label="snprintf\n\n:0" ]
 	node_1329 -> node_1330 ;
 node_1331 [ label="Out\n\n:0" ]
 	node_1329 -> node_1331 ;
-node_1332 [ label="cmd_newlog\n int CONV ()\nproce.c:603" ]
+node_1332 [ label="cmd_newlog\n int CONV ()\ndeifdef/proce.c:603" ]
 	node_951 -> node_1332 ;
 node_1333 [ label="strtok_r\n\n:0" ]
 	node_1332 -> node_1333 ;
 node_1334 [ label="strcmp\n\n:0" ]
 	node_1332 -> node_1334 ;
-node_1335 [ label="cmd_connect\n int CONV ()\nproce.c:1408" ]
+node_1335 [ label="cmd_connect\n int CONV ()\ndeifdef/proce.c:1408" ]
 	node_951 -> node_1335 ;
 node_1336 [ label="strtok_r\n\n:0" ]
 	node_1335 -> node_1336 ;
@@ -2447,13 +2447,13 @@ node_1338 [ label="strncpy\n\n:0" ]
 node_1339 [ label="strtol\n\n:0" ]
 	node_1335 -> node_1339 ;
 	node_1335 -> node_854 ;
-node_1341 [ label="cmd_sendpv\n int CONV ()\nproce.c:1449" ]
+node_1341 [ label="cmd_sendpv\n int CONV ()\ndeifdef/proce.c:1449" ]
 	node_951 -> node_1341 ;
 node_1342 [ label="strtok_r\n\n:0" ]
 	node_1341 -> node_1342 ;
 node_1343 [ label="strcmp\n\n:0" ]
 	node_1341 -> node_1343 ;
-node_1344 [ label="cmd_mnj\n int CONV ()\nproce.c:1465" ]
+node_1344 [ label="cmd_mnj\n int CONV ()\ndeifdef/proce.c:1465" ]
 	node_951 -> node_1344 ;
 node_1345 [ label="strtok_r\n\n:0" ]
 	node_1344 -> node_1345 ;
@@ -2465,7 +2465,7 @@ node_1348 [ label="strncpy\n\n:0" ]
 	node_1344 -> node_1348 ;
 node_1349 [ label="strtod\n\n:0" ]
 	node_1344 -> node_1349 ;
-node_1350 [ label="mnj_reset_tbl\n int CONV ()\nutility.c:486" ]
+node_1350 [ label="mnj_reset_tbl\n int CONV ()\ndeifdef/utility.c:486" ]
 	node_1344 -> node_1350 ;
 	node_1350 -> node_4 ;
 	node_1350 -> node_52 ;
@@ -2483,7 +2483,7 @@ node_1360 [ label="Out\n\n:0" ]
 node_1361 [ label="MnjOut\n\n:0" ]
 	node_1344 -> node_1361 ;
 	node_1344 -> node_823 ;
-node_1363 [ label="cmd_dfpn\n int CONV ()\nproce.c:1277" ]
+node_1363 [ label="cmd_dfpn\n int CONV ()\ndeifdef/proce.c:1277" ]
 	node_951 -> node_1363 ;
 node_1364 [ label="strtok_r\n\n:0" ]
 	node_1363 -> node_1364 ;
@@ -2498,7 +2498,7 @@ node_1369 [ label="strncpy\n\n:0" ]
 	node_1363 -> node_138 ;
 node_1371 [ label="DFPNOut\n\n:0" ]
 	node_1363 -> node_1371 ;
-node_1372 [ label="cmd_dfpn_client\n int CONV ()\nproce.c:1379" ]
+node_1372 [ label="cmd_dfpn_client\n int CONV ()\ndeifdef/proce.c:1379" ]
 	node_951 -> node_1372 ;
 node_1373 [ label="strtok_r\n\n:0" ]
 	node_1372 -> node_1373 ;
@@ -2512,7 +2512,7 @@ node_1377 [ label="Out\n\n:0" ]
 	node_1372 -> node_1377 ;
 	node_1372 -> node_45 ;
 	node_1372 -> node_53 ;
-node_1380 [ label="cmd_thread\n int CONV ()\nproce.c:1344" ]
+node_1380 [ label="cmd_thread\n int CONV ()\ndeifdef/proce.c:1344" ]
 	node_951 -> node_1380 ;
 node_1381 [ label="strtok_r\n\n:0" ]
 	node_1380 -> node_1381 ;
@@ -2523,13 +2523,13 @@ node_1383 [ label="strtol\n\n:0" ]
 node_1384 [ label="TlpEnd\n\n:0" ]
 	node_1380 -> node_1384 ;
 	node_1380 -> node_639 ;
-node_1386 [ label="cmd_stress\n int CONV ()\nproce.c:642" ]
+node_1386 [ label="cmd_stress\n int CONV ()\ndeifdef/proce.c:642" ]
 	node_951 -> node_1386 ;
 node_1387 [ label="strtok_r\n\n:0" ]
 	node_1386 -> node_1387 ;
 node_1388 [ label="strcmp\n\n:0" ]
 	node_1386 -> node_1388 ;
-node_1389 [ label="cmd_learn\n int CONV ()\nproce.c:1187" ]
+node_1389 [ label="cmd_learn\n int CONV ()\ndeifdef/proce.c:1187" ]
 	node_951 -> node_1389 ;
 node_1390 [ label="strtok_r\n\n:0" ]
 	node_1389 -> node_1390 ;
@@ -2539,10 +2539,10 @@ node_1392 [ label="strtol\n\n:0" ]
 	node_1389 -> node_1392 ;
 	node_1389 -> node_189 ;
 	node_1389 -> node_48 ;
-node_1395 [ label="learn\n int ()\nlearn1.c:75" ]
+node_1395 [ label="learn\n int ()\ndeifdef/learn1.c:75" ]
 	node_1389 -> node_1395 ;
 	node_1395 -> node_49 ;
-node_1397 [ label="fill_param_zero\n void ()\nlearn2.c:49" ]
+node_1397 [ label="fill_param_zero\n void ()\ndeifdef/learn2.c:49" ]
 	node_1395 -> node_1397 ;
 	node_1397 -> node_44 ;
 node_1399 [ label="Out\n\n:0" ]
@@ -2550,16 +2550,16 @@ node_1399 [ label="Out\n\n:0" ]
 	node_1395 -> node_63 ;
 	node_1395 -> node_5 ;
 	node_1395 -> node_60 ;
-node_1403 [ label="learn_parse1\n int ()\nlearn1.c:163" ]
+node_1403 [ label="learn_parse1\n int ()\ndeifdef/learn1.c:163" ]
 	node_1395 -> node_1403 ;
-node_1404 [ label="ini_book\n void ()\nlearn1.c:752" ]
+node_1404 [ label="ini_book\n void ()\ndeifdef/learn1.c:752" ]
 	node_1403 -> node_1404 ;
 	node_1403 -> node_49 ;
-node_1406 [ label="parse1_worker\n unsigned int __stdcall ()\nlearn1.c:253" ]
+node_1406 [ label="parse1_worker\n unsigned int __stdcall ()\ndeifdef/learn1.c:253" ]
 	node_1403 -> node_1406 ;
 node_1407 [ label="Move2S\n\n:0" ]
 	node_1406 -> node_1407 ;
-node_1408 [ label="make_pv\n void ()\nlearn1.c:321" ]
+node_1408 [ label="make_pv\n void ()\ndeifdef/learn1.c:321" ]
 	node_1406 -> node_1408 ;
 node_1409 [ label="Flip\n\n:0" ]
 	node_1408 -> node_1409 ;
@@ -2584,7 +2584,7 @@ node_1418 [ label="UnMakeMove\n\n:0" ]
 node_1420 [ label="abs\n\n:0" ]
 	node_1408 -> node_1420 ;
 	node_1408 -> node_123 ;
-node_1422 [ label="func\n double ()\nlearn1.c:714" ]
+node_1422 [ label="func\n double ()\ndeifdef/learn1.c:714" ]
 	node_1408 -> node_1422 ;
 node_1423 [ label="exp\n\n:0" ]
 	node_1422 -> node_1423 ;
@@ -2599,46 +2599,46 @@ node_1427 [ label="InCheck\n\n:0" ]
 	node_1406 -> node_116 ;
 node_1429 [ label="fwrite\n\n:0" ]
 	node_1406 -> node_1429 ;
-node_1430 [ label="read_game\n int ()\nlearn1.c:441" ]
+node_1430 [ label="read_game\n int ()\ndeifdef/learn1.c:441" ]
 	node_1406 -> node_1430 ;
 node_1431 [ label="Out\n\n:0" ]
 	node_1430 -> node_1431 ;
 	node_1430 -> node_1007 ;
 node_1433 [ label="memcmp\n\n:0" ]
 	node_1430 -> node_1433 ;
-node_1434 [ label="rep_check_learn\n int ()\nlearn1.c:795" ]
+node_1434 [ label="rep_check_learn\n int ()\ndeifdef/learn1.c:795" ]
 	node_1430 -> node_1434 ;
-node_1435 [ label="book_probe_learn\n int ()\nlearn1.c:762" ]
+node_1435 [ label="book_probe_learn\n int ()\ndeifdef/learn1.c:762" ]
 	node_1430 -> node_1435 ;
 	node_1430 -> node_807 ;
 	node_1430 -> node_1289 ;
-node_1438 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_1438 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_1406 -> node_1438 ;
 	node_1403 -> node_117 ;
 node_1440 [ label="Out\n\n:0" ]
 	node_1403 -> node_1440 ;
 	node_1403 -> node_189 ;
 	node_1395 -> node_9 ;
-node_1443 [ label="learn_parse2\n int ()\nlearn1.c:507" ]
+node_1443 [ label="learn_parse2\n int ()\ndeifdef/learn1.c:507" ]
 	node_1395 -> node_1443 ;
 	node_1443 -> node_49 ;
 node_1445 [ label="Out\n\n:0" ]
 	node_1443 -> node_1445 ;
-node_1446 [ label="parse2_worker\n unsigned int __stdcall ()\nlearn1.c:571" ]
+node_1446 [ label="parse2_worker\n unsigned int __stdcall ()\ndeifdef/learn1.c:571" ]
 	node_1443 -> node_1446 ;
-node_1447 [ label="ini_param\n void ()\nlearn2.c:16" ]
+node_1447 [ label="ini_param\n void ()\ndeifdef/learn2.c:16" ]
 	node_1446 -> node_1447 ;
 	node_1446 -> node_116 ;
-node_1449 [ label="read_buf\n int ()\nlearn1.c:617" ]
+node_1449 [ label="read_buf\n int ()\ndeifdef/learn1.c:617" ]
 	node_1446 -> node_1449 ;
 node_1450 [ label="fread\n\n:0" ]
 	node_1449 -> node_1450 ;
 node_1451 [ label="feof\n\n:0" ]
 	node_1449 -> node_1451 ;
-node_1452 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_1452 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_1446 -> node_1452 ;
 	node_1446 -> node_45 ;
-node_1454 [ label="s2move\n unsigned int ()\nlearn1.c:739" ]
+node_1454 [ label="s2move\n unsigned int ()\ndeifdef/learn1.c:739" ]
 	node_1446 -> node_1454 ;
 node_1455 [ label="I2From\n\n:0" ]
 	node_1454 -> node_1455 ;
@@ -2648,7 +2648,7 @@ node_1457 [ label="Piece2Move\n\n:0" ]
 	node_1454 -> node_1457 ;
 node_1458 [ label="Cap2Move\n\n:0" ]
 	node_1454 -> node_1458 ;
-node_1459 [ label="calc_deriv\n int ()\nlearn1.c:636" ]
+node_1459 [ label="calc_deriv\n int ()\ndeifdef/learn1.c:636" ]
 	node_1446 -> node_1459 ;
 	node_1459 -> node_1454 ;
 node_1461 [ label="MakeMove\n\n:0" ]
@@ -2659,13 +2659,13 @@ node_1462 [ label="Flip\n\n:0" ]
 node_1464 [ label="UnMakeMove\n\n:0" ]
 	node_1459 -> node_1464 ;
 	node_1459 -> node_1422 ;
-node_1466 [ label="dfunc\n double ()\nlearn1.c:724" ]
+node_1466 [ label="dfunc\n double ()\ndeifdef/learn1.c:724" ]
 	node_1459 -> node_1466 ;
 node_1467 [ label="exp\n\n:0" ]
 	node_1466 -> node_1467 ;
-node_1468 [ label="inc_param\n void ()\nlearn2.c:337" ]
+node_1468 [ label="inc_param\n void ()\ndeifdef/learn2.c:337" ]
 	node_1459 -> node_1468 ;
-node_1469 [ label="make_list\n int ()\nlearn2.c:374" ]
+node_1469 [ label="make_list\n int ()\ndeifdef/learn2.c:374" ]
 	node_1468 -> node_1469 ;
 node_1470 [ label="I2HandPawn\n\n:0" ]
 	node_1469 -> node_1470 ;
@@ -2702,19 +2702,19 @@ node_1485 [ label="Flip\n\n:0" ]
 node_1486 [ label="InCheck\n\n:0" ]
 	node_1446 -> node_1486 ;
 	node_1443 -> node_117 ;
-node_1488 [ label="add_param\n void ()\nlearn2.c:28" ]
+node_1488 [ label="add_param\n void ()\ndeifdef/learn2.c:28" ]
 	node_1443 -> node_1488 ;
-node_1489 [ label="calc_penalty\n double ()\nlearn2.c:196" ]
+node_1489 [ label="calc_penalty\n double ()\ndeifdef/learn2.c:196" ]
 	node_1443 -> node_1489 ;
-node_1490 [ label="param_sym\n void ()\nlearn2.c:71" ]
+node_1490 [ label="param_sym\n void ()\ndeifdef/learn2.c:71" ]
 	node_1443 -> node_1490 ;
-node_1491 [ label="renovate_param\n void ()\nlearn2.c:207" ]
+node_1491 [ label="renovate_param\n void ()\ndeifdef/learn2.c:207" ]
 	node_1443 -> node_1491 ;
 	node_1491 -> node_31 ;
-node_1493 [ label="rmt\n void ()\nlearn2.c:670" ]
+node_1493 [ label="rmt\n void ()\ndeifdef/learn2.c:670" ]
 	node_1491 -> node_1493 ;
 	node_1493 -> node_123 ;
-node_1495 [ label="fv_sym\n void ()\nlearn2.c:135" ]
+node_1495 [ label="fv_sym\n void ()\ndeifdef/learn2.c:135" ]
 	node_1491 -> node_1495 ;
 node_1496 [ label="PcPcOnSq\n\n:0" ]
 	node_1495 -> node_1496 ;
@@ -2723,7 +2723,7 @@ node_1496 [ label="PcPcOnSq\n\n:0" ]
 node_1499 [ label="rewind\n\n:0" ]
 	node_1443 -> node_1499 ;
 	node_1443 -> node_189 ;
-node_1501 [ label="out_param\n int ()\nlearn2.c:264" ]
+node_1501 [ label="out_param\n int ()\ndeifdef/learn2.c:264" ]
 	node_1443 -> node_1501 ;
 	node_1501 -> node_5 ;
 node_1503 [ label="fprintf\n\n:0" ]
@@ -2738,10 +2738,10 @@ node_1505 [ label="fwrite\n\n:0" ]
 	node_716 -> node_53 ;
 	node_716 -> node_728 ;
 	node_716 -> node_116 ;
-node_1513 [ label="tlp_count_node\n uint64_t ()\nthread.c:311" ]
+node_1513 [ label="tlp_count_node\n uint64_t ()\ndeifdef/thread.c:311" ]
 	node_716 -> node_1513 ;
 	node_1513 -> node_1513 ;
-node_1515 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_1515 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_716 -> node_1515 ;
 node_1516 [ label="USIOut\n\n:0" ]
 	node_716 -> node_1516 ;
@@ -2752,10 +2752,10 @@ node_1518 [ label="abs\n\n:0" ]
 node_1519 [ label="Out\n\n:0" ]
 	node_716 -> node_1519 ;
 	node_716 -> node_263 ;
-node_1521 [ label="detect_rep\n int CONV ()\nsearch.c:811" ]
+node_1521 [ label="detect_rep\n int CONV ()\ndeifdef/search.c:811" ]
 	node_712 -> node_1521 ;
 	node_1521 -> node_217 ;
-node_1523 [ label="rep_type\n int CONV ()\nsearch.c:829" ]
+node_1523 [ label="rep_type\n int CONV ()\ndeifdef/search.c:829" ]
 	node_1521 -> node_1523 ;
 	node_1523 -> node_221 ;
 	node_712 -> node_320 ;
@@ -2767,7 +2767,7 @@ node_1527 [ label="IsMove\n\n:0" ]
 node_1529 [ label="DOut\n\n:0" ]
 	node_712 -> node_1529 ;
 	node_712 -> node_414 ;
-node_1531 [ label="hash_store\n void CONV ()\nhash.c:52" ]
+node_1531 [ label="hash_store\n void CONV ()\ndeifdef/hash.c:52" ]
 	node_712 -> node_1531 ;
 node_1532 [ label="assert\n\n:0" ]
 	node_1531 -> node_1532 ;
@@ -2812,7 +2812,7 @@ node_1556 [ label="InCheck\n\n:0" ]
 node_1557 [ label="UnMakeMove\n\n:0" ]
 	node_712 -> node_1557 ;
 	node_712 -> node_614 ;
-node_1559 [ label="hist_good\n void CONV ()\nsearch.c:864" ]
+node_1559 [ label="hist_good\n void CONV ()\ndeifdef/search.c:864" ]
 	node_712 -> node_1559 ;
 node_1560 [ label="UToCap\n\n:0" ]
 	node_1559 -> node_1560 ;
@@ -2829,14 +2829,14 @@ node_1566 [ label="assert\n\n:0" ]
 	node_1559 -> node_1566 ;
 	node_1559 -> node_270 ;
 	node_1559 -> node_690 ;
-node_1569 [ label="tlp_split\n int ()\nthread.c:259" ]
+node_1569 [ label="tlp_split\n int ()\ndeifdef/thread.c:259" ]
 	node_712 -> node_1569 ;
 	node_1569 -> node_116 ;
-node_1571 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_1571 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_1569 -> node_1571 ;
-node_1572 [ label="find_child\n tree_t * ()\nthread.c:390" ]
+node_1572 [ label="find_child\n tree_t * ()\ndeifdef/thread.c:390" ]
 	node_1569 -> node_1572 ;
-node_1573 [ label="init_state\n void ()\nthread.c:402" ]
+node_1573 [ label="init_state\n void ()\ndeifdef/thread.c:402" ]
 	node_1569 -> node_1573 ;
 node_1574 [ label="memcpy\n\n:0" ]
 	node_1573 -> node_1574 ;
@@ -2845,23 +2845,23 @@ node_1576 [ label="Drop2From\n\n:0" ]
 	node_712 -> node_1576 ;
 	node_712 -> node_123 ;
 	node_712 -> node_621 ;
-node_1579 [ label="tlp_set_abort\n void ()\nthread.c:303" ]
+node_1579 [ label="tlp_set_abort\n void ()\ndeifdef/thread.c:303" ]
 	node_648 -> node_1579 ;
 	node_1579 -> node_1579 ;
-node_1581 [ label="copy_state\n void ()\nthread.c:449" ]
+node_1581 [ label="copy_state\n void ()\ndeifdef/thread.c:449" ]
 	node_644 -> node_1581 ;
 	node_1581 -> node_116 ;
 node_1583 [ label="memcpy\n\n:0" ]
 	node_1581 -> node_1583 ;
-node_1584 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_1584 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_1581 -> node_1584 ;
 	node_639 -> node_117 ;
-node_1586 [ label="set_root_beta\n int CONV ()\niterate.c:769" ]
+node_1586 [ label="set_root_beta\n int CONV ()\ndeifdef/iterate.c:769" ]
 	node_235 -> node_1586 ;
 	node_1586 -> node_198 ;
 node_1588 [ label="exit\n\n:0" ]
 	node_1586 -> node_1588 ;
-node_1589 [ label="set_root_alpha\n int CONV ()\niterate.c:793" ]
+node_1589 [ label="set_root_alpha\n int CONV ()\ndeifdef/iterate.c:793" ]
 	node_235 -> node_1589 ;
 	node_1589 -> node_198 ;
 node_1591 [ label="exit\n\n:0" ]
@@ -2875,11 +2875,11 @@ node_1595 [ label="UnMakeMove\n\n:0" ]
 	node_235 -> node_1595 ;
 node_1596 [ label="Flip\n\n:0" ]
 	node_235 -> node_1596 ;
-node_1597 [ label="hash_store_pv\n void CONV ()\nhash.c:97" ]
+node_1597 [ label="hash_store_pv\n void CONV ()\ndeifdef/hash.c:97" ]
 	node_235 -> node_1597 ;
 node_1598 [ label="SignKey\n\n:0" ]
 	node_1597 -> node_1598 ;
-node_1599 [ label="searchr\n int CONV ()\nsearchr.c:48" ]
+node_1599 [ label="searchr\n int CONV ()\ndeifdef/searchr.c:48" ]
 	node_235 -> node_1599 ;
 node_1600 [ label="NextRootMove\n\n:0" ]
 	node_1599 -> node_1600 ;
@@ -2893,7 +2893,7 @@ node_1605 [ label="InCheck\n\n:0" ]
 	node_1599 -> node_1605 ;
 node_1606 [ label="Flip\n\n:0" ]
 	node_1599 -> node_1606 ;
-node_1607 [ label="search_wrapper\n int CONV ()\nsearchr.c:11" ]
+node_1607 [ label="search_wrapper\n int CONV ()\ndeifdef/searchr.c:11" ]
 	node_1599 -> node_1607 ;
 node_1608 [ label="Out\n\n:0" ]
 	node_1607 -> node_1608 ;
@@ -2910,7 +2910,7 @@ node_1614 [ label="I2PieceMove\n\n:0" ]
 	node_1599 -> node_690 ;
 	node_1599 -> node_116 ;
 	node_1599 -> node_158 ;
-node_1618 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_1618 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_1599 -> node_1618 ;
 node_1619 [ label="MnjOut\n\n:0" ]
 	node_1599 -> node_1619 ;
@@ -2921,23 +2921,23 @@ node_1622 [ label="Out\n\n:0" ]
 	node_1599 -> node_1622 ;
 node_1623 [ label="OutCsaShogi\n\n:0" ]
 	node_1599 -> node_1623 ;
-node_1624 [ label="save_result\n int CONV ()\nsearchr.c:347" ]
+node_1624 [ label="save_result\n int CONV ()\ndeifdef/searchr.c:347" ]
 	node_1599 -> node_1624 ;
 	node_1624 -> node_53 ;
 	node_1624 -> node_294 ;
 	node_1624 -> node_116 ;
 	node_1624 -> node_158 ;
 	node_1624 -> node_263 ;
-node_1630 [ label="unlock\n void CONV ()\nthread.c:18" ]
+node_1630 [ label="unlock\n void CONV ()\ndeifdef/thread.c:18" ]
 	node_1624 -> node_1630 ;
 node_1631 [ label="MnjOut\n\n:0" ]
 	node_1624 -> node_1631 ;
 	node_1624 -> node_310 ;
-node_1633 [ label="str_fail_high\n const char *CONV ()\niterate.c:817" ]
+node_1633 [ label="str_fail_high\n const char *CONV ()\ndeifdef/iterate.c:817" ]
 	node_235 -> node_1633 ;
 node_1634 [ label="OutCsaShogi\n\n:0" ]
 	node_235 -> node_1634 ;
-node_1635 [ label="is_answer_right\n int CONV ()\niterate.c:831" ]
+node_1635 [ label="is_answer_right\n int CONV ()\ndeifdef/iterate.c:831" ]
 	node_235 -> node_1635 ;
 	node_1635 -> node_263 ;
 node_1637 [ label="strcmp\n\n:0" ]
@@ -2956,13 +2956,13 @@ node_1643 [ label="TlpEnd\n\n:0" ]
 node_1647 [ label="ShutdownAll\n\n:0" ]
 	node_1 -> node_1647 ;
 	node_1 -> node_123 ;
-node_1649 [ label="fin\n int ()\nini.c:156" ]
+node_1649 [ label="fin\n int ()\ndeifdef/ini.c:156" ]
 	node_1 -> node_1649 ;
 	node_1649 -> node_189 ;
-node_1651 [ label="lock_free\n int CONV ()\nthread.c:13" ]
+node_1651 [ label="lock_free\n int CONV ()\ndeifdef/thread.c:13" ]
 	node_1649 -> node_1651 ;
 	node_1649 -> node_117 ;
-node_1653 [ label="book_off\n int CONV ()\nbook.c:33" ]
+node_1653 [ label="book_off\n int CONV ()\ndeifdef/book.c:33" ]
 	node_1649 -> node_1653 ;
 	node_1653 -> node_9 ;
 	node_1649 -> node_60 ;
