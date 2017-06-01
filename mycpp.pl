@@ -55,10 +55,10 @@ sub extractStruct{
 	my $preStatus = 0;
 	my $tline = '';
 	my @inwds = ();
+	my $within = 0;
 	# $de = '\s|{|}|;';
 	# 
 	while(<fp>){
-		my $within = 0;
 		my @lines = ();
 		my $status_10 = 0;
 		$linenum++;
@@ -67,7 +67,7 @@ sub extractStruct{
 		}
 		$tline .= $_;
 		# print "\n";
-		# print "debug5--f:$status:$tline\n";
+		# print "debug5-a:$status:$tline\n";
 		# if (($tline !~ /;/ || $tline !~ /}/) && !eof){
 		# 	next;
 		# }
@@ -89,7 +89,7 @@ sub extractStruct{
 				if ($#stack == -1){
 					$status = 0;
 				}
-				# print "debug5--02:$status:$count:$#stack:$tline\n";
+				# print "debug5-b:$status:$count:$#stack:$tline\n";
 				$tline = '';
 				next;
 			}
@@ -107,7 +107,7 @@ sub extractStruct{
 			if ($#stack == -1){
 				$status = 0;
 			}
-			# print "debug5--03:$status:$count:$#stack:$tline\n";
+			# print "debug5-c:$status:$count:$#stack:$tline\n";
 			$tline = '';
 			next;
 		}
@@ -129,11 +129,11 @@ sub extractStruct{
 			my $line = $lines[$i].';';
 			my $oldtypename = '';
 			my $newtypename = '';
-			# print "debug5--1:$i:$status:$line\n";
+			# print "debug5-d:$i:$status:$line\n";
 			# push @inwds, lexer($line);
 			@inwds = lexer($line, '\s|{|}|;');
 			foreach my $wd (@inwds){
-				# print "debug5--2:$status:$wd\n";
+				# print "debug5-e:$status:$within:$wd\n";
 				if ($status == 0){
 					# add words after ';'
 					# die "error status 0";
@@ -155,7 +155,7 @@ sub extractStruct{
 						if ($within == 1){
 							my $tmpstr = join(' ', @outstr);
 							if ($tmpstr =~ /(typedef|{|})/ && $tmpstr !~ /=/){
-								print ofp join(' ', @outstr)."\n";
+								print ofp $tmpstr."\n";
 							}
 						}
 						@outstr = ();
@@ -177,7 +177,7 @@ sub extractStruct{
 						if ($within == 1){
 							my $tmpstr = join(' ', @outstr);
 							if ($tmpstr =~ /(typedef|{|})/ && $tmpstr !~ /=/){
-								print ofp join(' ', @outstr)."\n";
+								print ofp $tmpstr."\n";
 							}
 						}
 						@outstr = ();
@@ -190,17 +190,19 @@ sub extractStruct{
 					push @outstr, $wd;
 					if ($wd eq ';'){
 						$status = 0;
-						# print "debug5--2.1:$status:$within:$wd\n";
+						# print "debug5-2.1:$status:$within:$#outstr:$wd\n";
 						if ($within == 1){
 							my $tmpstr = join(' ', @outstr);
 							if ($tmpstr =~ /(typedef|{|})/ && $tmpstr !~ /=/){
-								print ofp join(' ', @outstr)."\n";
+								print ofp $tmpstr."\n";
+								# print "debug5-2.2:$status:$within:$#outstr:$tmpstr\n";
 							}
 						}
 						else{
 							my $tmpstr = join(' ', @outstr);
 							if ($tmpstr =~ /(typedef|{|})/ && $tmpstr !~ /=/){
-								print ofp join(' ', @outstr)."\n";
+								print ofp $tmpstr."\n";
+								# print "debug5-2.3:$status:$within:$#outstr:$tmpstr\n";
 							}
 						}
 						@outstr = ();
@@ -240,7 +242,7 @@ sub extractStruct{
 					elsif ($wd eq 'struct' || $wd eq 'union'){
 					}
 				}
-				# print "debug5--3:$status:$wd\n";
+				# print "debug5-f:$status:$within:$wd\n";
 			}
 		}
 	}
@@ -308,6 +310,9 @@ sub reversePolishNotation{
 				# print "debug4-5:$tmp => $mydefs->{$tmp}\n";
 				if (defined($mydefs->{$tmp})){
 					$digit = 1;
+				}
+				else{
+					$digit = 0;
 				}
 			}
 			elsif (defined($mydefs->{$inwds[$i]})){
@@ -402,7 +407,7 @@ sub parsecondition{
 		}
 		elsif ($$ch eq '!'){
 			my $x2 = pop @stack2;
-			my $tmp = !($$x2);
+			my $tmp = ($$x2 == 0) ? 1 : 0;
 			push @stack2, \$tmp;
 		}
 		else{
@@ -441,14 +446,17 @@ sub procifdef{
 	# binmode fp;
 	while(<fp>){
 		$linenum++;
-		if ($#conditions > -1){
+		if ($_ =~ /struct SSM_STA_ORGA{/){
 			if ($debugprint == 0){
 				# print "debug start---------\n";
+				# $debugprint = 1;
+				$dbsline = $linenum;
 			}
-			$debugprint = 1;
 		}
 		else{
-			$debugprint = 0;
+			if ($dbsline-$linenum>30){
+				$debugprint = 0;
+			}
 		}
 		$_ =~ s/ifdef\s+(.+)/if defined($1)/g;
 		$_ =~ s/ifndef\s+(.+)/if !defined($1)/g;
@@ -538,7 +546,7 @@ sub procifdef{
 					$curcond = pop @conditions;
 					$curcondstr = pop @condstrs;
 					# print "debug2-3e:$status:$curcond:$curcondstr:$#conditions:".join(' ', @conditions).":$wd\n" if ($debugprint == 1);
-					if ($#conditions == -1){
+					if ($#conditions == 0){
 						$status = 1;
 						# print "debug2-3f:2->1:$curcond:$curcondstr:$#conditions:".join(' ', @conditions).":$wd\n" if ($debugprint == 1);
 					}
@@ -557,6 +565,14 @@ sub procifdef{
 							}
 						}
 						if ($hit == 1){
+							if ($tline =~ /($kw4)\s+(.+)\s*(.*)/){
+								if ($2 ne ''){
+									$mydefs->{$1} = $2;
+								}
+								else{
+									$mydefs->{$1} = 1;
+								}
+							}
 							push @outstr, $wd;
 						}
 					}
@@ -564,6 +580,7 @@ sub procifdef{
 			}
 		}
 		else{
+			# print "debug2-5a:$status:$curcond:$curcondstr:$#conditions:".join(' ', @conditions).":$tline\n" if ($debugprint == 1);
 			if ($curcond == 1){
 				my $hit = 1;
 				for (my $i=0; $i<=$#conditions; $i++){
@@ -581,7 +598,7 @@ sub procifdef{
 							$mydefs->{$1} = 1;
 						}
 					}
-					# print "debug2-5:$status:$curcond:$curcondstr:$#conditions:".join(' ', @conditions).":$tline\n" if ($debugprint == 1);
+					# print "debug2-5b:$status:$curcond:$curcondstr:$#conditions:".join(' ', @conditions).":$tline\n" if ($debugprint == 1);
 					print ofp "$tline\n";
 				}
 			}
