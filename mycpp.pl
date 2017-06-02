@@ -13,6 +13,7 @@ my $dir = Cwd::getcwd();
 # my $dir = `cd`;
 # chomp($dir);
 chdir($dir);
+my $commentDir = 'comment';
 my $decommentDir = 'decomment';
 my $deifdefDir = 'deifdef';
 my $structDir = 'structs';
@@ -24,7 +25,7 @@ my @file_list = glob("$the_glob");
 foreach my $file (@file_list){
 	# print "debug1:$dir\n";
 	print "processing... decomment $file\n";
-	decomment($file, $dir, $decommentDir);
+	decomment($file, $dir, $decommentDir, $commentDir);
 	print "processing... deifdef $file\n";
 	procifdef($file, $decommentDir, $deifdefDir);
 	print "processing... extractStruct $file\n";
@@ -46,8 +47,8 @@ sub extractStruct{
 			die "Unable to create $distdir\n";
 		}
 	}
-	open(fp, "<$fromdir\\$file") or die "can not open $file.";
-	open(ofp, ">$distdir\\$file");
+	open(fp, "<$fromdir/$file") or die "can not open $file.";
+	open(ofp, ">$distdir/$file");
 	my $linenum = 0;
 	my @stack = ();
 	my @outstr = ();
@@ -426,8 +427,8 @@ sub procifdef{
 			die "Unable to create $distdir\n";
 		}
 	}
-	open(fp, "<$fromdir\\$file") or die "can not open $file.";
-	open(ofp, ">$distdir\\$file");
+	open(fp, "<$fromdir/$file") or die "can not open $file.";
+	open(ofp, ">$distdir/$file");
 	my @conditions = ();
 	my @condstrs = ();
 	my @inwds = ();
@@ -448,8 +449,8 @@ sub procifdef{
 		$linenum++;
 		#if ($_ =~ //){
 		#	if ($debugprint == 0){
-				# print "debug start---------\n";
-				# $debugprint = 1;
+		#		# print "debug start---------\n";
+		#		# $debugprint = 1;
 		#		$dbsline = $linenum;
 		#	}
 		#}
@@ -615,18 +616,25 @@ sub procifdef{
 }
 
 sub decomment{
-	my ($file, $fromdir, $distdir) = @_;
+	my ($file, $fromdir, $distdir, $comdistDir) = @_;
 	if (!(-e $distdir)){
 		unless(mkdir $distdir) {
 			die "Unable to create $distdir\n";
 		}
 	}
-	open(fp, "<$fromdir\\$file") or die "can not open $fromdir\\$file.";
-	open(ofp, ">$distdir\\$file");
+	if (!(-e $comdistDir)){
+		unless(mkdir $comdistDir) {
+			die "Unable to create $comdistDir\n";
+		}
+	}
+	open(fp, "<$fromdir/$file") or die "can not open $file.";
+	open(ofp, ">$distdir/$file");
+	open(ofp2, ">$comdistDir/$file");
 	my $kws = '\/\*';
 	my $kwe = '\*\/';
 	my $kws2 = '\/\/';
 	my @outstr = ();
+	my @commentStr = ();
 	my $status = 0;
 	my $linenum = 0;
 	my @inwds = ();
@@ -634,13 +642,26 @@ sub decomment{
 	while(<fp>){
 		my $tline = $_;
 		$linenum++;
-		$tline =~ s/$kws.*$kwe//go;
-		$tline =~ s/^\s+//go;
-		$tline =~ s/\s+$//go;
-		if ($tline =~ /^\s*$/){
+		# print "debug1-1:$tline";
+		while ($tline =~ /($kws)(.*?)($kwe)/){
+			my $comment = $2;
+			# print "$linenum:$comment\n"; 
+			$tline =~ s/($kws)(.*?)($kwe)//;
+			if ($comment !~ /^\s*$/){
+				push @commentStr, $comment;
+			}
+		}
+		# $tline =~ s/$kws(.*)$kwe//go;
+		$tline =~ s/^\s+//;
+		$tline =~ s/\s+$//;
+		if ($tline =~ /^$/){
 			next;
 		}
-
+		# print "debug1-2:$tline\n";
+		if ($#commentStr > -1){
+			print ofp2 join(' ', @commentStr)."\n";
+			@commentStr = ();
+		}
 		# $debugprint = 0;
 		# if ($tline =~ /Result/){
 		# 	$debugprint = 1;
@@ -648,7 +669,7 @@ sub decomment{
 		# push @inwds, lexer($tline);
 		@inwds = lexer($tline, '\s');
 		foreach my $wd (@inwds){
-			$wd =~ s/\s*//go;
+			$wd =~ s/\s+//go;
 			# print "debug0-2start:$status:$wd:$#outstr:$tline\n" if ($debugprint == 1);
 			if ($status == 0){
 				if ($wd =~ /($kws)/){
@@ -659,6 +680,7 @@ sub decomment{
 					# print "debug0-1:0->$status:$wd:$#outstr\n" if ($debugprint == 1);
 					@outstr = ();
 					@inwds = ();
+					push @commentStr, $wd;
 				}
 				elsif ($wd =~ /($kws2)/){
 					if ($wd =~ /"/){
@@ -672,10 +694,12 @@ sub decomment{
 						# print "debug0-1:0->$status:$wd:$#outstr\n" if ($debugprint == 1);
 						@outstr = ();
 						@inwds = ();
+						push @commentStr, $wd;
 					}
 				}
 				else{
 					push @outstr, $wd;
+					# @commentStr = ();
 				}
 			}
 			elsif ($status == 1){
@@ -684,8 +708,13 @@ sub decomment{
 					$status = 0;
 					# print "debug0-1:1->$status:$wd:$#outstr\n" if ($debugprint == 1);
 				}
+				else{
+					# print "debug0-1:1->$status:$wd:$#outstr\n" if ($debugprint == 1);
+					push @commentStr, $wd;
+				}
 			}
 			elsif ($status == 2){
+				push @commentStr, $wd;
 			}
 			# print "debug0-2  end:$status:$wd:$#outstr:$tline\n" if ($debugprint == 1);
 		}
@@ -697,8 +726,13 @@ sub decomment{
 			@outstr = ();
 			@inwds = ();
 		}
+		if ($#commentStr > -1){
+			print ofp2 join(' ', @commentStr)."\n";
+			@commentStr = ();
+		}
 	}
 	close(ofp);
+	close(ofp2);
 	close(fp);
 }
 
@@ -727,12 +761,14 @@ sub lexer{
 	return @stack2;
 }
 
-sub handler {  # 1st argument is signal name
+sub handler {  # 1st argument is a signal name
 	my ($sig) = @_;
 	if (defined($sig)){
 		print "Caught a SIG$sig--shutting down\n";
 		close(LOG);
 	}
 	close(fp);
+	close(ofp);
+	close(ofp2);
 	exit;
 }
