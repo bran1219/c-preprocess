@@ -20,16 +20,22 @@ my $structDir = 'structs';
 # my $de = '\s|{|}|,|;|\(|\)';
 my $mydefs = Defines->new();
 my $debugprint = 0;
-
-my @file_list = glob("$the_glob");
+my @file_list;
+if ($#tmpAry>-1){
+	$dir .= '/'.join('/', @tmpAry[0..$#tmpAry-1]);
+}
+my @file_list = glob($the_glob);
+# print "debug1:$dir\n";
 foreach my $file (@file_list){
-	# print "debug1:$dir\n";
+	my @tmpAry = split('/', $file);
+	my $file2 = $tmpAry[-1];
+	# print "debug1:$file $file2\n";
 	print "processing... decomment $file\n";
-	decomment($file, $dir, $decommentDir, $commentDir);
-	print "processing... deifdef $file\n";
-	procifdef($file, $decommentDir, $deifdefDir);
-	print "processing... extractStruct $file\n";
-	extractStruct($file, $deifdefDir, $structDir);
+	decomment($file, $file2, $dir, $decommentDir, $commentDir);
+	print "processing... deifdef $file2\n";
+	procifdef($file, $file2, $decommentDir, $deifdefDir);
+	print "processing... extractStruct $file2\n";
+	extractStruct($file, $file2, $deifdefDir, $structDir);
 	print "\n";
 }
 
@@ -41,14 +47,14 @@ sub extractFunction{
 
 # todo
 sub extractStruct{
-	my ($file, $fromdir, $distdir) = @_;
+	my ($file, $file2, $fromdir, $distdir) = @_;
 	if (!(-e $distdir)){
 		unless(mkdir $distdir) {
 			die "Unable to create $distdir\n";
 		}
 	}
-	open(fp, "<$fromdir/$file") or die "can not open $file.";
-	open(ofp, ">$distdir/$file");
+	open(fp, "<$fromdir/$file2") or die "can not open $file.";
+	open(ofp, ">$distdir/$file2");
 	my $linenum = 0;
 	my @stack = ();
 	my @outstr = ();
@@ -421,14 +427,14 @@ sub parsecondition{
 }
 
 sub procifdef{
-	my ($file, $fromdir, $distdir) = @_;
+	my ($file, $file2, $fromdir, $distdir) = @_;
 	if (!(-e $distdir)){
 		unless(mkdir $distdir) {
 			die "Unable to create $distdir\n";
 		}
 	}
-	open(fp, "<$fromdir/$file") or die "can not open $file.";
-	open(ofp, ">$distdir/$file");
+	open(fp, "<$fromdir/$file2") or die "can not open $file.";
+	open(ofp, ">$distdir/$file2");
 	my @conditions = ();
 	my @condstrs = ();
 	my @inwds = ();
@@ -616,7 +622,7 @@ sub procifdef{
 }
 
 sub decomment{
-	my ($file, $fromdir, $distdir, $comdistDir) = @_;
+	my ($file, $file2, $fromdir, $distdir, $comdistDir) = @_;
 	if (!(-e $distdir)){
 		unless(mkdir $distdir) {
 			die "Unable to create $distdir\n";
@@ -628,8 +634,8 @@ sub decomment{
 		}
 	}
 	open(fp, "<$fromdir/$file") or die "can not open $file.";
-	open(ofp, ">$distdir/$file");
-	open(ofp2, ">$comdistDir/$file");
+	open(ofp, ">$distdir/$file2");
+	open(ofp2, ">$comdistDir/$file2");
 	my $kws = '\/\*';
 	my $kwe = '\*\/';
 	my $kws2 = '\/\/';
@@ -664,13 +670,14 @@ sub decomment{
 		}
 		# $debugprint = 0;
 		# if ($tline =~ /Result/){
-		# 	$debugprint = 1;
+			$debugprint = 1;
 		# }
 		# push @inwds, lexer($tline);
-		@inwds = lexer($tline, '\s');
+		@inwds = lexer($tline, '\s|$kws2');
+		# print "line : ".join(' ', @inwds)."\n";
 		foreach my $wd (@inwds){
+			# print "debug0-2start:$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
 			$wd =~ s/\s+//go;
-			# print "debug0-2start:$status:$wd:$#outstr:$tline\n" if ($debugprint == 1);
 			if ($status == 0){
 				if ($wd =~ /($kws)/){
 					if ($#outstr > -1){
@@ -679,7 +686,7 @@ sub decomment{
 					$status = 1;
 					# print "debug0-1:0->$status:$wd:$#outstr\n" if ($debugprint == 1);
 					@outstr = ();
-					@inwds = ();
+					# @inwds = ();
 					push @commentStr, $wd;
 				}
 				elsif ($wd =~ /($kws2)/){
@@ -691,10 +698,10 @@ sub decomment{
 							print ofp join(' ', @outstr)."\n";
 						}
 						$status = 2;
-						# print "debug0-1:0->$status:$wd:$#outstr\n" if ($debugprint == 1);
 						@outstr = ();
-						@inwds = ();
+						# @inwds = ();
 						push @commentStr, $wd;
+						# print "debug0-1:0->$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
 					}
 				}
 				else{
@@ -714,6 +721,7 @@ sub decomment{
 				}
 			}
 			elsif ($status == 2){
+				# print "debug0-1:$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
 				push @commentStr, $wd;
 			}
 			# print "debug0-2  end:$status:$wd:$#outstr:$tline\n" if ($debugprint == 1);
@@ -724,7 +732,7 @@ sub decomment{
 		if ($#outstr > -1){
 			print ofp join(' ', @outstr)."\n";
 			@outstr = ();
-			@inwds = ();
+			# @inwds = ();
 		}
 		if ($#commentStr > -1){
 			print ofp2 join(' ', @commentStr)."\n";
@@ -746,7 +754,7 @@ sub lexer{
 			if ($str ne ''){
 				push @stack2, $str;
 			}
-			if ($ch !~ /\s+/){
+			if ($ch !~ /^\s+$/){
 				push @stack2, $ch;
 			}
 			$str = '';
@@ -758,6 +766,7 @@ sub lexer{
 	if ($str ne ''){
 		push @stack2, $str;
 	}
+	# print "debug:lexer:".join('|', @stack2)."\n";
 	return @stack2;
 }
 
