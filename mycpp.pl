@@ -21,13 +21,14 @@ my $structDir = 'structs';
 my $mydefs = Defines->new();
 my $debugprint = 0;
 my @file_list;
+my @tmpAry = split('/', $the_glob);
 if ($#tmpAry>-1){
 	$dir .= '/'.join('/', @tmpAry[0..$#tmpAry-1]);
 }
 my @file_list = glob($the_glob);
 # print "debug1:$dir\n";
 foreach my $file (@file_list){
-	my @tmpAry = split('/', $file);
+	@tmpAry = split('/', $file);
 	my $file2 = $tmpAry[-1];
 	# print "debug1:$file $file2\n";
 	print "processing... decomment $file\n";
@@ -53,7 +54,7 @@ sub extractStruct{
 			die "Unable to create $distdir\n";
 		}
 	}
-	open(fp, "<$fromdir/$file2") or die "can not open $file.";
+	open(fp, "<$fromdir/$file2") or die "can not open $fromdir/$file2.";
 	open(ofp, ">$distdir/$file2");
 	my $linenum = 0;
 	my @stack = ();
@@ -433,7 +434,7 @@ sub procifdef{
 			die "Unable to create $distdir\n";
 		}
 	}
-	open(fp, "<$fromdir/$file2") or die "can not open $file.";
+	open(fp, "<$fromdir/$file2") or die "can not open $fromdir/$file2.";
 	open(ofp, ">$distdir/$file2");
 	my @conditions = ();
 	my @condstrs = ();
@@ -633,7 +634,7 @@ sub decomment{
 			die "Unable to create $comdistDir\n";
 		}
 	}
-	open(fp, "<$fromdir/$file") or die "can not open $file.";
+	open(fp, "<$fromdir/$file2") or die "can not open $fromdir/$file2.";
 	open(ofp, ">$distdir/$file2");
 	open(ofp2, ">$comdistDir/$file2");
 	my $kws = '\/\*';
