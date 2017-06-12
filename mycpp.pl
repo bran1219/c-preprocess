@@ -444,11 +444,11 @@ sub procifdef{
 	my $linenum = 0;
 	my $curcond = 1;
 	my $curcondstr = '';
-	my $kw1 = '#\s*if';
-	my $kw2 = '#\s*else';
-	my $kw3 = '#\s*endif';
-	my $kw4 = '#\s*define';
-	my $kw5 = '#\s*elif';
+	my $kw1 = '\s*#\s*if';
+	my $kw2 = '\s*#\s*else';
+	my $kw3 = '\s*#\s*endif';
+	my $kw4 = '\s*#\s*define';
+	my $kw5 = '\s*#\s*elif';
 	# $de = '\s';
 	# binmode fp, ':encoding(utf8)';
 	# binmode fp;
@@ -645,104 +645,109 @@ sub decomment{
 	my $status = 0;
 	my $linenum = 0;
 	my @inwds = ();
-	# $de = '\s';
-	while(<fp>){
-		my $tline = $_;
-		$linenum++;
-		# print "debug1-1:$tline";
-		while ($tline =~ /($kws)(.*?)($kwe)/){
-			my $comment = $2;
-			# print "$linenum:$comment\n"; 
-			$tline =~ s/($kws)(.*?)($kwe)//;
-			if ($comment !~ /^\s*$/){
-				push @commentStr, $comment;
+	my $tmp = '';
+	my $de = '\s';
+	# my $debugprint = 1;
+	while($wd = nextToken(fp, $de)){
+		# print "debug0-2start:$status:$#outstr:$#commentStr:$wd\n" if ($debugprint == 1);
+		if ($status == 0){
+			if ($wd =~ /($kws)/){
+				if ($#outstr > -1){
+					$tmp = join('', @outstr);
+					# $tmp =~ s/;/;\n/go;
+					print ofp $tmp."\n";
+				}
+				$status = 1;
+				# print "debug0-1:0->$status:$wd:$#outstr\n" if ($debugprint == 1);
+				@outstr = ();
+				# @inwds = ();
+				push @commentStr, $wd;
 			}
-		}
-		# $tline =~ s/$kws(.*)$kwe//go;
-		$tline =~ s/^\s+//;
-		$tline =~ s/\s+$//;
-		if ($tline =~ /^$/){
-			next;
-		}
-		# print "debug1-2:$tline\n";
-		if ($#commentStr > -1){
-			print ofp2 join(' ', @commentStr)."\n";
-			@commentStr = ();
-		}
-		# $debugprint = 0;
-		# if ($tline =~ /Result/){
-			$debugprint = 1;
-		# }
-		# push @inwds, lexer($tline);
-		@inwds = lexer($tline, '\s|$kws2');
-		# print "line : ".join(' ', @inwds)."\n";
-		foreach my $wd (@inwds){
-			# print "debug0-2start:$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
-			$wd =~ s/\s+//go;
-			if ($status == 0){
-				if ($wd =~ /($kws)/){
+			elsif ($wd =~ /($kws2)/){
+				if ($wd =~ /"/){
+					push @outstr, $wd;
+				}
+				else{
 					if ($#outstr > -1){
-						print ofp join(' ', @outstr)."\n";
+						$tmp = join('', @outstr);
+						# $tmp =~ s/;/;\n/go;
+						print ofp $tmp."\n";
 					}
-					$status = 1;
-					# print "debug0-1:0->$status:$wd:$#outstr\n" if ($debugprint == 1);
+					$status = 2;
 					@outstr = ();
 					# @inwds = ();
 					push @commentStr, $wd;
-				}
-				elsif ($wd =~ /($kws2)/){
-					if ($wd =~ /"/){
-						push @outstr, $wd;
-					}
-					else{
-						if ($#outstr > -1){
-							print ofp join(' ', @outstr)."\n";
-						}
-						$status = 2;
-						@outstr = ();
-						# @inwds = ();
-						push @commentStr, $wd;
-						# print "debug0-1:0->$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
-					}
-				}
-				else{
-					push @outstr, $wd;
-					# @commentStr = ();
+					# print "debug0-1:0->$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
 				}
 			}
-			elsif ($status == 1){
-				if ($wd =~ /($kwe)/){
-					# @outstr = ();
-					$status = 0;
-					# print "debug0-1:1->$status:$wd:$#outstr\n" if ($debugprint == 1);
-				}
-				else{
-					# print "debug0-1:1->$status:$wd:$#outstr\n" if ($debugprint == 1);
-					push @commentStr, $wd;
-				}
+			else{
+				push @outstr, $wd;
+				# @commentStr = ();
 			}
-			elsif ($status == 2){
-				# print "debug0-1:$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
+		}
+		elsif ($status == 1){
+			if ($wd =~ /($kwe)/){
+				push @commentStr, $wd;
+				$tmp = join('', @commentStr);
+				# $tmp =~ s/^\s+//;
+				print ofp2 $tmp."\n";
+				@commentStr = ();
+				# @outstr = ();
+				$status = 0;
+				# print "debug0-1:1->$status:$wd:$#outstr\n" if ($debugprint == 1);
+			}
+			else{
+				# print "debug0-1:1->$status:$wd:$#outstr\n" if ($debugprint == 1);
 				push @commentStr, $wd;
 			}
-			# print "debug0-2  end:$status:$wd:$#outstr:$tline\n" if ($debugprint == 1);
 		}
-		if ($status == 2){
-			$status = 0;
+		elsif ($status == 2){
+			# print "debug0-1:$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
+			push @commentStr, $wd;
+			if ($wd =~ /\n/){
+				$status = 0;
+			}
 		}
-		if ($#outstr > -1){
-			print ofp join(' ', @outstr)."\n";
-			@outstr = ();
-			# @inwds = ();
-		}
-		if ($#commentStr > -1){
-			print ofp2 join(' ', @commentStr)."\n";
-			@commentStr = ();
-		}
+		# if ($status == 2){
+		# 	$status = 0;
+		# }
+	}
+	if ($#outstr > -1){
+		$tmp = join('', @outstr);
+		# $tmp =~ s/;/;\n/go;
+		print ofp $tmp."\n";
+		@outstr = ();
+		# @inwds = ();
+	}
+	if ($#commentStr > -1){
+		$tmp = join('', @commentStr);
+		# $tmp =~ s/^\s+//;
+		print ofp2 $tmp."\n";
+		@commentStr = ();
 	}
 	close(ofp);
 	close(ofp2);
 	close(fp);
+}
+
+sub nextToken{
+	my $fp = shift;
+	my $de = shift;
+	my @stack2;
+	my $str = '';
+	# print "nextToken\n";
+	while (read($fp, $ch, 1)) {
+		# print "$ch";
+		if ($ch =~ /($de)/){
+			$str .= $ch;
+			last;
+		}
+		else{
+			$str .= $ch;
+		}
+	}
+	# $str =~ s/\s+//go;
+	return $str;
 }
 
 sub lexer{
