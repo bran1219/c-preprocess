@@ -27,6 +27,8 @@ my $within = 0;
 print "digraph mygraph {\n";
 print "node [shape=plaintext];edge [color=black style=dashed];\n";
 
+my $oldtypename = '';
+my $newtypename = '';
 open(fp, "<$file") or die "can not open $file.";
 while(<fp>){
 	$linenum++;
@@ -36,8 +38,6 @@ while(<fp>){
 	$tline = $_;
 	$tline =~ s/\n/ /go;
 	# typedef struct union enum
-	my $oldtypename = '';
-	my $newtypename = '';
 	# print "debug5-0:$status:$within:$tline\n";
 	@inwds = lexer($tline);
 	foreach my $wd (@inwds){
@@ -61,6 +61,7 @@ while(<fp>){
 		}
 		elsif ($status == 2){
 			# typedef
+			$wd =~ s/\[.+\]//;
 			$oldtypename = $wd;
 			if ($wd eq 'struct' || $wd eq 'union'){
 				$preStatus = 2;
@@ -87,10 +88,10 @@ while(<fp>){
 					# $newtypename = pop @outstr;
 					if ($#outstr > -1){
 						$tmpID++;
+						print "node_".$tmpID.' [ label="'.join('\n', @outstr).'" ]'."\n";
 						for (my $i=0; $i<=$#outstr; $i++){
 							if (!exists($nodesDic{$outstr[$i]})){
 								$nodesDic{$outstr[$i]} = $tmpID;
-								print "node_".$tmpID.' [ label="'.join('\n', @outstr).'" ]'."\n";
 							}
 						}
 						# $currentNodeId = $tmpID;
@@ -99,13 +100,16 @@ while(<fp>){
 				}
 				else{
 					if ($#outstr > -1){
-						$tmpID++;
 						# $newtypename = pop @outstr;
 						# $nodesDic{$newtypename} = $tmpID;
 						# $oldtypename = pop @outstr;
 						# $nodesDic{$oldtypename} = $tmpID;
-						if (!exists($nodesDic{$outstr[$#outstr]})){
-							print "node_".$tmpID.' [ label="'.join('\n', @outstr).'" ]'."\n";
+						$tmpID++;
+						print "node_".$tmpID.' [ label="'.join('\n', @outstr).'" ]'."\n";
+						for (my $i=0; $i<=$#outstr; $i++){
+							if (!exists($nodesDic{$outstr[$i]})){
+								$nodesDic{$outstr[$i]} = $tmpID;
+							}
 						}
 						@outstr = ();
 					}
@@ -125,6 +129,7 @@ while(<fp>){
 			elsif ($wd eq ','){
 			}
 			else{
+				$wd =~ s/\[.+\]//;
 				if ($within == 0){
 					push @outstr, $wd; #$oldtypename
 				}
@@ -173,6 +178,8 @@ close(fp);
 
 
 my %edgesDic = ();
+my $oldtypename = '';
+my $newtypename = '';
 open(fp, "<$file") or die "can not open $file.";
 while(<fp>){
 	$linenum++;
@@ -182,8 +189,6 @@ while(<fp>){
 	$tline = $_;
 	$tline =~ s/\n/ /go;
 	# typedef struct union enum
-	my $oldtypename = '';
-	my $newtypename = '';
 	# print "debug5-0:$status:$within:$tline\n";
 	@inwds = lexer($tline);
 	foreach my $wd (@inwds){
@@ -232,7 +237,7 @@ while(<fp>){
 				# 		# print join(' ', @outstr)."\n";
 				# 	}
 				# }
-				@outstr = ();
+				# @outstr = ();
 				# @inwds = ();
 				$within = 0;
 				# $oldtypename = '';
@@ -257,6 +262,15 @@ while(<fp>){
 			# push @outstr, $wd;
 			if ($wd eq ';'){
 				$status = 1;
+				if ($oldtypename ne '' && exists($nodesDic{$oldtypename})){
+					for (my $nid = shift @outstr; $nid ne ''; $nid = shift @outstr){
+						if (!exists($edgesDic{$nodesDic{$oldtypename}.'_'.$nid})){
+							print "\tnode_".$nodesDic{$oldtypename}." -> node_".$nid." ;\n";
+							$edgesDic{$nodesDic{$oldtypename}.'_'.$nid} = 1;
+						}
+					}
+					$oldtypename = '';
+				}
 				# print "debug5--2.1:$status:$within:$wd\n";
 				# if ($within == 1){
 					# my $tmpstr = join(' ', @outstr);
@@ -280,7 +294,7 @@ while(<fp>){
 					# 	# print join(' ', @outstr)."\n";
 					# }
 				# }
-				@outstr = ();
+				# @outstr = ();
 				# @inwds = ();
 				$within = 0;
 				# $oldtypename = '';
@@ -297,15 +311,22 @@ while(<fp>){
 			}
 			else{
 				if ($within == 1){
+					$wd =~ s/\[.+\]//;
 					$newtypename = $wd;
+					# print "        debug : newtypename == $newtypename\n";
 					if (exists($nodesDic{$newtypename})){
 						for (my $nid = shift @outstr; $nid ne ''; $nid = shift @outstr){
-							if (!exists($edgesDic{$nodesDic{$newtypename}.$nid})){
-								printf("\tnode_".$nodesDic{$newtypename}." -> node_".$nid." ;\n");
-								$edgesDic{$nodesDic{$newtypename}.$nid} = 1;
+							if (!exists($edgesDic{$nodesDic{$newtypename}.'_'.$nid})){
+								print "\tnode_".$nodesDic{$newtypename}." -> node_".$nid." ;\n";
+								$edgesDic{$nodesDic{$newtypename}.'_'.$nid} = 1;
 							}
 						}
 					}
+				}
+				else{
+					$wd =~ s/\[.+\]//;
+					$oldtypename = $wd;
+					# print "        debug : oldtypename == $wd\n";
 				}
 			}
 		}
@@ -328,9 +349,11 @@ while(<fp>){
 			elsif ($wd eq 'struct' || $wd eq 'union'){
 			}
 			else{
+				$wd =~ s/\[.+\]//;
+				# print "debug : input $wd\n";
 				if (exists($nodesDic{$wd})){
 					push @outstr, $nodesDic{$wd};
-					# printf("push $nodesDic{$wd}\n");
+					# print "   debug : push $nodesDic{$wd} $#outstr\n";
 				}
 			}
 		}
