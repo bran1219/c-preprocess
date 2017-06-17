@@ -19,6 +19,12 @@ my $deifdefDir = 'deifdef';
 my $structDir = 'structs';
 # my $de = '\s|{|}|,|;|\(|\)';
 my $mydefs = Defines->new();
+# print $mydefs{HAVE_SSE2}."\n";
+# print $mydefs->{HAVE_SSE2}."\n";
+# foreach $key (keys %$mydefs) {
+#   $value = $mydefs->{$key};
+#   print "  $key costs $value\n";
+# }
 my $debugprint = 0;
 my @file_list;
 my @tmpAry = split('/', $the_glob);
@@ -26,14 +32,14 @@ if ($#tmpAry>-1){
 	$dir .= '/'.join('/', @tmpAry[0..$#tmpAry-1]);
 }
 my @file_list = glob($the_glob);
-print "debug1:$dir\n";
+# print "debug1:$the_glob : $dir : ".join(' ', @file_list)."\n";
 foreach my $file (@file_list){
 	@tmpAry = split('/', $file);
 	my $file2 = $file;
 	if ($#tmpAry > -1){
 		$file2 = $tmpAry[-1];
 	}
-	print "debug1:$file $file2\n";
+	# print "debug1:$file $file2\n";
 	print "processing... decomment $file\n";
 	decomment($file, $file2, $dir, $decommentDir, $commentDir);
 	print "processing... deifdef $file2\n";
@@ -270,11 +276,14 @@ sub reversePolishNotation{
 	my @rpnstack = ();
 	# $de = '!|\s|\(|\)|>|<|=';
 	# print "debug4-1:$conditions\n";
-	$conditions =~ s/defined\((.+?)\)/defined$1/go;
-	# $conditions =~ s/!\s*/!/go;
+	$conditions =~ s/defined\((.+?)\)/$1/go;
+	$conditions =~ s/\s+//go;
 	# print "debug4-2:$conditions\n";
-	my @inwds = lexer($conditions, '!|\s|\(|\)|>|<|=');
+	my @inwds = lexer($conditions, '!|\s|\(|\)|>|<|=|\+|\*|&&|\|\|');
 	for (my $i=0; $i<=$#inwds; $i++){
+		if ($inwds[$i] =~ /^\s+$/){
+			next;
+		}
 		# print "debug4-3:$inwds[$i]:$#result\n";
 		if ($inwds[$i] eq '&&' || $inwds[$i] eq '*'){
 			push @rpnstack, \$inwds[$i];
@@ -316,30 +325,28 @@ sub reversePolishNotation{
 			if ($inwds[$i] =~ /^(\d+)$/){
 				$digit = $1;
 			}
-			elsif ($inwds[$i] =~ /defined(.+)/){
-				my $tmp = $1;
-				# print "debug4-5:$tmp => $mydefs->{$tmp}\n";
-				if (defined($mydefs->{$tmp})){
-					$digit = 1;
-				}
-				else{
-					$digit = 0;
-				}
-			}
 			elsif (defined($mydefs->{$inwds[$i]})){
 				$digit = $mydefs->{$inwds[$i]};
 			}
 			else{
 				$digit = 0;
 			}
-			# if ($inwds[$i] =~ /^!/){
-			# 	$digit = ($digit == 0) ? 1 : 0;
+			# print "debug4-4a:\nrpnstack";
+			# foreach my $ch (@rpnstack){
+			# 	print ":$$ch";
 			# }
+			# print "\nresult  ";
+
 			push @result, \$digit;
-			if ($$rpnstack[$#rpnstack] eq '!') {
+			if (${$rpnstack[$#rpnstack]} eq '!') {
 				my $op = pop @rpnstack;
 				push @result, $op;
 			}
+
+			# foreach my $ch (@result){
+			# 	print ":$$ch";
+			# }
+			# print "\n";
 		}
 	}
 	while ($#rpnstack > -1) {
@@ -427,7 +434,7 @@ sub parsecondition{
 	}
 	my $val = pop @stack2;
 	# print "debug3-3:$#stack2:$$val\n";
-	return $$val;
+	return ($$val == 0) ? 0 : 1;
 }
 
 sub procifdef{
@@ -460,7 +467,7 @@ sub procifdef{
 		#if ($_ =~ //){
 		#	if ($debugprint == 0){
 		#		# print "debug start---------\n";
-		#		# $debugprint = 1;
+				$debugprint = 1;
 		#		$dbsline = $linenum;
 		#	}
 		#}
@@ -492,10 +499,10 @@ sub procifdef{
 		$tline =~ s/\n/ /go;
 		$tline =~ s/\s+/ /go;
 		$tline =~ s/ $//;
-		# print "debug2-1 all:$status:$curcond:$curcondstr:$#conditions:".join(' ', @conditions).":$tline\n" if ($debugprint == 1);
+		# print "debug2-1 all:$status:$curcond:$curcondstr:$#conditions=>".join(' ', @conditions).":$tline\n" if ($debugprint == 1);
 		if ($tline =~ /($kw1|$kw2|$kw3|$kw5)/){
 			$wd = $tline;
-			# print "debug2-2start:$status:$curcond:$curcondstr:$#conditions:".join(' ', @conditions).":$wd\n" if ($debugprint == 1);
+			# print "debug2-2start:$status:$curcond:$curcondstr:$#conditions=>".join(' ', @conditions).":$wd\n" if ($debugprint == 1);
 			if ($status == 0){
 				if ($wd =~ /^($kw1)\s+(.+)$/){
 					$status = 1;
@@ -505,7 +512,9 @@ sub procifdef{
 					$curcond = parsecondition($curcondstr);
 				}
 				else{
-					push @outstr, $wd;
+					if ($wd !~ /^($kw3)$/){
+						push @outstr, $wd;
+					}
 				}
 			}
 			elsif ($status == 1){
@@ -550,7 +559,11 @@ sub procifdef{
 					$curcond = parsecondition($curcondstr);
 				}
 				elsif ($wd =~ /^($kw2)$/){
+					# $curcond = pop @conditions;
+					# $curcondstr = pop @condstrs;
 					$curcond = 1 - $curcond;
+					# push @conditions, $curcond;
+					# push @condstrs, $curcondstr;
 					# print "debug2-3d:$status:$curcond:$curcondstr:$#conditions:".join(' ', @conditions).":$wd\n" if ($debugprint == 1);
 				}
 				elsif ($wd =~ /^($kw3)$/){
@@ -567,7 +580,7 @@ sub procifdef{
 					$curcond = parsecondition($curcondstr);
 				}
 				else{
-					if ($curcond == 1){
+					if ($curcond > 0){
 						my $hit = 1;
 						for (my $i=0; $i<=$#conditions; $i++){
 							if ($conditions[$i]==0){
@@ -591,8 +604,8 @@ sub procifdef{
 			}
 		}
 		else{
-			# print "debug2-5a:$status:$curcond:$curcondstr:$#conditions:".join(' ', @conditions).":$tline\n" if ($debugprint == 1);
-			if ($curcond == 1){
+			# print "debug2-5a:$status:$curcond:$curcondstr:$#conditions=>".join(' ', @conditions).":$tline\n" if ($debugprint == 1);
+			if ($curcond > 0){
 				my $hit = 1;
 				for (my $i=0; $i<=$#conditions; $i++){
 					if ($conditions[$i]==0){
@@ -643,14 +656,15 @@ sub decomment{
 	my $kws = '\/\*';
 	my $kwe = '\*\/';
 	my $kws2 = '\/\/';
-	my $kwq = '"'."|'";
+	my $kwdq = '"';
+	my $kwq = "'";
 	my @outstr = ();
 	my @commentStr = ();
 	my $status = 0;
 	my $linenum = 0;
 	my @inwds = ();
 	my $tmp = '';
-	my $de = '\s|$kws|$kws2|$kwe';
+	my $de = "\\s|$kwq|$kwdq|$kws|$kws2|$kwe";
 	# my $debugprint = 1;
 	while($wd = nextToken(fp, $de)){
 		# print "debug0-2start:$status:$#outstr:$#commentStr:$wd\n" if ($debugprint == 1);
@@ -682,6 +696,10 @@ sub decomment{
 			elsif ($wd =~ /($kwq)/){
 				push @outstr, $wd;
 				$status = 3;
+			}
+			elsif ($wd =~ /($kwdq)/){
+				push @outstr, $wd;
+				$status = 4;
 			}
 			else{
 				push @outstr, $wd;
@@ -715,6 +733,13 @@ sub decomment{
 			# print "debug0-1:$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
 			push @outstr, $wd;
 			if ($wd =~ /($kwq)/){
+				$status = 0;
+			}
+		}
+		elsif ($status == 4){
+			# print "debug0-1:$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
+			push @outstr, $wd;
+			if ($wd =~ /($kwdq)/){
 				$status = 0;
 			}
 		}
@@ -752,11 +777,11 @@ sub nextToken{
 			$str .= $ch;
 			last;
 		}
-		elsif ($str =~ /($de)/){
-			last;
-		}
 		else{
 			$str .= $ch;
+			if ($str =~ /($de)/){
+				last;
+			}
 		}
 	}
 	# $str =~ s/\s+//go;
@@ -773,17 +798,19 @@ sub lexer{
 			if ($str ne ''){
 				push @stack2, $str;
 			}
-			if ($ch !~ /^\s+$/){
-				push @stack2, $ch;
-			}
-			$str = '';
-		}
-		elsif ($str =~ /($de)/){
-			push @stack2, $str;
+			push @stack2, $ch;
+			# if ($ch !~ /^\s+$/){
+			# 	push @stack2, $ch;
+			# }
 			$str = '';
 		}
 		else{
 			$str .= $ch;
+			if ($str =~ /(.+?)($de)/){
+				push @stack2, $1;
+				push @stack2, $2;
+				$str = '';
+			}
 		}
 	}
 	if ($str ne ''){
