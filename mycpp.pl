@@ -26,11 +26,14 @@ if ($#tmpAry>-1){
 	$dir .= '/'.join('/', @tmpAry[0..$#tmpAry-1]);
 }
 my @file_list = glob($the_glob);
-# print "debug1:$dir\n";
+print "debug1:$dir\n";
 foreach my $file (@file_list){
 	@tmpAry = split('/', $file);
-	my $file2 = $tmpAry[-1];
-	# print "debug1:$file $file2\n";
+	my $file2 = $file;
+	if ($#tmpAry > -1){
+		$file2 = $tmpAry[-1];
+	}
+	print "debug1:$file $file2\n";
 	print "processing... decomment $file\n";
 	decomment($file, $file2, $dir, $decommentDir, $commentDir);
 	print "processing... deifdef $file2\n";
@@ -531,7 +534,7 @@ sub procifdef{
 				elsif ($wd =~ /^($kw5)\s+(.+)$/){
 					$curcondstr = $2;
 					$curcond = parsecondition($curcondstr);
-					$status = 2;
+					# $status = 2;
 				}
 				else{
 					if ($curcond == 1){
@@ -640,13 +643,14 @@ sub decomment{
 	my $kws = '\/\*';
 	my $kwe = '\*\/';
 	my $kws2 = '\/\/';
+	my $kwq = '"'."|'";
 	my @outstr = ();
 	my @commentStr = ();
 	my $status = 0;
 	my $linenum = 0;
 	my @inwds = ();
 	my $tmp = '';
-	my $de = '\s';
+	my $de = '\s|$kws|$kws2|$kwe';
 	# my $debugprint = 1;
 	while($wd = nextToken(fp, $de)){
 		# print "debug0-2start:$status:$#outstr:$#commentStr:$wd\n" if ($debugprint == 1);
@@ -664,21 +668,20 @@ sub decomment{
 				push @commentStr, $wd;
 			}
 			elsif ($wd =~ /($kws2)/){
-				if ($wd =~ /"/){
-					push @outstr, $wd;
+				if ($#outstr > -1){
+					$tmp = join('', @outstr);
+					# $tmp =~ s/;/;\n/go;
+					print ofp $tmp."\n";
 				}
-				else{
-					if ($#outstr > -1){
-						$tmp = join('', @outstr);
-						# $tmp =~ s/;/;\n/go;
-						print ofp $tmp."\n";
-					}
-					$status = 2;
-					@outstr = ();
-					# @inwds = ();
-					push @commentStr, $wd;
-					# print "debug0-1:0->$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
-				}
+				$status = 2;
+				@outstr = ();
+				# @inwds = ();
+				push @commentStr, $wd;
+				# print "debug0-1:0->$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
+			}
+			elsif ($wd =~ /($kwq)/){
+				push @outstr, $wd;
+				$status = 3;
 			}
 			else{
 				push @outstr, $wd;
@@ -705,6 +708,13 @@ sub decomment{
 			# print "debug0-1:$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
 			push @commentStr, $wd;
 			if ($wd =~ /\n/){
+				$status = 0;
+			}
+		}
+		elsif ($status == 3){
+			# print "debug0-1:$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
+			push @outstr, $wd;
+			if ($wd =~ /($kwq)/){
 				$status = 0;
 			}
 		}
@@ -742,6 +752,9 @@ sub nextToken{
 			$str .= $ch;
 			last;
 		}
+		elsif ($str =~ /($de)/){
+			last;
+		}
 		else{
 			$str .= $ch;
 		}
@@ -763,6 +776,10 @@ sub lexer{
 			if ($ch !~ /^\s+$/){
 				push @stack2, $ch;
 			}
+			$str = '';
+		}
+		elsif ($str =~ /($de)/){
+			push @stack2, $str;
 			$str = '';
 		}
 		else{
