@@ -51,12 +51,30 @@ foreach my $file (@file_list){
 
 #---
 # todo
-sub extractFunction{
+sub extractFunction {
 
 }
 
+sub printoutsr {
+	my $ofp = shift;
+	my $poutstr = shift;
+	my @outstr = @$poutstr;
+	my $tmpstr = '';
+	foreach my $str (@outstr){
+		if ($str =~ /^\s*$/) {
+			next;
+		}
+		$str =~ s/\{/\{\n/go;
+		$str =~ s/\}/\} /go;
+		$tmpstr .= $str;
+	}
+	if ($tmpstr =~ /(typedef|{|})/ && $tmpstr !~ /\)|=/){
+		print $ofp $tmpstr."\n";
+	}
+}
+
 # todo
-sub extractStruct{
+sub extractStruct {
 	my ($file, $file2, $fromdir, $distdir) = @_;
 	if (!(-e $distdir)){
 		unless(mkdir $distdir) {
@@ -73,193 +91,139 @@ sub extractStruct{
 	my $tline = '';
 	my @inwds = ();
 	my $within = 0;
-	# $de = '\s|{|}|;';
-	# 
-	while(<fp>){
-		my @lines = ();
-		my $status_10 = 0;
-		$linenum++;
-		if ($_ =~ /^\s*#/ || $_ =~ /^\s*$/){
+	my $kw1 = 'struct|union|enum';
+	my $kw2 = 'typedef';
+	my $de = '\s|\n|#|{|}|\(|\)|$kw1|$kw2';
+	my $oldtypename = '';
+	my $newtypename = '';
+	# my $debugprint = 1;
+	while($wd = nextToken(fp, $de)){
+		if ($wd =~ /^\s*$/) {
 			next;
 		}
-		$tline .= $_;
-		# print "\n";
-		# print "debug5-a:$status:$tline\n";
-		# if (($tline !~ /;/ || $tline !~ /}/) && !eof){
-		# 	next;
-		# }
-		# 1.0 以上になる
-		$tline =~ s/\n/ /go;
-		# print "debug5--0:$status:$tline\n";
-		if ($status == 0){
-			$status_10 = 1;
-			if ($tline =~ /\)\s*{/){
-				$status = -1;
-				my $count = (() = $tline =~ /{/g);
-				for (my $i=0; $i<$count; $i++){
-					push @stack, $linenum;
-				}
-				$count = (() = $tline =~ /}/g);
-				for (my $i=0; $i<$count; $i++){
-					pop @stack;
-				}
-				if ($#stack == -1){
-					$status = 0;
-				}
-				# print "debug5-b:$status:$count:$#stack:$tline\n";
-				$tline = '';
-				next;
+		# print "debug5-a:$status:$within:$#outstr:$wd\n";
+		$linenum++;
+		if ($status == -2){
+			if ($wd =~ /\n/) {
+				$status = 1;
 			}
 		}
 		elsif ($status == -1){
-			$status_10 = 1;
-			my $count = (() = $tline =~ /{/g);
-			for (my $i=0; $i<$count; $i++){
+			if ($wd =~ /}/) {
+				pop @stack;
+				if ($#stack == -1){
+					$status = 1;
+				}
+			}
+		}
+		elsif ($status == 1){
+			if ($wd =~ /#/) {
+				$status = -2;
+			}
+			elsif ($wd =~ /{/) {
+				$status = -1;
 				push @stack, $linenum;
 			}
-			$count = (() = $tline =~ /}/g);
-			for (my $i=0; $i<$count; $i++){
+			elsif ($wd =~ /$kw2/){
+				$status = 2;
+				@outstr = ();
+				push @outstr, $wd;
+			}
+			elsif ($wd =~ /$kw1/){
+				$status = 3;
+				@outstr = ();
+				push @outstr, $wd;
+			}
+			elsif ($wd =~ /;/){
+				$status = 1;
+				if ($within == 1){
+					push @outstr, $wd;
+					printoutsr(ofp, \@outstr);
+				}
+				@outstr = ();
+				$within = 0;
+			}
+		}
+		elsif ($status == 2){
+			# typedef
+			push @outstr, $wd;
+			$oldtypename = $wd;
+			if ($wd =~ /$kw1/){
+				$preStatus = 2;
+				$status = 3;
+			}
+			elsif ($wd =~ /;/){
+				$status = 1;
+				push @outstr, $wd;
+				# if ($within == 1){
+					printoutsr(ofp, \@outstr);
+				# }
+				@outstr = ();
+				@inwds = ();
+				$within = 0;
+			}
+			else{
+				# push @outstr, $wd;
+			}
+		}
+		elsif ($status == 3){
+			# stuct
+			push @outstr, $wd;
+			if ($wd =~ /;/){
+				$status = 1;
+				# print "debug5-2.1:$status:$within:$#outstr:$wd\n";
+				if ($within == 1){
+					printoutsr(ofp, \@outstr);
+					if ($preStatus == 4){
+						$newtypename = $wd;
+						$newtypename =~ s/;//;
+					}
+				}
+				@outstr = ();
+				@inwds = ();
+				$within = 0;
+			}
+			elsif ($wd =~ /{/){
+				$status = 4;
+				$within = 1;
+				if ($preStatus == 2){
+					$oldtypename .= ' '.$wd;
+					$oldtypename =~ s/\{//;
+				}
+				push @outstr, "\n";
+				push @stack, $linenum;
+			}
+			elsif ($wd =~ /\(|\)/) {
+				$status = 1;
+				@outstr = ();
+				@inwds = ();
+				$within = 0;
+			}
+			else{
+				# if ($preStatus == 2){
+				# 	$oldtypename .= ' '.$wd;
+				# }
+				# elsif ($preStatus == 4){
+				# 	$newtypename = $wd;
+				# }
+			}
+		}
+		elsif ($status == 4){
+			push @outstr, $wd;
+			if ($wd =~ /{/){
+				push @stack, $linenum;
+			}
+			elsif ($wd =~ /}/){
 				pop @stack;
+				if ($#stack == -1){
+					$preStatus = 4;
+					$status = 3;
+				}
 			}
-			if ($#stack == -1){
-				$status = 0;
+			elsif ($wd =~ /;/){
+				push @outstr, "\n";
 			}
-			# print "debug5-c:$status:$count:$#stack:$tline\n";
-			$tline = '';
-			next;
-		}
-
-		if ($status_10 == 1 && $tline =~ /;/){
-			$status = 1;
-		}
-		if (eof){
-			$lines[0] = $tline;
-			$lines[1] = '';
-		}
-		else{
-			# 途中分を次回の処理に繰延べる
-			@lines = split(';', $tline);
-			$tline = $lines[$#lines];
-		}
-		for (my $i=0; $i<$#lines; $i++){
-			# typedef struct union enum
-			my $line = $lines[$i].';';
-			my $oldtypename = '';
-			my $newtypename = '';
-			# print "debug5-d:$i:$status:$line\n";
-			# push @inwds, lexer($line);
-			@inwds = lexer($line, '\s|{|}|;');
-			foreach my $wd (@inwds){
-				# print "debug5-e:$status:$within:$wd\n";
-				if ($status == 0){
-					# add words after ';'
-					# die "error status 0";
-				}
-				elsif ($status == 1){
-					if ($wd eq 'typedef'){
-						$status = 2;
-						@outstr = ();
-						push @outstr, $wd;
-					}
-					elsif ($wd eq 'struct' || $wd eq 'union'){
-						$status = 3;
-						@outstr = ();
-						push @outstr, $wd;
-					}
-					elsif ($wd eq ';'){
-						$status = 0;
-						push @outstr, $wd;
-						if ($within == 1){
-							my $tmpstr = join(' ', @outstr);
-							if ($tmpstr =~ /(typedef|{|})/ && $tmpstr !~ /=/){
-								print ofp $tmpstr."\n";
-							}
-						}
-						@outstr = ();
-						@inwds = ();
-						$within = 0;
-					}
-				}
-				elsif ($status == 2){
-					# typedef
-					push @outstr, $wd;
-					$oldtypename = $wd;
-					if ($wd eq 'struct' || $wd eq 'union'){
-						$preStatus = 2;
-						$status = 3;
-					}
-					elsif ($wd eq ';'){
-						$status = 0;
-						push @outstr, $wd;
-						if ($within == 1){
-							my $tmpstr = join(' ', @outstr);
-							if ($tmpstr =~ /(typedef|{|})/ && $tmpstr !~ /=/){
-								print ofp $tmpstr."\n";
-							}
-						}
-						@outstr = ();
-						@inwds = ();
-						$within = 0;
-					}
-				}
-				elsif ($status == 3){
-					# stuct
-					push @outstr, $wd;
-					if ($wd eq ';'){
-						$status = 0;
-						# print "debug5-2.1:$status:$within:$#outstr:$wd\n";
-						if ($within == 1){
-							my $tmpstr = join(' ', @outstr);
-							if ($tmpstr =~ /(typedef|{|})/ && $tmpstr !~ /=/){
-								print ofp $tmpstr."\n";
-								# print "debug5-2.2:$status:$within:$#outstr:$tmpstr\n";
-							}
-						}
-						else{
-							my $tmpstr = join(' ', @outstr);
-							if ($tmpstr =~ /(typedef|{|})/ && $tmpstr !~ /=/){
-								print ofp $tmpstr."\n";
-								# print "debug5-2.3:$status:$within:$#outstr:$tmpstr\n";
-							}
-						}
-						@outstr = ();
-						@inwds = ();
-						$within = 0;
-					}
-					elsif ($wd eq '{'){
-						$status = 4;
-						$within = 1;
-						push @outstr, "\n";
-						push @stack, $linenum;
-					}
-					else{
-						if ($preStatus == 2){
-							$oldtypename .= ' '.$wd;
-						}
-						elsif ($preStatus == 4){
-							$newtypename = $wd;
-						}
-					}
-				}
-				elsif ($status == 4){
-					push @outstr, $wd;
-					if ($wd eq '{'){
-						push @stack, $linenum;
-					}
-					elsif ($wd eq '}'){
-						pop @stack;
-						if ($#stack == -1){
-							$preStatus = 4;
-							$status = 3;
-						}
-					}
-					elsif ($wd eq ';'){
-						push @outstr, "\n";
-					}
-					elsif ($wd eq 'struct' || $wd eq 'union'){
-					}
-				}
-				# print "debug5-f:$status:$within:$wd\n";
+			elsif ($wd =~ /$kw2/){
 			}
 		}
 	}
@@ -270,7 +234,7 @@ sub extractStruct{
 	close(fp);
 }
 
-sub reversePolishNotation{
+sub reversePolishNotation {
 	my $conditions = shift;
 	my @result = ();
 	my @rpnstack = ();
@@ -356,7 +320,7 @@ sub reversePolishNotation{
 	return @result;
 }
 
-sub parsecondition{
+sub parsecondition {
 	my $conditions = shift;
 	my @stack2 = ();
 	# print "debug3-1:$conditions\n";
@@ -437,7 +401,7 @@ sub parsecondition{
 	return ($$val == 0) ? 0 : 1;
 }
 
-sub procifdef{
+sub procifdef {
 	my ($file, $file2, $fromdir, $distdir) = @_;
 	if (!(-e $distdir)){
 		unless(mkdir $distdir) {
@@ -638,7 +602,7 @@ sub procifdef{
 	close(fp);
 }
 
-sub decomment{
+sub decomment {
 	my ($file, $file2, $fromdir, $distdir, $comdistDir) = @_;
 	if (!(-e $distdir)){
 		unless(mkdir $distdir) {
@@ -765,7 +729,7 @@ sub decomment{
 	close(fp);
 }
 
-sub nextToken{
+sub nextToken {
 	my $fp = shift;
 	my $de = shift;
 	my @stack2;
@@ -788,7 +752,7 @@ sub nextToken{
 	return $str;
 }
 
-sub lexer{
+sub lexer {
 	my $inline = shift;
 	my $de = shift;
 	my @stack2;
