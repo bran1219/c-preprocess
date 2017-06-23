@@ -68,6 +68,7 @@ sub printoutsr {
 		$str =~ s/\}/\} /go;
 		$tmpstr .= $str;
 	}
+	$tmpstr =~ s/\n\{/ \{/go;
 	if ($tmpstr =~ /(typedef|{|})/ && $tmpstr !~ /\)|=/){
 		print $ofp $tmpstr."\n";
 	}
@@ -93,7 +94,7 @@ sub extractStruct {
 	my $within = 0;
 	my $kw1 = 'struct|union|enum';
 	my $kw2 = 'typedef';
-	my $de = '\s|\n|#|{|}|\(|\)|$kw1|$kw2';
+	my $de = '\s|\n|;|#|{|}|\(|\)|$kw1|$kw2';
 	my $oldtypename = '';
 	my $newtypename = '';
 	# my $debugprint = 1;
@@ -103,7 +104,15 @@ sub extractStruct {
 		}
 		# print "debug5-a:$status:$within:$#outstr:$wd\n";
 		$linenum++;
-		if ($status == -2){
+		if ($status == -3){
+			if ($wd =~ /\)/) {
+				pop @stack;
+				if ($#stack == -1){
+					$status = 1;
+				}
+			}
+		}
+		elsif ($status == -2){
 			if ($wd =~ /\n/) {
 				$status = 1;
 			}
@@ -122,6 +131,10 @@ sub extractStruct {
 			}
 			elsif ($wd =~ /{/) {
 				$status = -1;
+				push @stack, $linenum;
+			}
+			elsif ($wd =~ /\(/) {
+				$status = -3;
 				push @stack, $linenum;
 			}
 			elsif ($wd =~ /$kw2/){
@@ -145,6 +158,7 @@ sub extractStruct {
 			}
 		}
 		elsif ($status == 2){
+			# print "debug5-b:$status:$within:$#outstr:$wd\n";
 			# typedef
 			push @outstr, $wd;
 			$oldtypename = $wd;
@@ -154,7 +168,6 @@ sub extractStruct {
 			}
 			elsif ($wd =~ /;/){
 				$status = 1;
-				push @outstr, $wd;
 				# if ($within == 1){
 					printoutsr(ofp, \@outstr);
 				# }
@@ -628,7 +641,7 @@ sub decomment {
 	my $linenum = 0;
 	my @inwds = ();
 	my $tmp = '';
-	my $de = "\\s|$kwq|$kwdq|$kws|$kws2|$kwe";
+	my $de = "\\s|;|$kwq|$kwdq|$kws|$kws2|$kwe";
 	# my $debugprint = 1;
 	while($wd = nextToken(fp, $de)){
 		# print "debug0-2start:$status:$#outstr:$#commentStr:$wd\n" if ($debugprint == 1);
@@ -734,7 +747,7 @@ sub nextToken {
 	my $de = shift;
 	my @stack2;
 	my $str = '';
-	# print "nextToken\n";
+	# print "\nnextToken\n";
 	while (read($fp, $ch, 1)) {
 		# print "$ch";
 		if ($ch =~ /($de)/){
