@@ -98,145 +98,147 @@ sub extractStruct {
 	my $oldtypename = '';
 	my $newtypename = '';
 	# my $debugprint = 1;
-	while($wd = nextToken(fp, $de)){
-		if ($wd =~ /^\s*$/) {
-			next;
-		}
-		# print "debug5-a:$status:$within:$#outstr:$wd\n";
-		$linenum++;
-		if ($status == -3){
-			if ($wd =~ /\)/) {
-				pop @stack;
-				if ($#stack == -1){
-					$status = 1;
-				}
+	while (@inwds = nextToken(fp, $de)){
+		foreach my $wd (@inwds) {
+			if ($wd =~ /^\s*$/) {
+				next;
 			}
-		}
-		elsif ($status == -2){
-			if ($wd =~ /\n/) {
-				$status = 1;
-			}
-		}
-		elsif ($status == -1){
-			if ($wd =~ /}/) {
-				pop @stack;
-				if ($#stack == -1){
-					$status = 1;
-				}
-			}
-		}
-		elsif ($status == 1){
-			if ($wd =~ /#/) {
-				$status = -2;
-			}
-			elsif ($wd =~ /{/) {
-				$status = -1;
-				push @stack, $linenum;
-			}
-			elsif ($wd =~ /\(/) {
-				$status = -3;
-				push @stack, $linenum;
-			}
-			elsif ($wd =~ /$kw2/){
-				$status = 2;
-				@outstr = ();
-				push @outstr, $wd;
-			}
-			elsif ($wd =~ /$kw1/){
-				$status = 3;
-				@outstr = ();
-				push @outstr, $wd;
-			}
-			elsif ($wd =~ /;/){
-				$status = 1;
-				if ($within == 1){
-					push @outstr, $wd;
-					printoutsr(ofp, \@outstr);
-				}
-				@outstr = ();
-				$within = 0;
-			}
-		}
-		elsif ($status == 2){
-			# print "debug5-b:$status:$within:$#outstr:$wd\n";
-			# typedef
-			push @outstr, $wd;
-			$oldtypename = $wd;
-			if ($wd =~ /$kw1/){
-				$preStatus = 2;
-				$status = 3;
-			}
-			elsif ($wd =~ /;/){
-				$status = 1;
-				# if ($within == 1){
-					printoutsr(ofp, \@outstr);
-				# }
-				@outstr = ();
-				@inwds = ();
-				$within = 0;
-			}
-			else{
-				# push @outstr, $wd;
-			}
-		}
-		elsif ($status == 3){
-			# stuct
-			push @outstr, $wd;
-			if ($wd =~ /;/){
-				$status = 1;
-				# print "debug5-2.1:$status:$within:$#outstr:$wd\n";
-				if ($within == 1){
-					printoutsr(ofp, \@outstr);
-					if ($preStatus == 4){
-						$newtypename = $wd;
-						$newtypename =~ s/;//;
+			# print "debug5-a:$status:$within:$#outstr:$wd\n";
+			$linenum++;
+			if ($status == -3){
+				if ($wd =~ /\)/) {
+					pop @stack;
+					if ($#stack == -1){
+						$status = 1;
 					}
 				}
-				@outstr = ();
-				@inwds = ();
-				$within = 0;
 			}
-			elsif ($wd =~ /{/){
-				$status = 4;
-				$within = 1;
-				if ($preStatus == 2){
-					$oldtypename .= ' '.$wd;
-					$oldtypename =~ s/\{//;
+			elsif ($status == -2){
+				if ($wd =~ /\n/) {
+					$status = 1;
 				}
-				push @outstr, "\n";
-				push @stack, $linenum;
 			}
-			elsif ($wd =~ /\(|\)/) {
-				$status = 1;
-				@outstr = ();
-				@inwds = ();
-				$within = 0;
+			elsif ($status == -1){
+				if ($wd =~ /}/) {
+					pop @stack;
+					if ($#stack == -1){
+						$status = 1;
+					}
+				}
 			}
-			else{
-				# if ($preStatus == 2){
-				# 	$oldtypename .= ' '.$wd;
-				# }
-				# elsif ($preStatus == 4){
-				# 	$newtypename = $wd;
-				# }
+			elsif ($status == 1){
+				if ($wd =~ /#/) {
+					$status = -2;
+				}
+				elsif ($wd =~ /{/) {
+					$status = -1;
+					push @stack, $linenum;
+				}
+				elsif ($wd =~ /\(/) {
+					$status = -3;
+					push @stack, $linenum;
+				}
+				elsif ($wd =~ /$kw2/){
+					$status = 2;
+					@outstr = ();
+					push @outstr, $wd;
+				}
+				elsif ($wd =~ /$kw1/){
+					$status = 3;
+					@outstr = ();
+					push @outstr, $wd;
+				}
+				elsif ($wd =~ /;/){
+					$status = 1;
+					if ($within == 1){
+						push @outstr, $wd;
+						printoutsr(ofp, \@outstr);
+					}
+					@outstr = ();
+					$within = 0;
+				}
 			}
-		}
-		elsif ($status == 4){
-			push @outstr, $wd;
-			if ($wd =~ /{/){
-				push @stack, $linenum;
-			}
-			elsif ($wd =~ /}/){
-				pop @stack;
-				if ($#stack == -1){
-					$preStatus = 4;
+			elsif ($status == 2){
+				# print "debug5-b:$status:$within:$#outstr:$wd\n";
+				# typedef
+				push @outstr, $wd;
+				$oldtypename = $wd;
+				if ($wd =~ /$kw1/){
+					$preStatus = 2;
 					$status = 3;
 				}
+				elsif ($wd =~ /;/){
+					$status = 1;
+					# if ($within == 1){
+						printoutsr(ofp, \@outstr);
+					# }
+					@outstr = ();
+					@inwds = ();
+					$within = 0;
+				}
+				else{
+					# push @outstr, $wd;
+				}
 			}
-			elsif ($wd =~ /;/){
-				push @outstr, "\n";
+			elsif ($status == 3){
+				# stuct
+				push @outstr, $wd;
+				if ($wd =~ /;/){
+					$status = 1;
+					# print "debug5-2.1:$status:$within:$#outstr:$wd\n";
+					if ($within == 1){
+						printoutsr(ofp, \@outstr);
+						if ($preStatus == 4){
+							$newtypename = $wd;
+							$newtypename =~ s/;//;
+						}
+					}
+					@outstr = ();
+					@inwds = ();
+					$within = 0;
+				}
+				elsif ($wd =~ /{/){
+					$status = 4;
+					$within = 1;
+					if ($preStatus == 2){
+						$oldtypename .= ' '.$wd;
+						$oldtypename =~ s/\{//;
+					}
+					push @outstr, "\n";
+					push @stack, $linenum;
+				}
+				elsif ($wd =~ /\(|\)/) {
+					$status = 1;
+					@outstr = ();
+					@inwds = ();
+					$within = 0;
+				}
+				else{
+					# if ($preStatus == 2){
+					# 	$oldtypename .= ' '.$wd;
+					# }
+					# elsif ($preStatus == 4){
+					# 	$newtypename = $wd;
+					# }
+				}
 			}
-			elsif ($wd =~ /$kw2/){
+			elsif ($status == 4){
+				push @outstr, $wd;
+				if ($wd =~ /{/){
+					push @stack, $linenum;
+				}
+				elsif ($wd =~ /}/){
+					pop @stack;
+					if ($#stack == -1){
+						$preStatus = 4;
+						$status = 3;
+					}
+				}
+				elsif ($wd =~ /;/){
+					push @outstr, "\n";
+				}
+				elsif ($wd =~ /$kw2/){
+				}
 			}
 		}
 	}
@@ -635,6 +637,7 @@ sub decomment {
 	my $kws2 = '\/\/';
 	my $kwdq = '"';
 	my $kwq = "'";
+	my @inwds = ();
 	my @outstr = ();
 	my @commentStr = ();
 	my $status = 0;
@@ -643,86 +646,88 @@ sub decomment {
 	my $tmp = '';
 	my $de = "\\s|;|$kwq|$kwdq|$kws|$kws2|$kwe";
 	# my $debugprint = 1;
-	while($wd = nextToken(fp, $de)){
-		# print "debug0-2start:$status:$#outstr:$#commentStr:$wd\n" if ($debugprint == 1);
-		if ($status == 0){
-			if ($wd =~ /($kws)/){
-				if ($#outstr > -1){
-					$tmp = join('', @outstr);
-					# $tmp =~ s/;/;\n/go;
-					print ofp $tmp."\n";
+	while (@inwds = nextToken(fp, $de)){
+		foreach my $wd (@inwds) {
+			# print "debug0-2start:$status:$#outstr:$#commentStr:$wd\n" if ($debugprint == 1);
+			if ($status == 0){
+				if ($wd =~ /($kws)/){
+					if ($#outstr > -1){
+						$tmp = join('', @outstr);
+						# $tmp =~ s/;/;\n/go;
+						print ofp $tmp."\n";
+					}
+					$status = 1;
+					# print "debug0-1:0->$status:$wd:$#outstr\n" if ($debugprint == 1);
+					@outstr = ();
+					# @inwds = ();
+					push @commentStr, $wd;
 				}
-				$status = 1;
-				# print "debug0-1:0->$status:$wd:$#outstr\n" if ($debugprint == 1);
-				@outstr = ();
-				# @inwds = ();
-				push @commentStr, $wd;
-			}
-			elsif ($wd =~ /($kws2)/){
-				if ($#outstr > -1){
-					$tmp = join('', @outstr);
-					# $tmp =~ s/;/;\n/go;
-					print ofp $tmp."\n";
+				elsif ($wd =~ /($kws2)/){
+					if ($#outstr > -1){
+						$tmp = join('', @outstr);
+						# $tmp =~ s/;/;\n/go;
+						print ofp $tmp."\n";
+					}
+					$status = 2;
+					@outstr = ();
+					# @inwds = ();
+					push @commentStr, $wd;
+					# print "debug0-1:0->$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
 				}
-				$status = 2;
-				@outstr = ();
-				# @inwds = ();
+				elsif ($wd =~ /($kwq)/){
+					push @outstr, $wd;
+					$status = 3;
+				}
+				elsif ($wd =~ /($kwdq)/){
+					push @outstr, $wd;
+					$status = 4;
+				}
+				else{
+					push @outstr, $wd;
+					# @commentStr = ();
+				}
+			}
+			elsif ($status == 1){
+				if ($wd =~ /($kwe)/){
+					push @commentStr, $wd;
+					$tmp = join('', @commentStr);
+					# $tmp =~ s/^\s+//;
+					print ofp2 $tmp."\n";
+					@commentStr = ();
+					# @outstr = ();
+					$status = 0;
+					# print "debug0-1:1->$status:$wd:$#outstr\n" if ($debugprint == 1);
+				}
+				else{
+					# print "debug0-1:1->$status:$wd:$#outstr\n" if ($debugprint == 1);
+					push @commentStr, $wd;
+				}
+			}
+			elsif ($status == 2){
+				# print "debug0-1:$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
 				push @commentStr, $wd;
-				# print "debug0-1:0->$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
+				if ($wd =~ /\n/){
+					$status = 0;
+				}
 			}
-			elsif ($wd =~ /($kwq)/){
+			elsif ($status == 3){
+				# print "debug0-1:$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
 				push @outstr, $wd;
-				$status = 3;
+				if ($wd =~ /($kwq)/){
+					$status = 0;
+				}
 			}
-			elsif ($wd =~ /($kwdq)/){
+			elsif ($status == 4){
+				# print "debug0-1:$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
 				push @outstr, $wd;
-				$status = 4;
+				if ($wd =~ /($kwdq)/){
+					$status = 0;
+				}
 			}
-			else{
-				push @outstr, $wd;
-				# @commentStr = ();
-			}
+			# if ($status == 2){
+			# 	$status = 0;
+			# }
 		}
-		elsif ($status == 1){
-			if ($wd =~ /($kwe)/){
-				push @commentStr, $wd;
-				$tmp = join('', @commentStr);
-				# $tmp =~ s/^\s+//;
-				print ofp2 $tmp."\n";
-				@commentStr = ();
-				# @outstr = ();
-				$status = 0;
-				# print "debug0-1:1->$status:$wd:$#outstr\n" if ($debugprint == 1);
-			}
-			else{
-				# print "debug0-1:1->$status:$wd:$#outstr\n" if ($debugprint == 1);
-				push @commentStr, $wd;
-			}
-		}
-		elsif ($status == 2){
-			# print "debug0-1:$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
-			push @commentStr, $wd;
-			if ($wd =~ /\n/){
-				$status = 0;
-			}
-		}
-		elsif ($status == 3){
-			# print "debug0-1:$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
-			push @outstr, $wd;
-			if ($wd =~ /($kwq)/){
-				$status = 0;
-			}
-		}
-		elsif ($status == 4){
-			# print "debug0-1:$status:$wd:$#outstr:$#commentStr\n" if ($debugprint == 1);
-			push @outstr, $wd;
-			if ($wd =~ /($kwdq)/){
-				$status = 0;
-			}
-		}
-		# if ($status == 2){
-		# 	$status = 0;
-		# }
 	}
 	if ($#outstr > -1){
 		$tmp = join('', @outstr);
@@ -751,18 +756,26 @@ sub nextToken {
 	while (read($fp, $ch, 1)) {
 		# print "$ch";
 		if ($ch =~ /($de)/){
-			$str .= $ch;
+			if ($str ne ''){
+				push @stack2, $str;
+			}
+			push @stack2, $ch;
+			# $str .= $ch;
+			$str = '';
 			last;
 		}
 		else{
 			$str .= $ch;
-			if ($str =~ /($de)/){
+			if ($str =~ /(.+?)($de)/){
+				push @stack2, $1;
+				push @stack2, $2;
+				$str = '';
 				last;
 			}
 		}
 	}
 	# $str =~ s/\s+//go;
-	return $str;
+	return @stack2;
 }
 
 sub lexer {
