@@ -55,23 +55,28 @@ sub extractFunction {
 
 }
 
-sub printoutsr {
+sub printoutstr {
 	my $ofp = shift;
 	my $poutstr = shift;
 	my @outstr = @$poutstr;
 	my $tmpstr = '';
+	# print "debug:6-0:printoutstr\n";
 	foreach my $str (@outstr){
-		if ($str =~ /^\s*$/) {
-			next;
-		}
-		$str =~ s/\{/\{\n/go;
-		$str =~ s/\}/\} /go;
+		# if ($str =~ /^\n$/) {
+		# 	next;
+		# }
 		$tmpstr .= $str;
 	}
 	$tmpstr =~ s/\n\{/ \{/go;
-	if ($tmpstr =~ /(typedef|{|})/ && $tmpstr !~ /\)|=/){
+	$tmpstr =~ s/\{([^\n])/\{\n$1/go;
+	$tmpstr =~ s/\}([^\s])/\} $1/go;
+	$tmpstr =~ s/;([^\n])/;\n$1/go;
+	$tmpstr =~ s/\n\s/\n\t/go;
+	$tmpstr =~ s/\n\t}/\n\}/go;
+	if ($tmpstr =~ /(typedef|struct|union|enum)/){
 		print $ofp $tmpstr."\n";
 	}
+	# print "debug:6-z:printoutstr\n";
 }
 
 # todo
@@ -98,11 +103,13 @@ sub extractStruct {
 	my $oldtypename = '';
 	my $newtypename = '';
 	# my $debugprint = 1;
-	while (@inwds = nextToken(fp, $de)){
+	@inwds = nextToken(fp, $de);
+	while ($#inwds > -1) {
+		# print "debug5-0:$#inwds\n";
 		foreach my $wd (@inwds) {
-			if ($wd =~ /^\s*$/) {
-				next;
-			}
+			# if ($wd =~ /^\s*$/) {
+			# 	next;
+			# }
 			# print "debug5-a:$status:$within:$#outstr:$wd\n";
 			$linenum++;
 			if ($status == -3){
@@ -152,7 +159,7 @@ sub extractStruct {
 					$status = 1;
 					if ($within == 1){
 						push @outstr, $wd;
-						printoutsr(ofp, \@outstr);
+						printoutstr(ofp, \@outstr);
 					}
 					@outstr = ();
 					$within = 0;
@@ -170,7 +177,7 @@ sub extractStruct {
 				elsif ($wd =~ /;/){
 					$status = 1;
 					# if ($within == 1){
-						printoutsr(ofp, \@outstr);
+						printoutstr(ofp, \@outstr);
 					# }
 					@outstr = ();
 					@inwds = ();
@@ -187,11 +194,14 @@ sub extractStruct {
 					$status = 1;
 					# print "debug5-2.1:$status:$within:$#outstr:$wd\n";
 					if ($within == 1){
-						printoutsr(ofp, \@outstr);
+						printoutstr(ofp, \@outstr);
 						if ($preStatus == 4){
 							$newtypename = $wd;
 							$newtypename =~ s/;//;
 						}
+					}
+					else{
+						printoutstr(ofp, \@outstr);
 					}
 					@outstr = ();
 					@inwds = ();
@@ -241,6 +251,7 @@ sub extractStruct {
 				}
 			}
 		}
+		@inwds = nextToken(fp, $de);
 	}
 	# if ($tline ne ''){
 	# 	print ofp $tline;
@@ -646,7 +657,8 @@ sub decomment {
 	my $tmp = '';
 	my $de = "\\s|;|$kwq|$kwdq|$kws|$kws2|$kwe";
 	# my $debugprint = 1;
-	while (@inwds = nextToken(fp, $de)){
+	@inwds = nextToken(fp, $de);
+	while ($#inwds > -1){
 		foreach my $wd (@inwds) {
 			# print "debug0-2start:$status:$#outstr:$#commentStr:$wd\n" if ($debugprint == 1);
 			if ($status == 0){
@@ -654,6 +666,7 @@ sub decomment {
 					if ($#outstr > -1){
 						$tmp = join('', @outstr);
 						# $tmp =~ s/;/;\n/go;
+						$tmp =~ s/\n+/\n/go;
 						print ofp $tmp."\n";
 					}
 					$status = 1;
@@ -666,6 +679,7 @@ sub decomment {
 					if ($#outstr > -1){
 						$tmp = join('', @outstr);
 						# $tmp =~ s/;/;\n/go;
+						$tmp =~ s/\n+/\n/go;
 						print ofp $tmp."\n";
 					}
 					$status = 2;
@@ -692,6 +706,7 @@ sub decomment {
 					push @commentStr, $wd;
 					$tmp = join('', @commentStr);
 					# $tmp =~ s/^\s+//;
+					$tmp =~ s/\n+/\n/go;
 					print ofp2 $tmp."\n";
 					@commentStr = ();
 					# @outstr = ();
@@ -728,10 +743,12 @@ sub decomment {
 			# 	$status = 0;
 			# }
 		}
+		@inwds = nextToken(fp, $de);
 	}
 	if ($#outstr > -1){
 		$tmp = join('', @outstr);
 		# $tmp =~ s/;/;\n/go;
+		$tmp =~ s/\n+/\n/go;
 		print ofp $tmp."\n";
 		@outstr = ();
 		# @inwds = ();
@@ -739,6 +756,7 @@ sub decomment {
 	if ($#commentStr > -1){
 		$tmp = join('', @commentStr);
 		# $tmp =~ s/^\s+//;
+		$tmp =~ s/\n+/\n/go;
 		print ofp2 $tmp."\n";
 		@commentStr = ();
 	}
