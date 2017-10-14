@@ -655,7 +655,7 @@ sub decomment {
 	my $linenum = 0;
 	my @inwds = ();
 	my $tmp = '';
-	my $de = "\\s|;|$kwq|$kwdq|$kws|$kws2|$kwe";
+	my $de = "\\s|;|$kwq|$kwdq|$kws2|$kws|$kwe";
 	# my $debugprint = 1;
 	@inwds = nextToken(fp, $de);
 	while ($#inwds > -1){
@@ -784,7 +784,14 @@ sub nextToken {
 		}
 		else{
 			$str .= $ch;
-			if ($str =~ /(.+?)($de)/){
+			if ($str =~ /^($de)$/){
+				# print "\nnt1:$str\n";
+				push @stack2, $str;
+				$str = '';
+				last;
+			}
+			elsif ($str =~ /(.+?)($de)/){
+				# print "\nnt2:$str -> $1, $2\n";
 				push @stack2, $1;
 				push @stack2, $2;
 				$str = '';
@@ -793,6 +800,7 @@ sub nextToken {
 		}
 	}
 	# $str =~ s/\s+//go;
+	# print join("|", @stack2);
 	return @stack2;
 }
 
